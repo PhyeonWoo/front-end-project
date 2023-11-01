@@ -22,10 +22,9 @@ class main_home extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 1,
           iconTheme: IconThemeData(color: Colors.black),
-          title: Text("UnBoxing"),
+          title: Text("Gym1"),
           centerTitle: true,
           titleTextStyle: TextStyle(color: Colors.black,fontSize: 20),
-
 
 
           // 좌측 위젯버튼

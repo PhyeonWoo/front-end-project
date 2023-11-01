@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Button/button.dart';
 import "Sports_Container.dart";
-//
+
 
 
 void main() => runApp(sports_home());
@@ -19,12 +19,12 @@ class sports_home extends StatelessWidget {
         appBar: AppBar(
 
           // 상단바
-          backgroundColor: Colors.white,
-          elevation: 1,
-          iconTheme: IconThemeData(color: Colors.black),
-          title: Text("UnBoxing"),
-          centerTitle: true,
-          titleTextStyle: TextStyle(color: Colors.black,fontSize: 20),
+          // backgroundColor: Colors.orange,
+          // elevation: 1,
+          // iconTheme: IconThemeData(color: Colors.black),
+          // title: Text("Gym"),
+          // centerTitle: true,
+          // titleTextStyle: TextStyle(color: Colors.black,fontSize: 20),
 
           // 좌측 위젯버튼
           leading: IconButton(

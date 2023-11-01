@@ -12,23 +12,30 @@ class first extends StatefulWidget {
 class _MyAppState extends State<first> {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.orangeAccent,
-        elevation: 1,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text("UnBoxing"),
-        centerTitle: true,
-        titleTextStyle: TextStyle(color: Colors.black,fontSize: 20),
-
-        // 좌측 버튼
-        leading: leading_Button(),
-
-        // 우측 버튼
-        actions: <Widget>[
-          action_Button(),
-        ],
-      ),
+      appBar: MyAppBar1(),
       body: HomeContainer1(),   //second third 다름
     );
   }
+}
+
+class MyAppBar1 extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text('Gym'),
+      backgroundColor: Colors.orangeAccent,
+      elevation: 1,
+      iconTheme: IconThemeData(color: Colors.black),
+      centerTitle: true,
+      titleTextStyle: TextStyle(color: Colors.black,fontSize: 20.0),
+
+      leading: leading_Button(),
+
+      actions: <Widget>[
+        action_Button(),
+      ],
+    );
+  }
+  @override
+  Size get preferredSize => Size.fromHeight(120.0);
 }
