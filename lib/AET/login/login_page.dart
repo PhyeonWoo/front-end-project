@@ -10,9 +10,9 @@ import 'package:aet/util/vaildator_util.dart';
 
 // void main() => runApp(LoginPage());
 
-void main() => runApp(MyApp());
+void main() => runApp(loginPage());
 
-class MyApp extends StatelessWidget {
+class loginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
