@@ -1,5 +1,5 @@
 import 'package:aet/AET/Button/button.dart';
-import 'package:aet/main.dart';
+import 'package:aet/Training/main.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,7 +16,7 @@ class main_home extends StatelessWidget {
       home: Scaffold(
         bottomNavigationBar: app123123(),
         // bottomNavigationBar: MyHomePage(),
-        body: MyApp(),
+        // body: MyApp(),
         appBar: AppBar(
           // 상단바
           backgroundColor: Colors.white,

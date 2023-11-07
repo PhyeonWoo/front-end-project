@@ -2,6 +2,9 @@ import 'package:aet/AET/Button/action_Button.dart';
 import 'package:aet/AET/Button/leading_Button.dart';
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(fourth());
+}
 
 class fourth extends StatefulWidget {
   @override
@@ -15,24 +18,17 @@ class _MyAppState extends State<fourth> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('TEST')
+
             ],
           ),
         ),
         appBar: AppBar(
           backgroundColor: Colors.white,
-          elevation: 1,
+          elevation: 0,
           iconTheme: IconThemeData(color: Colors.black),
-          title: Text("UnBoxing"),
+          title: Text("Gym보따리\n\t\t\t\t 프로필"),
           centerTitle: true,
-          titleTextStyle: TextStyle(color: Colors.black,fontSize: 20),
-
-          leading: leading_Button(),
-
-          // 우측 버튼
-          actions: <Widget>[
-            action_Button(),
-          ],
+          titleTextStyle: TextStyle(color: Colors.black,fontSize: 20,fontWeight:FontWeight.bold),
         )
     );
   }
