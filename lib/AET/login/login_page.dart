@@ -70,7 +70,7 @@ class LoginPage extends StatelessWidget {
               funPageRoute: () async{
                 if(_formKey.currentState!.validate()){
                   String token = await u.login(_username.text.trim(),_password.text.trim());
-                  if(token != null){
+                  if(token != "Bearer null" ){
                     print("토큰을 정상적으로 받음");
                     Get.to(() => main_home());
                   } else{
@@ -83,7 +83,7 @@ class LoginPage extends StatelessWidget {
             onPressed: (){
              Get.to(JoinPage());
             },
-            child:Text("회원 가입 하러가기"),
+            child:Text("회원가입 하러가기"),
           ),
         ],
       ),

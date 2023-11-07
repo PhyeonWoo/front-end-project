@@ -3,7 +3,6 @@ import 'package:aet/util/jwt.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController{
-
   final UserRepository _userRepository = UserRepository();
   final RxBool isLogin = false.obs;
 

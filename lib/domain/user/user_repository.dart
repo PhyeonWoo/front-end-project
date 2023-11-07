@@ -11,9 +11,9 @@ class UserRepository {
     print(loginReqDto.toJson());
     print(response.body);
     print(response.headers);
+    print('=====');
     dynamic headers = response.headers;
-
-    if (headers["authorization"] == null) {
+    if (headers["authorization"]==null) {
       return "-1";
     } else {
       String token = headers["authorization"];
