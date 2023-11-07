@@ -8,7 +8,18 @@ import 'package:get/get.dart';
 import 'package:aet/AET/login/join_page.dart';
 import 'package:aet/util/vaildator_util.dart';
 
-void main() => runApp(LoginPage());
+// void main() => runApp(LoginPage());
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      home: LoginPage(),
+    );
+  }
+}
 
 class LoginPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
