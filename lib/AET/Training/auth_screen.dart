@@ -13,7 +13,7 @@ class AuthScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: PageView(
         children: [
-          LoginPage(),
+          loginPage(),
           // IntroPage(),
           // Container(color: Colors.accents[2],),
           // Container(color: Colors.accents[5],),

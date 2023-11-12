@@ -14,7 +14,7 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: loginPage(),
     );
   }
 }
