@@ -5,24 +5,24 @@ import 'package:aet/AET/Bottom/first.dart';
 import 'package:aet/AET/Bottom/fourth.dart';
 import 'package:aet/AET/Bottom/second.dart';
 
-void main() => runApp(app123123());
+void main() => runApp(Button_Main());
 
-class app123123 extends StatelessWidget {
+class Button_Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-      home: MyPage123(),
+      home: Button_Main_ful(),
     );
   }
 }
 
-class MyPage123 extends StatefulWidget {
+class Button_Main_ful extends StatefulWidget {
   @override
   _MyPageState createState() => _MyPageState();
 }
 
-class _MyPageState extends State<MyPage123> {
+class _MyPageState extends State<Button_Main_ful> {
   int currentIndex =0;
   final screens = [
     //이게 하나하나의 화면이되고, Text등을 사용하거나, dart파일에 있는 class를 넣는다.

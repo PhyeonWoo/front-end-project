@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(leading_Button());
-
 class leading_Button extends StatelessWidget {
 
   @override
