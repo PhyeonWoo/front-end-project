@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'IntroPage.dart';
 import 'package:aet/AET/login/login_page.dart';
-//
+import 'address_page.dart';
 
 
 class AuthScreen extends StatelessWidget {
@@ -14,7 +14,7 @@ class AuthScreen extends StatelessWidget {
       body: PageView(
         children: [
           loginPage(),
-          // IntroPage(),
+          address_page(),
           // Container(color: Colors.accents[2],),
           // Container(color: Colors.accents[5],),
         ],

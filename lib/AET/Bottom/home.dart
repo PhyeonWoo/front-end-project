@@ -14,7 +14,7 @@ class main_home extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: app123123(),
+        bottomNavigationBar: Button_Main(),
         // bottomNavigationBar: MyHomePage(),
         // body: MyApp(),
         appBar: AppBar(
