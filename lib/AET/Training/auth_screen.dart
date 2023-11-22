@@ -15,8 +15,6 @@ class AuthScreen extends StatelessWidget {
         children: [
           loginPage(),
           address_page(),
-          // Container(color: Colors.accents[2],),
-          // Container(color: Colors.accents[5],),
         ],
       ),
     );
