@@ -1,19 +1,28 @@
+import 'package:aet/domain/user/user.dart';
 import 'package:aet/domain/user/user_repository.dart';
 import 'package:aet/util/jwt.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController{
   final UserRepository _userRepository = UserRepository();
-  final RxBool isLogin = false.obs;
+  final RxBool isLogin = false.obs; // 관찰 가능한 변수
+  final principal = User().obs;
 
-  Future<String> login(String username, String password) async{
-    String token = await _userRepository.login(username, password);
+  void logout(){
+    isLogin.value = false;
+    jwtToken = null;
+  }
 
-    if(token != "-1"){
-      isLogin.value = true;
-      jwtToken = token;
-      print("jwtToken: $jwtToken");
+
+  Future<int> login(String username, String password) async {
+    User principal = await _userRepository.login(username, password);
+
+    if (principal.id != null) {
+      this.isLogin.value = true;
+      this.principal.value = principal;
+      return 1;
+    } else {
+      return -1;
     }
-    return token;
   }
 }

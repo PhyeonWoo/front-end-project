@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:validators/validators.dart';
-import 'package:aet/util/vaildator_util.dart';
+import 'package:aet/util/validator_util.dart';
 
 void main() => runApp(JoinPage());
 
@@ -16,7 +16,7 @@ class JoinPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(100.0),
+          padding: const EdgeInsets.all(50.0),
           child: ListView(
             children: [
               Container(
@@ -50,8 +50,8 @@ class JoinPage extends StatelessWidget {
               hint: "Password", funValidator: validatorPassword()
           ),
           // CustomTextFormField(
-          //     hint: "PasswordCheck", funValidator: validatorPasswordCheck()
-          // ),
+          //     hint: "Password", funValidator: validatorPasswordCheck()
+          //  ),
           CustomTextFormField(hint: "Email", funValidator: validatorEmail()
           ),
           CustomElevatedButton(

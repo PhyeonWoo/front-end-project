@@ -30,11 +30,12 @@ Function validatorPassword(){
   };
 }
 
-// Function validatorPasswordCheck(){
+// Function validatorProvider(){
 //   return (String? value){
-//     if(value!=validatorPassword()) {
-//       return "비밀번호가 일치하지 않습니다.";
-//     } else {
+//     print(validatorPassword);
+//     if(value != validatorPassword()){
+//       return "일치하지 않습니다.";
+//     } else{
 //       return null;
 //     }
 //   };
@@ -46,6 +47,17 @@ Function validatorEmail(){
       return "공백이 들어갈 수 없습니다.";
     }else if(!isEmail(value)){
       return "이메일 형식이 아닙니다.";
+    }else {
+      return null;
+    }
+  };
+}
+
+
+Function validatorProvider(){
+  return (String? value){
+    if(value!.isEmpty) {
+      return "공백이 들어갈 수 없습니다.";
     }else {
       return null;
     }

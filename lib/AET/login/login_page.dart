@@ -1,12 +1,14 @@
-import 'package:aet/AET/Bottom/home.dart';
+
+import 'package:aet/AET/Sports_Category/main_home.dart';
 import 'package:aet/AET/components/custom_elevated_button.dart';
 import 'package:aet/AET/components/custom_text_form_field.dart';
+import 'package:aet/AET/widgets/button.dart';
 import 'package:aet/controller/user_controller.dart';
 import 'package:aet/domain/user/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:aet/AET/login/join_page.dart';
-import 'package:aet/util/vaildator_util.dart';
+import 'package:aet/util/validator_util.dart';
 
 // void main() => runApp(LoginPage());
 
@@ -31,7 +33,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(100.0),
+          padding: const EdgeInsets.all(50.0),
           child: ListView(
             children: [
               Container(
@@ -68,12 +70,12 @@ class LoginPage extends StatelessWidget {
           CustomElevatedButton(
               text: "로그인",
               funPageRoute: () async{
-                if(_formKey.currentState!.validate()){
-                  String token = await u.login(_username.text.trim(),_password.text.trim());
-                  if(token != "Bearer null" ){
-                    print("토큰을 정상적으로 받음");
-                    Get.to(() => main_home());
-                  } else{
+                if (_formKey.currentState!.validate()) {
+                  int result =
+                  await u.login(_username.text.trim(), _password.text.trim());
+                  if (result == 1) {
+                    Get.to(() => sports_home());
+                  } else {
                     Get.snackbar("로그인 시도", "로그인 실패");
                   }
                 }
