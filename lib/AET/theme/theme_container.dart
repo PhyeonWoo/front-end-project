@@ -60,8 +60,8 @@ class Square1 extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double dynamicMargin = screenWidth * 0.03;
     return Container(
-      width: 170,
-      height: 290,
+      width: 170-dynamicMargin,
+      height: 290-dynamicMargin,
       margin: EdgeInsets.fromLTRB(dynamicMargin, 10, 0, 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -118,9 +118,9 @@ class Square2 extends StatelessWidget {
         Get.to(second());
       },
       child: Container(
-        width: 220,
-        height: 140,
-        margin: EdgeInsets.fromLTRB(0, 10, dynamicMargin, 0),
+        width: 210-dynamicMargin,
+        height: 140-dynamicMargin,
+        margin: EdgeInsets.fromLTRB(0, dynamicMargin, dynamicMargin, 0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
@@ -168,9 +168,9 @@ class Square3 extends StatelessWidget {
     double dynamicMargin = screenWidth * 0.03;
     return GestureDetector(
       child: Container(
-        width: 220,
-        height: 140,
-        margin: EdgeInsets.fromLTRB(0,10,dynamicMargin,0),
+        width: 210-dynamicMargin,
+        height: 140-dynamicMargin,
+        margin: EdgeInsets.fromLTRB(0,5,10,0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           gradient: LinearGradient(
@@ -244,9 +244,9 @@ class Square4 extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double dynamicMargin = screenWidth * 0.03;
     return Container(
-      width: 406,
-      height: 140,
-      margin: EdgeInsets.fromLTRB(dynamicMargin, 0, dynamicMargin, 0),
+      width: 406-dynamicMargin,
+      height: 140-dynamicMargin,
+      margin: EdgeInsets.fromLTRB(0, 0, dynamicMargin, 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,

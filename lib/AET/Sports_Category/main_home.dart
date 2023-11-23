@@ -15,7 +15,7 @@ class sports_home extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: ButtonMainFul(),
+        bottomNavigationBar: navigation_home(),
         body: HomeContainer1(),
         appBar: CustomAppBar(),
       ),

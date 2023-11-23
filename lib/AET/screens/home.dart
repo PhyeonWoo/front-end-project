@@ -7,16 +7,14 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(homeMain());
 
-class homeMain extends StatefulWidget {
+class homeMain extends StatelessWidget {
   @override
-  MyAppState1 createState() => MyAppState1();
-}
-
-class MyAppState1 extends State<homeMain> {
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: HomeContainer1(),
-      appBar: CustomAppBar(),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: CustomAppBar(),
+        body: HomeContainer1(),
+      ),
     );
   }
 }

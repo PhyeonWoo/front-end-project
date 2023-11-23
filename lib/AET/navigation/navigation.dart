@@ -1,34 +1,35 @@
 import 'package:aet/AET/components/custom_navigation.dart';
-import 'package:aet/AET/screens/home.dart';
-import 'package:aet/AET/theme/theme_container.dart';
-import 'package:flutter/material.dart';
-import 'package:aet/AET/screens/third.dart';
-import 'package:aet/AET/screens/second.dart';
 import 'package:aet/AET/screens/fourth.dart';
+import 'package:aet/AET/screens/home.dart';
+import 'package:aet/AET/screens/second.dart';
+import 'package:aet/AET/screens/third.dart';
+import 'package:aet/controller/navigation_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-void main() => runApp(ButtonMainFul());
 
-class ButtonMainFul extends StatefulWidget {
-  @override
-  _ButtonMainFulState createState() => _ButtonMainFulState();
-}
+void main() => runApp(navigation_home());
 
-class _ButtonMainFulState extends State<ButtonMainFul> {
-  int currentIndex = 0;
-  final screens = [
-    homeMain(),
-    second(),
-    third(),
-    fourth(),
-  ];
 
+class navigation_home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // GetX 컨트롤러 인스턴스를 생성합니다.
+    final NavigationController navigationController = Get.put(NavigationController());
+
     return Scaffold(
-      body: screens[currentIndex],
+      body: Obx(() => IndexedStack(
+        index: navigationController.currentIndex.value,
+        children: [
+          homeMain(),
+          second(),
+          third(),
+          fourth(),
+        ],
+      )),
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: currentIndex,
-        onIndexChanged: (index) => setState(() => currentIndex = index),
+        currentIndex: navigationController.currentIndex.value,
+        onIndexChanged: navigationController.changeIndex,
       ),
     );
   }
