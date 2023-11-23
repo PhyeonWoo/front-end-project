@@ -1,8 +1,8 @@
 import 'package:aet/AET/theme/theme_container.dart';
-import 'package:aet/AET/widgets/home_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:aet/AET/components/custom_appbar_search.dart';
 import 'package:aet/AET/screens/third.dart';
 import 'package:aet/AET/screens/second.dart';
 import 'package:aet/AET/screens/fourth.dart';
@@ -29,7 +29,7 @@ class _MyPageState extends State<Button_Main_ful> {
   int currentIndex =0;
   final screens = [
     //이게 하나하나의 화면이되고, Text등을 사용하거나, dart파일에 있는 class를 넣는다.
-    homeAppbar(),
+    HomeContainer1(),
     second(),
     third(),
     fourth(),

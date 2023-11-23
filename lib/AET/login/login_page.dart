@@ -2,15 +2,12 @@
 import 'package:aet/AET/Sports_Category/main_home.dart';
 import 'package:aet/AET/components/custom_elevated_button.dart';
 import 'package:aet/AET/components/custom_text_form_field.dart';
-import 'package:aet/AET/widgets/button.dart';
 import 'package:aet/controller/user_controller.dart';
-import 'package:aet/domain/user/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:aet/AET/login/join_page.dart';
 import 'package:aet/util/validator_util.dart';
 
-// void main() => runApp(LoginPage());
 
 void main() => runApp(loginPage());
 

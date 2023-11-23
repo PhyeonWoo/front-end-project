@@ -1,8 +1,8 @@
+import 'package:aet/AET/components/custom_appbar_search.dart';
+import 'package:aet/AET/navigation/navigation.dart';
 import 'package:aet/AET/theme/theme_container.dart';
 import 'package:aet/AET/widgets/button.dart';
-import 'package:aet/AET/widgets/home_appbar.dart';
 import 'package:flutter/material.dart';
-import "Sports_Container.dart";
 
 
 
@@ -15,10 +15,9 @@ class sports_home extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: Button_Main(),
+        bottomNavigationBar: ButtonMainFul(),
         body: HomeContainer1(),
-        appBar: AppBar(
-        ),
+        appBar: CustomAppBar(),
       ),
     );
   }
