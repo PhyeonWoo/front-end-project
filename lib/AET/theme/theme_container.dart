@@ -21,7 +21,7 @@ class MyHomePage2 extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage2> {
-  int _currentIndex = 0;
+  // int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class Square1 extends StatelessWidget {
     double dynamicMargin = screenWidth * 0.03;
     return GestureDetector(
       child : Container(
-      width: 170,
+      width: 200,
       height: 290,
       margin: EdgeInsets.fromLTRB(dynamicMargin, 10, 0, 0),
       decoration: BoxDecoration(
@@ -259,7 +259,7 @@ class Square4 extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double dynamicMargin = screenWidth * 0.03;
     return Container(
-      width: 406,
+      width: 410,
       height: 140,
       margin: EdgeInsets.fromLTRB(dynamicMargin, 0, dynamicMargin, 0),
       decoration: BoxDecoration(
