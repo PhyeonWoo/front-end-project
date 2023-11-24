@@ -33,6 +33,7 @@ class _MyHomePageState extends State<MyHomePage2> {
             children: <Widget>[
               Row(
                 children: <Widget>[
+
                   Square1(),
                   SizedBox(width: 10),  // Added spacing
                   Column(
@@ -59,7 +60,8 @@ class Square1 extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double dynamicMargin = screenWidth * 0.03;
-    return Container(
+    return GestureDetector(
+      child : Container(
       width: 170,
       height: 290,
       margin: EdgeInsets.fromLTRB(dynamicMargin, 10, 0, 0),
@@ -83,13 +85,21 @@ class Square1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(0,10,0,0),
-              child: Text("운동시설",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(79,79,79,1))
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => second())
+                );
+                },
+              child: Padding(
+                padding : EdgeInsets.fromLTRB(0, 10, 0,0),
+                child: Text("운동시설",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(79,79,79,1)),
+                ),
               ),
             ),
             Padding(
@@ -104,9 +114,11 @@ class Square1 extends StatelessWidget {
             ),
           ],
         ),
+      ),
     );
   }
 }
+
 
 class Square2 extends StatelessWidget {
   @override
@@ -114,11 +126,8 @@ class Square2 extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double dynamicMargin = screenWidth * 0.03;
     return GestureDetector(
-      onTap: (){
-        Get.to(second());
-      },
       child: Container(
-        width: 220,
+        width: 200,
         height: 140,
         margin: EdgeInsets.fromLTRB(0, 10, dynamicMargin, 0),
         decoration: BoxDecoration(
@@ -141,13 +150,18 @@ class Square2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-              child: Text("종목 추천",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(79, 79, 79, 1))
+            InkWell(
+              onTap: () {
+                Get.to(second());
+              },
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                child: Text("종목 추천",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(79, 79, 79, 1)
+                ),),
               ),
             ),
           ],
@@ -156,6 +170,7 @@ class Square2 extends StatelessWidget {
     );
   }
 }
+
 
 class Square3 extends StatelessWidget {
 
@@ -168,7 +183,7 @@ class Square3 extends StatelessWidget {
     double dynamicMargin = screenWidth * 0.03;
     return GestureDetector(
       child: Container(
-        width: 220,
+        width: 200,
         height: 140,
         margin: EdgeInsets.fromLTRB(0,10,dynamicMargin,0),
         decoration: BoxDecoration(
@@ -281,3 +296,6 @@ class Square4 extends StatelessWidget {
     );
   }
 }
+
+
+

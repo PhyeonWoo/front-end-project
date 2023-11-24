@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class leading_action_ButtonPage extends StatelessWidget {
   @override
@@ -11,8 +12,7 @@ class leading_action_ButtonPage extends StatelessWidget {
         child: ElevatedButton(
           child: Text("Go to Screen A Page"),
           onPressed: () {
-
-            Navigator.pop(context);
+            Get.back();
           },
         ),
       ),

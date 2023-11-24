@@ -1,4 +1,6 @@
 import 'package:aet/AET/components/custom_search_form_provider.dart';
+import 'package:aet/AET/widgets/action_Button.dart';
+import 'package:aet/AET/widgets/leading_Button.dart';
 import 'package:aet/controller/provider_controller.dart';
 import 'package:aet/util/validator_util.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: leading_Button(),
+      actions: <Widget>[
+        action_Button(),
+      ],
+
       toolbarHeight: 160, // AppBar 높이 설정
       backgroundColor: Colors.orangeAccent,
       elevation: 10, // 그림자 깊이
