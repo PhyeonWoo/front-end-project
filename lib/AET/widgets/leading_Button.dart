@@ -6,7 +6,7 @@ class leading_Button extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return IconButton(
-      icon: Icon(Icons.search),
+      icon: Icon(Icons.search,color: Colors.black,),
       onPressed: (){
         Navigator.push(
           context,

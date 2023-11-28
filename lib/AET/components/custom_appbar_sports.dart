@@ -1,27 +1,36 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget buildCircularContainer(String text) {
+Widget buildCircularContainer(String imageUrl, String sportsText) {
   return Padding(
     padding: EdgeInsets.all(8.0),
-    child: Container(
-      width: 40.0,
-      height: 40.0,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.grey,
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 10.0,
+    child: Column(
+      children: [
+        Container(
+          width: 50.0,
+          height: 50.0,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey,
+          ),
+          child: ClipOval(
+            child: Image.network(
+              imageUrl,
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-      ),
+        SizedBox(height: 5.0),
+        Text(
+          sportsText,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 12.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
     ),
   );
 }
-
