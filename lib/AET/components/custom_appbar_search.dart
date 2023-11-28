@@ -18,7 +18,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: <Widget>[
         action_Button(),
       ],
-
       toolbarHeight: 160, // AppBar 높이 설정
       backgroundColor: Colors.orangeAccent,
       elevation: 10, // 그림자 깊이
