@@ -5,11 +5,11 @@ class action_Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return GestureDetector(
-      // icon: Icon(Icons.grade),
-      // onPressed: () {
-      //   Get.to(ThirdPage());
-      //},
+    return IconButton(
+      icon: Icon(Icons.grade),
+      onPressed: () {
+        Get.to(ThirdPage());
+      },
     );
   }
 }

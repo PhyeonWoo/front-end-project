@@ -146,9 +146,10 @@
 //   }
 // }
 
+import 'package:aet/AET/Sports_Category/sports_appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Sports_buildContainer.dart';
+import 'sports_buildcontainer.dart';
 
 void main() => runApp(Sports_Container());
 
@@ -172,13 +173,7 @@ class _MyHomePageState extends State<MyHomePage2> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('종목_카테고리'),
-          centerTitle: true,
-          backgroundColor: Colors.grey,
-          elevation: 1.0,
-        ),
-
+        appBar: sports_appbar(),
         body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             return SingleChildScrollView(
@@ -204,3 +199,5 @@ class _MyHomePageState extends State<MyHomePage2> {
     );
   }
 }
+
+

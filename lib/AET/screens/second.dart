@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-import '../Sports_Category/Sports_Container.dart'; //flutter의 package를 가져오는 코드 반드시 필요
+import '../Sports_Category/sports_container.dart'; //flutter의 package를 가져오는 코드 반드시 필요
 
 
 class second extends StatefulWidget {
