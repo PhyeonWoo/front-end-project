@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage2> {
               Row(
                 children: <Widget>[
                   Square1(),
-                  SizedBox(width: 10),  // Added spacing
+                  SizedBox(width: 10), // Added spacing
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
@@ -45,8 +45,8 @@ class _MyHomePageState extends State<MyHomePage2> {
                   ),
                 ],
               ),
-              SizedBox(height: 10),  // Added spacing
-              Square4(),  // New widget
+              SizedBox(height: 10), // Added spacing
+              Square4(), // New widget
             ],
           ),
         ),
@@ -61,8 +61,8 @@ class Square1 extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double dynamicMargin = screenWidth * 0.03;
     return Container(
-      width: 170-dynamicMargin,
-      height: 290-dynamicMargin,
+      width: 170 - dynamicMargin,
+      height: 290 - dynamicMargin,
       margin: EdgeInsets.fromLTRB(dynamicMargin, 10, 0, 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -80,31 +80,28 @@ class Square1 extends StatelessWidget {
           ),
         ],
       ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(0,10,0,0),
-              child: Text("운동시설",
-                  style: TextStyle(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+            child: Text("운동시설",
+                style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(79,79,79,1))
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: Text("원하는 운동시설 찾기",
-                  style: TextStyle(
+                    color: Color.fromRGBO(79, 79, 79, 1))),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: Text("원하는 운동시설 찾기",
+                style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w100,
-                    color: Color.fromRGBO(79, 79, 79, 1)
-                )
-              ),
-            ),
-          ],
-        ),
+                    color: Color.fromRGBO(79, 79, 79, 1))),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -115,12 +112,12 @@ class Square2 extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double dynamicMargin = screenWidth * 0.03;
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Get.to(second());
       },
       child: Container(
-        width: 210-dynamicMargin,
-        height: 140-dynamicMargin,
+        width: 210 - dynamicMargin,
+        height: 140 - dynamicMargin,
         margin: EdgeInsets.fromLTRB(0, dynamicMargin, dynamicMargin, 0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -148,8 +145,7 @@ class Square2 extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(79, 79, 79, 1))
-              ),
+                      color: Color.fromRGBO(79, 79, 79, 1))),
             ),
           ],
         ),
@@ -159,7 +155,6 @@ class Square2 extends StatelessWidget {
 }
 
 class Square3 extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     //put 없으면 만듬, 없으면 찾음
@@ -169,68 +164,72 @@ class Square3 extends StatelessWidget {
     double dynamicMargin = screenWidth * 0.03;
     return GestureDetector(
       child: Container(
-        width: 210-dynamicMargin,
-        height: 140-dynamicMargin,
-        margin: EdgeInsets.fromLTRB(0,5,10,0),
+        width: 210 - dynamicMargin,
+        height: 140 - dynamicMargin,
+        margin: EdgeInsets.fromLTRB(0, 5, 10, 0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           gradient: LinearGradient(
-            colors: [Color(0xFFFFD194), Color(0xFFFFC247)], // Adjust the gradient colors
+            colors: [Color(0xFFFFD194), Color(0xFFFFC247)],
+            // Adjust the gradient colors
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-        boxShadow: [
-          BoxShadow(
-          color: Colors.black.withOpacity(0.2), // 그림자 색상
-          spreadRadius: 1, // 그림자 확장 범위
-          blurRadius: 10, // 그림자 흐림 정도
-          offset: Offset(0, 0), // x, y 축에 대한 그림자 위치
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2), // 그림자 색상
+              spreadRadius: 1, // 그림자 확장 범위
+              blurRadius: 10, // 그림자 흐림 정도
+              offset: Offset(0, 0), // x, y 축에 대한 그림자 위치
+            ),
+          ],
         ),
-      ],
-    ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                child: Text("GYM보따리",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xffffffff),
-                    shadows: [
-                      Shadow(
-                        blurRadius: 10.0,
-                        color: Colors.black.withOpacity(0.2),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.fromLTRB(0, 10 , 0, 0),
-                child: Obx(()=> Text("${u.isLogin}",
-                  style: TextStyle(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                  child: Text(
+                    "GYM보따리",
+                    style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white
-                   ),
+                      color: Color(0xffffffff),
+                      shadows: [
+                        Shadow(
+                          blurRadius: 10.0,
+                          color: Colors.black.withOpacity(0.2),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(1, 15, 0, 0),
-            child: Text("POINT",
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Obx(
+                    () => Text(
+                      "${u.isLogin}",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(1, 15, 0, 0),
+              child: Text(
+                "POINT",
                 style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white
-                  ),
-               ),
+                    color: Colors.white),
+              ),
             ),
           ],
         ),
@@ -245,8 +244,8 @@ class Square4 extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double dynamicMargin = screenWidth * 0.03;
     return Container(
-      width: 406-dynamicMargin,
-      height: 140-dynamicMargin,
+      width: 406 - dynamicMargin,
+      height: 140 - dynamicMargin,
       margin: EdgeInsets.fromLTRB(0, 0, dynamicMargin, 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -274,8 +273,7 @@ class Square4 extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(79, 79, 79, 1))
-            ),
+                    color: Color.fromRGBO(79, 79, 79, 1))),
           ),
         ],
       ),

@@ -30,16 +30,15 @@ Function validatorPassword(){
   };
 }
 
-// Function validatorProvider(){
-//   return (String? value){
-//     print(validatorPassword);
-//     if(value != validatorPassword()){
-//       return "일치하지 않습니다.";
-//     } else{
-//       return null;
-//     }
-//   };
-// }
+Function validatorPasswordCheck() {
+  return (String? value) {
+    if (value != validatorPassword.obs) {
+      return "비밀번호가 일치하지 않습니다.";
+    } else {
+      return null;
+    }
+  };
+}
 
 Function validatorEmail(){
   return (String? value){
