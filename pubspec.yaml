@@ -43,6 +43,7 @@ dependencies:
   validators: ^3.0.0
   intl: ^0.18.1
   provider: ^6.1.1
+  http: ^1.1.0
 
 dev_dependencies:
 
@@ -74,6 +75,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
+    - assets/json/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

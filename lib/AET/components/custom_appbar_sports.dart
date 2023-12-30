@@ -25,7 +25,7 @@ Widget buildCircularContainer(String imageUrl, String sportsText) {
         Text(
           sportsText,
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 12.0,
             fontWeight: FontWeight.bold,
           ),

@@ -108,18 +108,20 @@ import '../components/custom_appbar_sports.dart';
 class sports_appbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return SafeArea(
+      child: AppBar(
       leading: leading_Button(),
       actions: <Widget>[
         action_Button(),
       ],
-      title: Text('Flutter'),
+      elevation: 0,
+      title: Text('짐보따리'),
       centerTitle: true,
       titleTextStyle: TextStyle(
-          color: Colors.black,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 20),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.green,
       flexibleSpace: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -153,6 +155,7 @@ class sports_appbar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }
