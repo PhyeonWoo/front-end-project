@@ -28,7 +28,7 @@ class _MyAppState extends State<third> {
 
           // 우측 버튼
           actions: <Widget>[
-            action_Button(),
+            //action_Button(),
           ],
         )
     );

@@ -4,7 +4,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onIndexChanged;
 
-  CustomBottomNavigationBar({
+  const CustomBottomNavigationBar({
     required this.currentIndex,
     required this.onIndexChanged,
   });
@@ -14,7 +14,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       backgroundColor: Colors.white,
       elevation: 2,
-      selectedItemColor: Colors.green,
+      selectedItemColor: Colors.black,
       selectedLabelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       unselectedItemColor: Colors.black,
       unselectedLabelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),

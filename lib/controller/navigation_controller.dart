@@ -1,12 +1,9 @@
-import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 
-class Navigation extends ChangeNotifier {
-  int _currentIndex = 0;
+class NavigationController extends GetxController {
+  var currentIndex = 0.obs; // RxInt를 사용하여 반응형 상태로 만듭니다.
 
-  int get currentIndex => _currentIndex;
-
-  void setCurrentIndex(int index) {
-    _currentIndex = index;
-    notifyListeners(); // 상태 변경을 알림
+  void changeIndex(int index) {
+    currentIndex.value = index; // 인덱스 변경 메소드
   }
 }

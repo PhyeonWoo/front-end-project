@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'leading_Button.dart';
+import 'package:get/get.dart';
 
 class action_Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return IconButton(
-      icon: Icon(Icons.grade,color: Colors.black,),
+      icon: Icon(Icons.grade),
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => SecondPage()),
-        );
+        Get.to(ThirdPage());
       },
     );
   }
