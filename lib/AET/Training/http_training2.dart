@@ -1,9 +1,10 @@
+import 'package:aet/AET/Sports_Category/sports_appbar.dart';
 import 'package:flutter/material.dart';
 import 'dart:async'; // async / await 지원
 import 'dart:convert'; // JSON 데이터 처리 지원
 import 'package:flutter/foundation.dart'; // compute 함수를 제공
 import 'package:http/http.dart' as http; // HTTP 프로토콜 지원
-import 'http_training.dart';
+
 
 // 사진의 정보를 저장하는 클래스
 class Photo {
@@ -28,30 +29,32 @@ class Photo {
 }
 
 
-void main() => runApp(MyApp());
+void main() => runApp(JsonParse());
 
-class MyApp extends StatelessWidget {
+class JsonParse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'Isolate Demo';
-
     return MaterialApp(
-      title: appTitle,
-      home: MyHomePage(title: appTitle),
+      theme: ThemeData(
+        fontFamily: 'Pretendart',
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
     );
   }
 }
 
 
 class MyHomePage extends StatelessWidget {
-  final String title;
-
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  // final String title;
+  //
+  // MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: sports_appbar(),
       // Photo의 리스트를 처리하는 FutureBuilder 추가
       body: FutureBuilder<List<Photo>>(
         // future 항목에 fetchPhotos 함수 설정. fetchPhotos는 Future 객체를 결과값으로 반환
@@ -130,11 +133,9 @@ class PhotosList extends StatelessWidget {
               ),
               // Image.network(photo.thumbnailUrl),
               Divider(color: Colors.black,thickness: 3,),
-
               Text("albumId: ${photo.albumId}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),),
               Text("\nID: ${photo.id}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
               Text("\ntitle : ${photo.title}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-
             ],
           ),
         );
