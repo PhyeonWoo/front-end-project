@@ -1,9 +1,13 @@
 import 'package:aet/AET/Sports_Category/sports_appbar.dart';
+import 'package:aet/AET/widgets/action_Button.dart';
 import 'package:flutter/material.dart';
 import 'dart:async'; // async / await 지원
 import 'dart:convert'; // JSON 데이터 처리 지원
 import 'package:flutter/foundation.dart'; // compute 함수를 제공
-import 'package:http/http.dart' as http; // HTTP 프로토콜 지원
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+
+import 'TestPage.dart'; // HTTP 프로토콜 지원
 
 
 // 사진의 정보를 저장하는 클래스
@@ -34,11 +38,7 @@ void main() => runApp(JsonParse());
 class JsonParse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Pretendart',
-        primarySwatch: Colors.blue,
-      ),
+    return GetMaterialApp(
       home: MyHomePage(),
     );
   }
@@ -114,28 +114,35 @@ class PhotosList extends StatelessWidget {
 
         // 컨테이너를 생성하여 반환
         return Container(
-          width: 50,
-          height: 100,
           margin: EdgeInsets.fromLTRB(20,20,20,0),
           decoration: BoxDecoration(
             color: Colors.grey,
-            border: Border.all(),
+            // border: Border.all(),
             borderRadius: BorderRadius.circular(20),
           ),
+
           child: Column(
             children: <Widget>[
               Text("\n"),
+
               Image(
                 image: NetworkImage(photo.thumbnailUrl),
                 width: 360,
                 height: 180,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
-              // Image.network(photo.thumbnailUrl),
-              Divider(color: Colors.black,thickness: 3,),
+              Divider(color: Colors.white12,thickness: 3,),
               Text("albumId: ${photo.albumId}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),),
-              Text("\nID: ${photo.id}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-              Text("\ntitle : ${photo.title}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              Text("ID: ${photo.id}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              Text("title : ${photo.title}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+
+              TextButton(
+                onPressed: () {
+                  Get.to(ThirdPage());
+                },
+                child: Text("클릭",style: TextStyle(color: Colors.yellowAccent),),
+              ),
+
             ],
           ),
         );
