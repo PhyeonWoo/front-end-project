@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Sports_Category/main_home.dart';
 import 'IntroPage.dart';
 import 'package:aet/AET/login/login_page.dart';
 import 'address_page.dart';
@@ -13,7 +14,8 @@ class AuthScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: PageView(
         children: [
-          loginPage(),
+          // loginPage(),
+          sports_home(),
           address_page(),
         ],
       ),
