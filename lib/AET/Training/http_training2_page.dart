@@ -1,25 +1,97 @@
-import 'package:aet/AET/widgets/Search.dart';
+// import 'package:flutter/material.dart';
+//
+// void main() {
+//   runApp(training2_page());
+// }
+//
+// class training2_page extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: const MyHomePage(),
+//     );
+//   }
+// }
+//
+// class MyHomePage extends StatelessWidget {
+//   const MyHomePage({Key? key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: PreferredSize(
+//         preferredSize: Size.fromHeight(250),
+//         child: AppBar(
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.only(
+//               bottomLeft: Radius.circular(25),
+//               bottomRight: Radius.circular(25),
+//             ),
+//           ),
+//           elevation: 1,
+//           flexibleSpace: Container(
+//             decoration: const BoxDecoration(
+//               image: DecorationImage(
+//                 image: AssetImage('images/123.png'),
+//                 fit: BoxFit.fill,
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//       body: const Center(
+//         child: Text('Flutter AppBar image background tutorial'),
+//       ),
+//     );
+//   }
+// }
+
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-
-void main() => runApp(training2_page());
+void main() {
+  runApp(training2_page());
+}
 
 class training2_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("안녕하세요"),
-        leading: leading_action_ButtonPage(),),
-        body: Center(
-          child: Row(
-            children: [
-              Container(
+      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(),
+    );
+  }
+}
 
-              )
-            ],
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: const Center(
+        child: Text('Flutter AppBar image background tutorial'),
+      ),
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(250),
+        child: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(25),
+            ),
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          flexibleSpace: ClipRRect(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(25),
+            ),
+            child: Image(
+              image: AssetImage('assets/images/123.png'),
+              fit: BoxFit.cover, // 이미지를 cover로 설정하여 AppBar에 맞게 확장
+            ),
           ),
         ),
       ),
