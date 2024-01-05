@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CustomAppbarProfile extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String titleWrite;
 
-  const CustomAppbarProfile({required this.titleWrite});
+  const CustomAppbar({required this.titleWrite});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
-      elevation: 0.1,
+      backgroundColor: Color(0xFFffffff),
+      elevation: 5,
+      shadowColor: Color(0x25000000),
       centerTitle: true, // 타이틀을 중앙에 배치
       title: Text(
         titleWrite,
