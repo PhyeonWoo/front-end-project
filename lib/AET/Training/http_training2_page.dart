@@ -20,34 +20,34 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
+//       extendBodyBehindAppBar: true,
 //       appBar: PreferredSize(
 //         preferredSize: Size.fromHeight(250),
 //         child: AppBar(
 //           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.only(
-//               bottomLeft: Radius.circular(25),
-//               bottomRight: Radius.circular(25),
+//             borderRadius: BorderRadius.vertical(
+//               bottom: Radius.circular(25),
 //             ),
 //           ),
-//           elevation: 1,
-//           flexibleSpace: Container(
-//             decoration: const BoxDecoration(
-//               image: DecorationImage(
-//                 image: AssetImage('images/123.png'),
-//                 fit: BoxFit.fill,
-//               ),
+//           backgroundColor: Colors.transparent,
+//           elevation: 0,
+//           flexibleSpace: ClipRRect(
+//             borderRadius: BorderRadius.vertical(
+//               bottom: Radius.circular(25),
+//             ),
+//             child: Image(
+//               image: AssetImage('assets/images/123.png'),
+//               fit: BoxFit.cover, // 이미지를 cover로 설정하여 AppBar에 맞게 확장
 //             ),
 //           ),
 //         ),
-//       ),
-//       body: const Center(
-//         child: Text('Flutter AppBar image background tutorial'),
 //       ),
 //     );
 //   }
 // }
 
 
+import 'package:aet/AET/widgets/leading_Button.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -70,30 +70,33 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text('Flutter AppBar image background tutorial'),
-      ),
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(250),
-        child: AppBar(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(25),
+        child: SafeArea(
+          child: AppBar(
+
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(25),
+              ),
             ),
-          ),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          flexibleSpace: ClipRRect(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(25),
-            ),
-            child: Image(
-              image: AssetImage('assets/images/123.png'),
-              fit: BoxFit.cover, // 이미지를 cover로 설정하여 AppBar에 맞게 확장
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            flexibleSpace: ClipRRect(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(25),
+              ),
+              child: Image(
+                image: AssetImage('assets/images/123.png'),
+                fit: BoxFit.cover, // 이미지를 cover로 설정하여 AppBar에 맞게 확장
+              ),
             ),
           ),
         ),
+      ),
+      body: Center(
+        child: Text('Flutter AppBar image background tutorial'),
       ),
     );
   }

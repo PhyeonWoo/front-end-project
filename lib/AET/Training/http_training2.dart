@@ -297,11 +297,10 @@ class PhotosList extends StatelessWidget {
                   ),
                   child: Column(
                     children: <Widget>[
-                      Text("\n"),
                       Image(
                         image: NetworkImage(photo.thumbnailUrl),
                         width: 360,
-                        height: 180,
+                        height: 280,
                         fit: BoxFit.fill,
                       ),
                       Divider(color: Colors.black,thickness: 3,),
