@@ -2,7 +2,7 @@ import 'package:aet/controller/dto/CMRespDto.dart';
 import 'package:aet/controller/dto/LoginReqDto.dart';
 import 'package:aet/domain/user/user.dart';
 import 'package:aet/domain/user/user_provider.dart';
-import 'package:aet/util/convent_utf8.dart';
+
 import 'package:aet/util/jwt.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 
@@ -32,9 +32,6 @@ class UserRepository {
     } else {
       return User();
     }
-
-
-
 
     // dynamic headers = response.headers;
     // if (headers["authorization"]==null) {
