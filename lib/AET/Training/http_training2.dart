@@ -7,6 +7,8 @@
 // import 'package:get/get.dart';
 // import 'package:http/http.dart' as http;
 //
+// import 'http_training2_page.dart';
+//
 //
 // // 사진의 정보를 저장하는 클래스
 // class Photo {
@@ -37,6 +39,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     return GetMaterialApp(
+//       debugShowCheckedModeBanner: false,
 //       home: MyHomePage(),
 //     );
 //   }
@@ -44,16 +47,13 @@
 //
 //
 // class MyHomePage extends StatelessWidget {
-//   // final String title;
-//   //
-//   // MyHomePage({Key? key, required this.title}) : super(key: key);
 //   MyHomePage({Key? key}) : super(key: key);
 //
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-//
 //       appBar: sports_appbar(),
+//
 //       // Photo의 리스트를 처리하는 FutureBuilder 추가
 //       body: FutureBuilder<List<Photo>>(
 //         // future 항목에 fetchPhotos 함수 설정. fetchPhotos는 Future 객체를 결과값으로 반환
@@ -89,7 +89,6 @@
 // List<Photo> parsePhotos(String responseBody) {
 //   // 수신 데이터를 JSON 포맷(JSON Array)으로 디코딩
 //   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-//
 //   // JSON Array를 List<Photo>로 변환하여 반환
 //   return parsed.map<Photo>((json) => Photo.fromJson(json)).toList();
 // }
@@ -121,32 +120,39 @@
 //
 //           child: Column(
 //             children: <Widget>[
-//               Text("\n"),
-//
-//               // 이미지
-//               Image(
-//                 image: NetworkImage(photo.thumbnailUrl),
-//                 width: 360,
-//                 height: 180,
-//                 fit: BoxFit.cover,
-//               ),
-//
-//               // 선긋기
-//               Divider(color: Colors.black,thickness: 3,),
-//
-//               // Text Json파싱후 출력부
-//               Text("albumId: ${photo.albumId}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,),),
-//               Text("ID: ${photo.id}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-//               Text("title : ${photo.title}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-//
-//               // 상세정보로 들어가게 해주는 버튼
-//               TextButton(
-//                 onPressed: () {
-//                   Get.to(ThirdPage());
+//               InkWell(
+//                 onTap: (){
+//                   Navigator.push(
+//                     context,
+//                     MaterialPageRoute(builder: (context) => training2_page()),
+//                   );
 //                 },
-//                 child: Text("클릭",style: TextStyle(color: Colors.yellowAccent,fontWeight: FontWeight.bold,fontSize: 20),),
-//               ),
+//                 child: Container(
+//                   margin: EdgeInsets.fromLTRB(20,20,20,0),
+//                   decoration: BoxDecoration(
+//                     color: Colors.grey,
+//                     borderRadius: BorderRadius.circular(20),
+//                   ),
+//                   child: Column(
+//                     children: <Widget>[
+//                       Image(
+//                         image: NetworkImage(photo.thumbnailUrl),
+//                         width: 360,
+//                         height: 280,
+//                         fit: BoxFit.fill,
+//                       ),
+//                       Divider(color: Colors.black,thickness: 3,),
 //
+//                       Text("albumId : ${photo.albumId}",textAlign: TextAlign.center,
+//                         style: TextStyle(fontWeight: FontWeight.bold),),
+//                       Text("ID : ${photo.id}",textAlign: TextAlign.center,
+//                         style: TextStyle(fontWeight: FontWeight.bold),),
+//                       Text("title : ${photo.title}",textAlign: TextAlign.center,
+//                         style: TextStyle(fontWeight: FontWeight.bold),),
+//                     ],
+//                   ),
+//                 ),
+//               )
 //             ],
 //           ),
 //         );
@@ -154,7 +160,6 @@
 //     );
 //   }
 // }
-
 
 
 import 'package:aet/AET/Sports_Category/sports_appbar.dart';
@@ -198,6 +203,7 @@ class JsonParse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
@@ -205,16 +211,13 @@ class JsonParse extends StatelessWidget {
 
 
 class MyHomePage extends StatelessWidget {
-  // final String title;
-  //
-  // MyHomePage({Key? key, required this.title}) : super(key: key);
   MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: sports_appbar(),
+
       // Photo의 리스트를 처리하는 FutureBuilder 추가
       body: FutureBuilder<List<Photo>>(
         // future 항목에 fetchPhotos 함수 설정. fetchPhotos는 Future 객체를 결과값으로 반환
@@ -250,7 +253,6 @@ Future<List<Photo>> fetchPhotos(http.Client client) async {
 List<Photo> parsePhotos(String responseBody) {
   // 수신 데이터를 JSON 포맷(JSON Array)으로 디코딩
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-
   // JSON Array를 List<Photo>로 변환하여 반환
   return parsed.map<Photo>((json) => Photo.fromJson(json)).toList();
 }
@@ -286,7 +288,7 @@ class PhotosList extends StatelessWidget {
                 onTap: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => training2_page()),
+                    MaterialPageRoute(builder: (context) => training2_page(photoId: photo.id)),
                   );
                 },
                 child: Container(
@@ -310,12 +312,12 @@ class PhotosList extends StatelessWidget {
                       Text("ID : ${photo.id}",textAlign: TextAlign.center,
                         style: TextStyle(fontWeight: FontWeight.bold),),
                       Text("title : ${photo.title}",textAlign: TextAlign.center,
-                        style: TextStyle(fontWeight: FontWeight.bold),),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                 ),
               )
-
             ],
           ),
         );
