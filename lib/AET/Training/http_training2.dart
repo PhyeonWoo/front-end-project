@@ -217,7 +217,6 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: sports_appbar(),
-
       // Photo의 리스트를 처리하는 FutureBuilder 추가
       body: FutureBuilder<List<Photo>>(
         // future 항목에 fetchPhotos 함수 설정. fetchPhotos는 Future 객체를 결과값으로 반환
