@@ -170,7 +170,7 @@ import 'dart:convert'; // JSON 데이터 처리 지원
 import 'package:flutter/foundation.dart'; // compute 함수를 제공
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:get/get.dart';
 import 'http_training2_page.dart';
 
 
@@ -262,13 +262,11 @@ class PhotosList extends StatelessWidget {
   final List<Photo> photos;
   PhotosList({Key? key, required this.photos}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     // 그리드뷰를 builder를 통해 생성. builder를 이용하면 화면이 스크롤 될 때 해당 앨리먼트가 랜더링 됨
     return GridView.builder(
-      gridDelegate:
-      SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
       itemCount: photos.length,
       itemBuilder: (context, index) {
         var photo = photos[index];
@@ -285,10 +283,7 @@ class PhotosList extends StatelessWidget {
             children: <Widget>[
               InkWell(
                 onTap: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => training2_page(photoId: photo.id)),
-                  );
+                  Get.to(Training2Page());
                 },
                 child: Container(
                   margin: EdgeInsets.fromLTRB(20,20,20,0),
