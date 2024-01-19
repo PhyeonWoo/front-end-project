@@ -110,6 +110,11 @@ class sports_appbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: AppBar(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(25),
+          )
+        ),
       leading: leading_Button(),
       actions: <Widget>[
         action_Button(),

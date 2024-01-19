@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: CustomAppbar(
+        appBar: CustomAppbarProfile(
           titleWrite: '프로필',),
         body: Container(
           color: Color(0xFFf0f0f0),
