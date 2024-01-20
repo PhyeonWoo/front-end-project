@@ -1,17 +1,17 @@
 
 class CMRespDto {
-  final int? code;
-  final String? msg;
-  final dynamic data;
+  final String? grantType;
+  final String? accessToken;
+  final String? refreshToken;
 
   CMRespDto({
-    this.code,
-    this.msg,
-    this.data,
+    this.grantType,
+    this.accessToken,
+    this.refreshToken,
   });
 
   CMRespDto.fromJson(Map<String, dynamic> json)
-      : code = json["code"],
-        msg = json["msg"],
-        data = json["data"];
+      : grantType = json["grantType"],
+        accessToken = json["accessToken"],
+        refreshToken = json["refreshToken"];
   }

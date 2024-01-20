@@ -16,7 +16,7 @@ class UserController extends GetxController{
   // }
   void logout() async {
     isLogin.value = false;
-    jwtToken = null;
+    refreshToken = null;
 
     // SharedPreferences에서 토큰 제거
     final prefs = await SharedPreferences.getInstance();
@@ -27,7 +27,7 @@ class UserController extends GetxController{
   Future<int> login(String username, String password) async {
     User principal = await _userRepository.login(username, password);
 
-    if (principal.id != null) {
+    if (principal.email != null) {
       this.isLogin.value = true;
       this.principal.value = principal;
       return 1;

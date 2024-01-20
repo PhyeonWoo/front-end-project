@@ -23,7 +23,7 @@ class loginPage extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final UserController u = Get.put(UserController());
-  final _username = TextEditingController();
+  final _Email = TextEditingController();
   final _password = TextEditingController();
 
   @override
@@ -57,9 +57,9 @@ class LoginPage extends StatelessWidget {
       child: Column(
         children:[
           CustomTextFormField(
-              controller: _username,
-              hint: "Username",
-              funValidator:validatorUsername()),
+              controller: _Email,
+              hint: "Email",
+              funValidator:validatorEmail()),
           CustomTextFormField(
               controller: _password,
               hint: "Password",
@@ -69,7 +69,7 @@ class LoginPage extends StatelessWidget {
               funPageRoute: () async{
                 if (_formKey.currentState!.validate()) {
                   int result =
-                  await u.login(_username.text.trim(), _password.text.trim());
+                  await u.login(_Email.text.trim(), _password.text.trim());
                   if (result == 1) {
                     Get.to(() => sports_home());
                   } else {

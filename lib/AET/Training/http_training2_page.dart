@@ -266,7 +266,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'review.dart';
+//import 'review.dart';
 import 'http_training2.dart';
 
 void main() => runApp(Training2Page());

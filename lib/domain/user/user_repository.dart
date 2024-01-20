@@ -13,21 +13,19 @@ class UserRepository {
     LoginReqDto loginReqDto = LoginReqDto(username, password);
     print(loginReqDto.toJson());
     Response response = await _userProvider.login(loginReqDto.toJson());
-    dynamic headers = response.headers;
+
     dynamic body = response.body;
     CMRespDto cmRespDto = CMRespDto.fromJson(body);
 
-    print(cmRespDto.data);
-    print(jwtToken);
+    print(cmRespDto.accessToken);
+    print(refreshToken);
+    print(accessToken);
 
-    if (cmRespDto.code == 1) {
-      User principal = User.fromJson(cmRespDto.data);
-
-      String token = headers["authorization"];
-
-      jwtToken = token;
-      print("jwtToken : $jwtToken");
-
+    if (cmRespDto.grantType == "Bearer" &&cmRespDto.accessToken != null) {
+      User principal = User.fromJson(cmRespDto.accessToken as Map<String, dynamic>);
+      accessToken = cmRespDto.accessToken;
+      String token = body["accessToken"];
+      print("jwtToken : $token");
       return principal;
     } else {
       return User();
