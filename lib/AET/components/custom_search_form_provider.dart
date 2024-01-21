@@ -4,7 +4,7 @@ class CustomSearchFormProvider extends StatelessWidget {
   final String hint;
   final funValidator;
   final String? value;
-  final controller;
+  final TextEditingController? controller;
 
   const CustomSearchFormProvider({
     required this.hint,
@@ -17,44 +17,51 @@ class CustomSearchFormProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(50,10,50,0),
+        Container(
+          height: 45, // 여기서 높이를 설정합니다.
           child: TextFormField(
             controller: controller,
             initialValue: value,
             validator: funValidator,
+            textAlign: TextAlign.center,
             decoration: InputDecoration(
-              filled: true, // 배경색 채우기 활성화
-              fillColor: Colors.white, // 원하는 배경색 설정
-              hintText: "Search $hint",
-              hintStyle: TextStyle(fontSize: 15) ,
-              suffixIcon: IconButton(
+              contentPadding:  EdgeInsets.fromLTRB(0, 10, 50, 0),
+              filled: true,
+              fillColor: Color(0xFFffffff),
+              hintText: "찾으시는 종목을 검색해보세요. ",
+              hintStyle: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                fontFamily: "customFont",
+                color: Color(0xFF399148)
+              ),
+              prefixIcon: IconButton(
                 icon: Icon(Icons.search),
                 onPressed: (){},
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.white, width: 0.8,
+                  color: Color(0xFFffffff), width: 1,
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(3),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.white, width: 0.8,
+                  color: Color(0xFFffffff), width: 1,
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(3),
               ),
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.white, width: 0.8,
+                  color: Color(0xFFffffff), width: 1,
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(3),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.white, width: 0.8,
+                  color: Color(0xFFffffff), width: 1,
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(3),
               ),
             ),
           ),

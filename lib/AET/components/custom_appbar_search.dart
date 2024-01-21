@@ -12,15 +12,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: leading_Button(),
       actions: <Widget>[
         action_Button(),
       ],
-
-      toolbarHeight: 160, // AppBar 높이 설정
-      backgroundColor: Colors.orangeAccent,
-      elevation: 10, // 그림자 깊이
-      shadowColor: Colors.black26, // 그림자 색상
+      toolbarHeight: 180, // AppBar 높이 설정
+      backgroundColor: Color(0xFF399148),
+      elevation: 3, // 그림자 깊이
+      shadowColor: Color(0x75000000), // 그림자 색상
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(20), // 둥근 하단 모서리
@@ -29,17 +27,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         title: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10.0),
+          padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
                 "짐보따리",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Color(0xFFffffff),
                 ),
               ),
               _searchForm(),

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:validators/validators.dart';
 
-Function validatorUsername(){
+Function validatorNickName(){
   return (String? value){
     if(value!.isEmpty) {
       return "공백이 들어갈 수 없습니다.";

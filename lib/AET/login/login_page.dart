@@ -1,7 +1,7 @@
 
-import 'package:aet/AET/Sports_Category/main_home.dart';
 import 'package:aet/AET/components/custom_elevated_button.dart';
 import 'package:aet/AET/components/custom_text_form_field.dart';
+import 'package:aet/AET/screens/home.dart';
 import 'package:aet/controller/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -71,7 +71,7 @@ class LoginPage extends StatelessWidget {
                   int result =
                   await u.login(_Email.text.trim(), _password.text.trim());
                   if (result == 1) {
-                    Get.to(() => sports_home());
+                    Get.to(() => homeMain());
                   } else {
                     Get.snackbar("로그인 시도", "로그인 실패");
                   }
@@ -82,7 +82,7 @@ class LoginPage extends StatelessWidget {
             onPressed: (){
              Get.to(JoinPage());
             },
-            child:Text("회원가입 하러가기"),
+            child:Text("회원가입 하러가기",style: TextStyle(color: Color(0xFF399148)),),
           ),
         ],
       ),

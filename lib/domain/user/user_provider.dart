@@ -3,4 +3,5 @@ import 'package:get/get.dart';
 
 class UserProvider extends GetConnect{
   Future<Response> login(Map date) => post("$host/auth/login", date);
+  Future<Response> join(Map date) => post("$host/auth/join", date);
 }

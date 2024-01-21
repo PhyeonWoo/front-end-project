@@ -11,8 +11,8 @@ class CustomContainerWidthLong extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      width: screenWidth - 20 ,
-      height: 0.3 * screenWidth,
+      width: screenWidth - 20,
+      height: 150,
       margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -30,27 +30,67 @@ class CustomContainerWidthLong extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(0,10,0,0),
-            child: Text(text,
-                style: TextStyle(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                child: Text(
+                  text,
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(79,79,79,1))
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-            child: Text(textSub,
-                style: TextStyle(
+                    color: Color.fromRGBO(79, 79, 79, 1),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: Text(
+                  textSub,
+                  style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w100,
-                    color: Color.fromRGBO(79, 79, 79, 1)
-                )
+                    color: Color.fromRGBO(79, 79, 79, 1),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                child: Container(
+                  width: 96,
+                  height: 32,
+                   decoration: BoxDecoration(
+                     color: Color(0xFF399148),
+                     borderRadius: BorderRadius.circular(5)
+                   ),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 3),
+                    child: Center(
+                      child: Text("확인하기",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFffffff),
+                        ),
+                      ),
+                    ),
+                  ) ,
+                ),
+              )
+            ],
+          ),
+          ClipRRect(
+            child: FittedBox(
+              child: Transform.scale(
+                scale: 1.3,
+                child: Image.asset('assets/images/training.jpg', width: 220, height: 150, fit: BoxFit.contain),
+              ),
             ),
           ),
         ],

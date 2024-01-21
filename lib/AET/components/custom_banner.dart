@@ -19,7 +19,7 @@ class CustomBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(top: 0),
+        padding: EdgeInsets.only(top: 2),
         child: Column(
           children: [
             Expanded(

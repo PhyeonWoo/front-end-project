@@ -1,42 +1,38 @@
-import 'package:aet/controller/dto/CMRespDto.dart';
+import 'package:aet/controller/dto/JoinReqDto.dart';
+import 'package:aet/controller/dto/JwtTokenDto.dart';
 import 'package:aet/controller/dto/LoginReqDto.dart';
 import 'package:aet/domain/user/user.dart';
 import 'package:aet/domain/user/user_provider.dart';
-
-import 'package:aet/util/jwt.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 
 class UserRepository {
   final UserProvider _userProvider = UserProvider();
 
-  Future<User> login(String username, String password) async {
-    LoginReqDto loginReqDto = LoginReqDto(username, password);
-    print(loginReqDto.toJson());
+  Future<User> login(String memberId, String password) async {
+    LoginReqDto loginReqDto = LoginReqDto(memberId, password);
     Response response = await _userProvider.login(loginReqDto.toJson());
 
-    dynamic body = response.body;
-    CMRespDto cmRespDto = CMRespDto.fromJson(body);
+    if (response.statusCode == 200) {
+      JwtTokenDto jwtTokenDto = JwtTokenDto.fromJson(response.body);
+      print("Server Response: ${response.body}");
+      print(loginReqDto.memberId);
 
-    print(cmRespDto.accessToken);
-    print(refreshToken);
-    print(accessToken);
-
-    if (cmRespDto.grantType == "Bearer" &&cmRespDto.accessToken != null) {
-      User principal = User.fromJson(cmRespDto.accessToken as Map<String, dynamic>);
-      accessToken = cmRespDto.accessToken;
-      String token = body["accessToken"];
-      print("jwtToken : $token");
-      return principal;
+      if (jwtTokenDto.grantType == "Bearer" && jwtTokenDto.accessToken != null) {
+        User principal = User.fromJson(response.body);
+        principal = User(email: loginReqDto.memberId);
+        return principal;
+      } else {
+        return User();
+      }
     } else {
       return User();
     }
+  }
+  Future<bool> join(String memberId, String password, String nickName) async {
+    JoinReqDto joinReqDto = JoinReqDto(memberId, password, nickName);
+    Response response = await _userProvider.join(joinReqDto.toJson());
 
-    // dynamic headers = response.headers;
-    // if (headers["authorization"]==null) {
-    //   return "-1";
-    // } else {
-    //   String token = headers["authorization"];
-    //   return token;
-    // }
+    return response.statusCode == 200;
   }
 }
+

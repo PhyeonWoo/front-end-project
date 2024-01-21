@@ -12,9 +12,10 @@ class CustomElevatedButton extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10.0),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF399148),
             minimumSize: Size(double.infinity,50),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(5),
             ),
           ),
           onPressed: funPageRoute,
