@@ -1,6 +1,5 @@
-
 import 'package:aet/AET/components/custom_elevated_button.dart';
-import 'package:aet/AET/components/custom_text_form_field.dart';
+import 'package:aet/AET/components/custom_text_form_underline_field.dart';
 import 'package:aet/AET/screens/home.dart';
 import 'package:aet/controller/user_controller.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class loginPage extends StatelessWidget {
 class LoginPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final UserController u = Get.put(UserController());
-  final _Email = TextEditingController();
+  final _email = TextEditingController();
   final _password = TextEditingController();
 
   @override
@@ -35,16 +34,20 @@ class LoginPage extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
-                height: 150,
+                height: 100,
                 child: Text(
-                  "로그인 페이지",
+                  "짐보따리",
                   style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1D6128)
                   ),
                 ),
               ),
-              _loginFrom(),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0,50,0,0),
+                child: _loginFrom(),
+              ),
             ],
           ),
         )
@@ -56,27 +59,30 @@ class LoginPage extends StatelessWidget {
       key: _formKey,
       child: Column(
         children:[
-          CustomTextFormField(
-              controller: _Email,
-              hint: "Email",
+          CustomTextFormFieldUnder(
+              controller: _email,
+              hint: "짐보따리 이메일",
               funValidator:validatorEmail()),
-          CustomTextFormField(
+          CustomTextFormFieldUnder(
               controller: _password,
-              hint: "Password",
+              hint: "비밀번호",
               funValidator:validatorPassword()),
-          CustomElevatedButton(
-              text: "로그인",
-              funPageRoute: () async{
-                if (_formKey.currentState!.validate()) {
-                  int result =
-                  await u.login(_Email.text.trim(), _password.text.trim());
-                  if (result == 1) {
-                    Get.to(() => homeMain());
-                  } else {
-                    Get.snackbar("로그인 시도", "로그인 실패");
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+            child: CustomElevatedButton(
+                text: "로그인",
+                funPageRoute: () async{
+                  if (_formKey.currentState!.validate()) {
+                    int result =
+                    await u.login(_email.text.trim(), _password.text.trim());
+                    if (result == 1) {
+                      Get.to(() => homeMain());
+                    } else {
+                      Get.snackbar("로그인 시도", "로그인 실패");
+                    }
                   }
-                }
-              },
+                },
+            ),
           ),
           TextButton(
             onPressed: (){

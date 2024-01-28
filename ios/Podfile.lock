@@ -1,29 +1,74 @@
 PODS:
+  - device_info (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
+  - flutter_inappwebview (0.0.1):
+    - Flutter
+    - flutter_inappwebview/Core (= 0.0.1)
+    - OrderedSet (~> 5.0)
+  - flutter_inappwebview/Core (0.0.1):
+    - Flutter
+    - OrderedSet (~> 5.0)
+  - fluttertoast (0.0.2):
+    - Flutter
+    - Toast
+  - OrderedSet (5.0.0)
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - Toast (4.0.0)
+  - tosspayments_webview_flutter (0.0.1):
+    - Flutter
+  - url_launcher_ios (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
+  - device_info (from `.symlinks/plugins/device_info/ios`)
   - Flutter (from `Flutter`)
+  - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
+  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
+  - tosspayments_webview_flutter (from `.symlinks/plugins/tosspayments_webview_flutter/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+
+SPEC REPOS:
+  trunk:
+    - OrderedSet
+    - Toast
 
 EXTERNAL SOURCES:
+  device_info:
+    :path: ".symlinks/plugins/device_info/ios"
   Flutter:
     :path: Flutter
+  flutter_inappwebview:
+    :path: ".symlinks/plugins/flutter_inappwebview/ios"
+  fluttertoast:
+    :path: ".symlinks/plugins/fluttertoast/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
+  tosspayments_webview_flutter:
+    :path: ".symlinks/plugins/tosspayments_webview_flutter/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
+  device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
-  shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
+  flutter_inappwebview: 3d32228f1304635e7c028b0d4252937730bbc6cf
+  fluttertoast: 31b00dabfa7fb7bacd9e7dbee580d7a2ff4bf265
+  OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
+  path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
+  shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  tosspayments_webview_flutter: ceae304825a077de594d01ee39dd0ce2307adb4e
+  url_launcher_ios: bbd758c6e7f9fd7b5b1d4cde34d2b95fcce5e812
 
 PODFILE CHECKSUM: 02caaa843f6501172c0d470d80e72f61175c8b93
 

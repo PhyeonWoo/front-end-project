@@ -10,13 +10,13 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Color(0xFFffffff),
       elevation: 5,
-      shadowColor: Color(0x25000000),
+      shadowColor: Color(0xFF000000).withOpacity(0.2),
       centerTitle: true, // 타이틀을 중앙에 배치
       title: Text(
         titleWrite,
         style: TextStyle(
-          color: Color.fromRGBO(79, 79, 79, 1),
-          fontFamily: 'Pretendard',
+          color: Color(0xff4F4F4F),
+          fontFamily: 'customFonts',
           fontWeight: FontWeight.bold,
           fontSize: 20,
         ),

@@ -30,12 +30,6 @@ environment:
 dependencies:
   easy_search_bar : ^2.5.0
   shared_preferences: ^2.2.2
-  flutter:
-    sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   extended_image: ^8.1.1
   beamer: ^0.14.1
@@ -45,11 +39,22 @@ dependencies:
   provider: ^6.1.1
   http: ^1.1.0
   dio: ^5.0.0
+  tosspayments_widget_sdk_flutter: ^1.0.3
+  fluttertoast: ^8.2.4
+
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+
 
 dev_dependencies:
 
   flutter_test:
     sdk: flutter
+
 
 
   # The "flutter_lints" package below contains a set of recommended lints to

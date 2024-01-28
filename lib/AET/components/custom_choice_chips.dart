@@ -32,7 +32,7 @@ class CustomChoiceChip extends StatelessWidget {
             side: BorderSide(color: borderColor, width: 1),
             borderRadius: BorderRadius.circular(5),
           ),
-          color: Colors.white,
+          color: Color(0xFFffffff),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
