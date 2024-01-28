@@ -2,6 +2,7 @@ import 'package:aet/AET/components/custom_elevated_button.dart';
 import 'package:aet/AET/components/custom_text_form_underline_field.dart';
 import 'package:aet/AET/screens/home.dart';
 import 'package:aet/controller/user_controller.dart';
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:aet/AET/login/join_page.dart';
@@ -40,7 +41,8 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF1D6128)
+                      fontFamily: "Pretendard",
+                      color: AppColor.darkGreen
                   ),
                 ),
               ),
@@ -88,7 +90,7 @@ class LoginPage extends StatelessWidget {
             onPressed: (){
              Get.to(JoinPage());
             },
-            child:Text("회원가입 하러가기",style: TextStyle(color: Color(0xFF399148)),),
+            child:Text("회원가입 하러가기",style: TextStyle(color: AppColor.green,fontFamily: "Pretendard",),),
           ),
         ],
       ),

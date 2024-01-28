@@ -1,9 +1,8 @@
 import 'package:aet/AET/components/custom_search_form_provider.dart';
-import 'package:aet/AET/widgets/action_Button.dart';
-import 'package:aet/AET/widgets/leading_Button.dart';
+import 'package:aet/AET/widgets/dailyTicket.dart';
+import 'package:aet/util/color.dart';
 import 'package:aet/util/validator_util.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final _formKey = GlobalKey<FormState>();
@@ -13,12 +12,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       actions: <Widget>[
-        action_Button(),
+        AppbarWidget(),
       ],
       toolbarHeight: 180, // AppBar 높이 설정
-      backgroundColor: Color(0xFF399148),
+      backgroundColor: AppColor.green,
       elevation: 3, // 그림자 깊이
-      shadowColor: Color(0x75000000), // 그림자 색상
+      shadowColor: AppColor.Shadow, // 그림자 색상
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(20), // 둥근 하단 모서리
@@ -36,10 +35,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 "짐보따리",
                 style: TextStyle(
                   fontSize: 32,
+                  fontFamily: "Pretendard",
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFFffffff),
+                  color: Colors.white,
                 ),
               ),
+              SizedBox(height: 30,),
               _searchForm(),
             ],
           ),
@@ -53,7 +54,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       key: _formKey, // 새로운 GlobalKey 생성
       child: Column(
         children: [
-          Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
           CustomSearchFormProvider(
             controller: _providerSearch,
             hint: "ProviderName",

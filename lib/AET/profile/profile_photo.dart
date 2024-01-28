@@ -13,10 +13,10 @@ class ProfilePhoto extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Color(0x25000000),//색상
+            color: Colors.black.withOpacity(0.1),//색상
             spreadRadius: 3, //범위
-            blurRadius: 3,//흐림
-            offset: Offset(1,1),
+            blurRadius: 10,//흐림
+            offset: Offset(0,0),
           )
         ]
       ),

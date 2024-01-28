@@ -2,6 +2,7 @@ import 'package:aet/AET/components/custom_elevated_button.dart';
 import 'package:aet/AET/components/custom_text_form_outline_field.dart';
 import 'package:aet/AET/login/login_page.dart';
 import 'package:aet/controller/user_controller.dart';
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:aet/util/validator_util.dart';
@@ -23,12 +24,12 @@ class JoinPage extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
-                height: 150,
+                height: 100,
                 child: Text(
                   "회원가입",
                   style: TextStyle(
                       fontSize: 32,
-                      color: Color(0xFF1D6128),
+                      color: AppColor.darkGreen,
                       fontWeight: FontWeight.bold
                   ),
                 ),
@@ -47,7 +48,7 @@ class JoinPage extends StatelessWidget {
         children: [
           CustomTextFormFieldOuter(
             controller: _nicknameController,
-            hint: "별명",
+            hint: "닉네임",
             funValidator: validatorNickName(),
           ),
           CustomTextFormFieldOuter(

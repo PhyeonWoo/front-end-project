@@ -15,6 +15,7 @@ class homeMain extends StatelessWidget {
         appBar: CustomAppBar(),
         body: SingleChildScrollView( // SingleChildScrollView 추가
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               UserMainBox(),
               CustomContainerWidthLong(text: "종목추천",textSub: "오늘의 종목을 추천"),

@@ -1,3 +1,4 @@
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchFormProvider extends StatelessWidget {
@@ -25,41 +26,42 @@ class CustomSearchFormProvider extends StatelessWidget {
             validator: funValidator,
             textAlign: TextAlign.center,
             decoration: InputDecoration(
-              contentPadding:  EdgeInsets.fromLTRB(0, 10, 50, 0),
+              contentPadding:  EdgeInsets.fromLTRB(0, 20, 50, 0),
               filled: true,
-              fillColor: Color(0xFFffffff),
-              hintText: "찾으시는 종목을 검색해보세요. ",
+              fillColor: Colors.white,
+              hintText: "찾으시는 종목을 검색해보세요.",
               hintStyle: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                fontFamily: "customFont",
-                color: Color(0xFF399148)
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                fontFamily: "Pretendard",
+                color: AppColor.green
               ),
               prefixIcon: IconButton(
                 icon: Icon(Icons.search),
+                color: AppColor.green,
                 onPressed: (){},
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Color(0xFFffffff), width: 1,
+                  color: Colors.white, width: 1,
                 ),
                 borderRadius: BorderRadius.circular(3),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Color(0xFFffffff), width: 1,
+                  color: Colors.white, width: 1,
                 ),
                 borderRadius: BorderRadius.circular(3),
               ),
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Color(0xFFffffff), width: 1,
+                  color: Colors.white, width: 1,
                 ),
                 borderRadius: BorderRadius.circular(3),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Color(0xFFffffff), width: 1,
+                  color: Colors.white, width: 1,
                 ),
                 borderRadius: BorderRadius.circular(3),
               ),

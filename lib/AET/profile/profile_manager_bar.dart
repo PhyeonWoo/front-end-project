@@ -1,27 +1,8 @@
 import 'package:aet/AET/components/custom_circle.dart';
+import 'package:aet/AET/profile/profileCategory/dailyTicketList.dart';
+import 'package:aet/AET/profile/profileCategory/paymentHistory.dart';
+import 'package:aet/AET/profile/profileCategory/reviewManagement.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(myapp());
-}
-
-class myapp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              ProfileManagerBar(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class ProfileManagerBar extends StatelessWidget {
 
@@ -32,9 +13,9 @@ class ProfileManagerBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ProfilePhoto(textWrite: "일일권"),
-          ProfilePhoto(textWrite: "결제내역"),
-          ProfilePhoto(textWrite: "후기관리"),
+          ProfilePhoto(textWrite: "일일권",togo: DailyTicketList(),),
+          ProfilePhoto(textWrite: "결제내역",togo: PaymentHistory(),),
+          ProfilePhoto(textWrite: "후기관리",togo: ReviewManagement(),),
         ],
       ),
     );

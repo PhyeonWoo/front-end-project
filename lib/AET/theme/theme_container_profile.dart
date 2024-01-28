@@ -1,25 +1,7 @@
 import 'package:aet/controller/user_controller.dart';
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Column(
-        children: [
-          UserMainBox(),
-        ],
-      ),
-    );
-  }
-}
-
-
 
 class UserMainBox extends StatelessWidget {
   @override
@@ -32,7 +14,7 @@ class UserMainBox extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(10, 10, 10, 5),
         decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Color(0xFF399148),
+        color: AppColor.green,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,20 +22,36 @@ class UserMainBox extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Square3(),
+                  InnerUserMainBox(),
                 ],
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 5),
-                child: Text(
-                  "이번 달 만료 예정 포인트 50,000P",
-                  style: TextStyle(
-                    fontFamily: 'customFont',
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 0, 5),
+                    child: Text(
+                      "이번 달 만료 예정 포인트",
+                      style: TextStyle(
+                        fontFamily: "Pretendard",
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
+                    child: Text(
+                      "50,000P",
+                      style: TextStyle(
+                        fontFamily: "Pretendard",
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -62,7 +60,7 @@ class UserMainBox extends StatelessWidget {
   }
 }
 
-class Square3 extends StatelessWidget {
+class InnerUserMainBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserController u = Get.put(UserController());
@@ -87,21 +85,23 @@ class Square3 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "50,000 POINT",
+                    "50,000 포인트",
                     style: TextStyle(
                       fontSize: 32,
-                      fontFamily: 'customFont',
+                      fontFamily: "Pretendard",
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF1D6128),
+                      color: AppColor.darkGreen,
+                      letterSpacing: -2,
                     ),
                   ),
                   Text(
                     "짐보따리 잔여 포인트",
                     style: TextStyle(
                       fontSize: 16,
-                      fontFamily: 'customFont',
+                      fontFamily: "Pretendard",
                       fontWeight: FontWeight.w300,
-                      color: Color(0xFF1D6128),
+                      color: AppColor.darkGreen,
+                      letterSpacing: -1,
                       shadows: [
                         Shadow(
                           blurRadius: 10.0,
@@ -122,7 +122,7 @@ class Square3 extends StatelessWidget {
                     child: Container(
                       width: 50,
                       height: 55,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Color(0xFF399148)),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: AppColor.green),
                     ),
                   ),
                   Padding(
@@ -131,10 +131,10 @@ class Square3 extends StatelessWidget {
                           () => Text(
                         "${u.principal.value.email} 님",
                         style: TextStyle(
-                          fontFamily: 'customFont',
+                          fontFamily: "Pretendard",
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF399148),
+                          color: AppColor.green,
                         ),
                       ),
                     ),

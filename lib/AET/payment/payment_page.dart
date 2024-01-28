@@ -45,7 +45,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(titleWrite: "포인트 충전하기"),
+      appBar: CustomAppbar(titleWrite: "포인트 충전하기",BackButton: true,),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
@@ -96,7 +96,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                                   });
                                  if (controller.selectedValue.value == 1){
                                   await _paymentMethodWidgetControl?.updateAmount(amount: 5000);
-                                  print('결제 금액이 5000원으로 변경되었습니다.');
+                                  print('결제 금액이 $Amount원으로 변경되었습니다.');
                                   }
                                 },
                               )),
@@ -111,7 +111,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                                   });
                                   if (controller.selectedValue.value == 2){
                                     await _paymentMethodWidgetControl?.updateAmount(amount: 10000);
-                                    print('결제 금액이 10000원으로 변경되었습니다.');
+                                    print('결제 금액이 $Amount원으로 변경되었습니다.');
                                   }
                                 },
                               )),
@@ -126,7 +126,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                                   });
                                   if (controller.selectedValue.value == 3){
                                     await _paymentMethodWidgetControl?.updateAmount(amount: 15000);
-                                    print('결제 금액이 15000원으로 변경되었습니다.');
+                                    print('결제 금액이 $Amount원으로 변경되었습니다.');
                                   }
                                 },
                               )),
@@ -141,7 +141,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                                   });
                                   if (controller.selectedValue.value == 4){
                                     await _paymentMethodWidgetControl?.updateAmount(amount: 20000);
-                                    print('결제 금액이 20000원으로 변경되었습니다.');
+                                    print('결제 금액이 $Amount원으로 변경되었습니다.');
                                   }
                                 },
                               )),
@@ -170,12 +170,12 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
           ? Container(
         height: 80,
         width: double.infinity,
-        decoration: BoxDecoration(color: Color(0xFFffffff)),
+        decoration: BoxDecoration(color: Colors.white),
         child: Center(
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFF399148),
-              shadowColor: Color(0x75000000),
+              backgroundColor: AppColor.green,
+              shadowColor: Colors.black.withOpacity(0.5),
               elevation: 5,
               minimumSize: Size(180, 45),
               shape: RoundedRectangleBorder(
@@ -188,7 +188,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                 final paymentResult = await _paymentWidget.requestPayment(
                     paymentInfo: const PaymentInfo(
                         orderId: 't70AdNCe7cIc1Sk1ZqgEh',
-                        orderName: '토스 티셔츠 외 2건'
+                        orderName: '테스트 결제'
                     )
                 );
                 if (paymentResult.success != null) {
@@ -209,7 +209,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'customFonts',
-                color: Color(0xffFFFFFF),
+                color: Colors.white,
               ),
             ),
           ),

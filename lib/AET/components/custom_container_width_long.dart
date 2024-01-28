@@ -1,3 +1,4 @@
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 
 class CustomContainerWidthLong extends StatelessWidget {
@@ -45,7 +46,7 @@ class CustomContainerWidthLong extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(79, 79, 79, 1),
+                    color: AppColor.darkGrey,
                   ),
                 ),
               ),
@@ -56,7 +57,7 @@ class CustomContainerWidthLong extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w100,
-                    color: Color.fromRGBO(79, 79, 79, 1),
+                    color: AppColor.lightGrey,
                   ),
                 ),
               ),
@@ -66,21 +67,24 @@ class CustomContainerWidthLong extends StatelessWidget {
                   width: 96,
                   height: 32,
                    decoration: BoxDecoration(
-                     color: Color(0xFF399148),
+                     color: AppColor.green,
                      borderRadius: BorderRadius.circular(5)
                    ),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 3),
-                    child: Center(
-                      child: Text("확인하기",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFffffff),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.fromLTRB(0, 3, 0, 3), // 여기서 패딩 설정
+                        backgroundColor: Colors.transparent, // 배경색을 투명하게 설정
+                        textStyle: TextStyle(
+                          fontSize: 16,
+                          fontFamily: "Pretendard",
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ),
-                  ) ,
+                      onPressed: () {
+                        // 버튼 클릭 시 실행할 코드
+                      },
+                      child: Text("확인하기",style: TextStyle(color: Colors.white),),
+                    )
                 ),
               )
             ],

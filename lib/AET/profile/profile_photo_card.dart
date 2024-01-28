@@ -1,27 +1,6 @@
 import 'package:aet/AET/profile/profile_point_box.dart';
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(myapp());
-}
-
-class myapp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              ProfileCard(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class ProfileCard extends StatelessWidget {
   @override
@@ -31,11 +10,11 @@ class ProfileCard extends StatelessWidget {
       height: 132,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Color(0xFF399148),
+        color: AppColor.green,
         boxShadow: [
           BoxShadow(
-            color: Color(0x25000000),
-            spreadRadius: 3,
+            color: AppColor.Shadow,
+            spreadRadius: 1,
             blurRadius: 3,
             offset: Offset(1, 1),
           ),
@@ -55,14 +34,14 @@ class ProfileCard extends StatelessWidget {
                   "짐보따리 잔여 포인트",
                   style: TextStyle(
                     fontSize: 16,
-                    fontFamily: "customFonts",
+                    fontFamily: "Pretendard",
                     fontWeight: FontWeight.w100,
                     color: Colors.white,
                     shadows: [
                       Shadow(
-                        offset: Offset(2, 2),
+                        offset: Offset(0, 0),
                         blurRadius: 5,
-                        color: Color(0x25000000)
+                        color: AppColor.Shadow
                       )
                     ]
                   ),
@@ -74,14 +53,14 @@ class ProfileCard extends StatelessWidget {
                   "50,000 포인트",
                   style: TextStyle(
                     fontSize: 24,
-                    fontFamily: "customFonts",
+                    fontFamily: "Pretendard",
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                       shadows: [
                         Shadow(
-                            offset: Offset(2, 2),
+                            offset: Offset(0, 0),
                             blurRadius: 5,
-                            color: Color(0x25000000)
+                            color: AppColor.Shadow
                         )
                       ]
                   ),
@@ -97,14 +76,14 @@ class ProfileCard extends StatelessWidget {
                       "이번 달 만료예정 포인트 ",
                       style: TextStyle(
                         fontSize: 12,
-                        fontFamily: "customFonts",
+                        fontFamily: "Pretendard",
                         fontWeight: FontWeight.w100,
                         color: Colors.white,
                           shadows: [
                             Shadow(
-                                offset: Offset(2, 2),
+                                offset: Offset(0, 0),
                                 blurRadius: 5,
-                                color: Color(0x25000000)
+                                color: AppColor.Shadow
                             )
                           ]
                       ),
@@ -113,14 +92,14 @@ class ProfileCard extends StatelessWidget {
                       "50,000P",
                       style: TextStyle(
                         fontSize: 12,
-                        fontFamily: "customFonts",
+                        fontFamily: "Pretendard",
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                           shadows: [
                             Shadow(
-                                offset: Offset(2, 2),
+                                offset: Offset(0, 0),
                                 blurRadius: 5,
-                                color: Color(0x25000000)
+                                color: AppColor.Shadow
                             )
                           ]
                       ),
@@ -131,7 +110,7 @@ class ProfileCard extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            padding: EdgeInsets.fromLTRB(0, 40, 0, 40),
             child: ProfilePointBox(),
           ),
         ],

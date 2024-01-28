@@ -1,55 +1,44 @@
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-void main() {
-  runApp(myapp());
-}
-
-class myapp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              CustomList(textWrite: "시설등록"),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class CustomList extends StatelessWidget {
   final String textWrite;
+  final Widget togo;
 
-  const CustomList({required this.textWrite});
+  const CustomList({required this.textWrite, required this.togo});
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(25, 5, 0, 5),
-          child: Text(
-              textWrite,
-              style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'customFonts',
-                fontWeight: FontWeight.w400,
-                color: Color(0XFF4F4F4F),
-              )
+    return TextButton(
+      onPressed: () {
+        Get.to(() => togo); // GetX를 사용하여 HomePage로 이동
+      },
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.white,
+        elevation: 0.5, // 버튼의 그림자를 제거
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            textWrite,
+            style: TextStyle(
+              fontSize: 18,
+              fontFamily: 'customFonts',
+              fontWeight: FontWeight.w400,
+              color: AppColor.darkGrey,
+            ),
           ),
-        ),
-        Container(
-          height: 0.5,
-          width: double.infinity,
-          color: Color(0xFFD9D9D9),
-        ),
-      ],
+          Divider(
+            color: Colors.transparent, // 구분선 색상
+            height: 0, // 구분선 높이
+            thickness: 0, // 구분선 두께
+          ),
+        ],
+      ),
     );
   }
 }

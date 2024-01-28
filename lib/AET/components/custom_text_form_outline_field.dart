@@ -1,3 +1,4 @@
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormFieldOuter extends StatelessWidget {
@@ -29,13 +30,13 @@ class CustomTextFormFieldOuter extends StatelessWidget {
               fontFamily: "customFonts"),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.grey,
+                color: AppColor.lightGrey,
               ),
             borderRadius: BorderRadius.circular(10)
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xFF399148),
+              color: AppColor.green,
             ),
             borderRadius: BorderRadius.circular(10)
           ),
