@@ -3,7 +3,8 @@ import 'package:aet/controller/dto/JwtTokenDto.dart';
 import 'package:aet/controller/dto/LoginReqDto.dart';
 import 'package:aet/domain/user/user.dart';
 import 'package:aet/domain/user/user_provider.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
+import 'package:get/get.dart';
+
 
 class UserRepository {
   final UserProvider _userProvider = UserProvider();
@@ -28,10 +29,10 @@ class UserRepository {
       return User();
     }
   }
+
   Future<bool> join(String memberId, String password, String nickName) async {
     JoinReqDto joinReqDto = JoinReqDto(memberId, password, nickName);
     Response response = await _userProvider.join(joinReqDto.toJson());
-
     return response.statusCode == 200;
   }
 }

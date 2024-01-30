@@ -16,22 +16,23 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 10,
-      shadowColor: Colors.black.withOpacity(0.2),
+      shadowColor: AppColor.Shadow.withOpacity(0.1),
       centerTitle: true,
-
       // GetX를 사용하여 뒤로 가기 버튼을 조건부로 표시
       leading: BackButton ? IconButton(
         icon: Icon(Icons.arrow_back, color: AppColor.darkGrey),
         onPressed: () => Get.back(), // GetX의 back 메서드를 사용하여 뒤로 가기
       ) : null,
-
-      title: Text(
-        titleWrite,
-        style: TextStyle(
-          color: AppColor.darkGrey,
-          fontFamily: 'customFonts',
-          fontWeight: FontWeight.w600,
-          fontSize: 22,
+      title: Padding(
+        padding: EdgeInsets.only(top: 5),
+        child: Text(
+          titleWrite,
+          style: TextStyle(
+            color: AppColor.darkGrey,
+            fontFamily: 'Pretendard',
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+          ),
         ),
       ),
     );

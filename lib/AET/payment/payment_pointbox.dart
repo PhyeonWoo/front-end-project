@@ -1,5 +1,6 @@
 import 'package:aet/AET/components/custom_choice_chips.dart';
 import 'package:aet/controller/payment_controller.dart';
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,10 +17,10 @@ class PointBox extends StatelessWidget {
               Container(
                 child: Text("현재 보유하고 있는 포인트",
                   style: TextStyle(
-                    color: Color(0xFF4F4F4F),
+                    color: AppColor.darkGrey,
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    fontFamily: 'customFonts',
+                    fontFamily: 'Pretendard',
                   ),
                 ),
               ),
@@ -28,10 +29,10 @@ class PointBox extends StatelessWidget {
                 child: Container(
                   child: Text("50,000P",
                     style: TextStyle(
-                      color: Color(0xFF399148),
+                      color: AppColor.green,
                       fontSize: 32,
                       fontWeight: FontWeight.w600,
-                      fontFamily: 'customFonts',
+                      fontFamily: 'Pretendard',
                     ),
                   ),
                 ),
@@ -39,7 +40,7 @@ class PointBox extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  color: Color(0xFFffffff),
+                  color: Colors.white,
                   child: SingleChildScrollView(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -16,104 +16,107 @@ class ProfileCard extends StatelessWidget {
             color: AppColor.Shadow,
             spreadRadius: 1,
             blurRadius: 3,
-            offset: Offset(1, 1),
+            offset: Offset(0, 0),
           ),
         ],
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Text(
-                  "짐보따리 잔여 포인트",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Pretendard",
-                    fontWeight: FontWeight.w100,
-                    color: Colors.white,
-                    shadows: [
-                      Shadow(
-                        offset: Offset(0, 0),
-                        blurRadius: 5,
-                        color: AppColor.Shadow
-                      )
-                    ]
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                child: Text(
-                  "50,000 포인트",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontFamily: "Pretendard",
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Text(
+                    "짐보따리 잔여 포인트",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Pretendard",
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                      letterSpacing: -1,
                       shadows: [
                         Shadow(
-                            offset: Offset(0, 0),
-                            blurRadius: 5,
-                            color: AppColor.Shadow
+                          offset: Offset(0, 0),
+                          blurRadius: 5,
+                          color: AppColor.Shadow
                         )
                       ]
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "이번 달 만료예정 포인트 ",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: "Pretendard",
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white,
-                          shadows: [
-                            Shadow(
-                                offset: Offset(0, 0),
-                                blurRadius: 5,
-                                color: AppColor.Shadow
-                            )
-                          ]
-                      ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: Text(
+                    "50,000 포인트",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontFamily: "Pretendard",
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      letterSpacing: -2,
+                        shadows: [
+                          Shadow(
+                              offset: Offset(0, 0),
+                              blurRadius: 5,
+                              color: AppColor.Shadow
+                          )
+                        ]
                     ),
-                    Text(
-                      "50,000P",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: "Pretendard",
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                          shadows: [
-                            Shadow(
-                                offset: Offset(0, 0),
-                                blurRadius: 5,
-                                color: AppColor.Shadow
-                            )
-                          ]
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 40, 0, 40),
-            child: ProfilePointBox(),
-          ),
-        ],
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "이번 달 만료예정 포인트 ",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: "Pretendard",
+                          fontWeight: FontWeight.w300,
+                          color: Colors.white,
+                          letterSpacing: -1,
+                            shadows: [
+                              Shadow(
+                                  offset: Offset(0, 0),
+                                  blurRadius: 5,
+                                  color: AppColor.Shadow
+                              )
+                            ]
+                        ),
+                      ),
+                      Text(
+                        "50,000P",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: "Pretendard",
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                  offset: Offset(0, 0),
+                                  blurRadius: 5,
+                                  color: AppColor.Shadow
+                              )
+                            ]
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            ProfilePointBox(),
+          ],
+        ),
       ),
     );
   }

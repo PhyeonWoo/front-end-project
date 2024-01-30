@@ -1,4 +1,3 @@
-
 class TossPayDto {
   final String? payType;
   final num? amount;

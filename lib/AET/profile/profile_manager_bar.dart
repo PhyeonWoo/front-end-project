@@ -13,9 +13,9 @@ class ProfileManagerBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ProfilePhoto(textWrite: "일일권",togo: DailyTicketList(),),
-          ProfilePhoto(textWrite: "결제내역",togo: PaymentHistory(),),
-          ProfilePhoto(textWrite: "후기관리",togo: ReviewManagement(),),
+          ProfilePhoto(textWrite: "일일권",togo: DailyTicketList(),imagePath: "assets/images/ticket.png",),
+          ProfilePhoto(textWrite: "결제내역",togo: PaymentHistory(),imagePath: "assets/images/pay.png",),
+          ProfilePhoto(textWrite: "후기관리",togo: ReviewManagement(),imagePath: "assets/images/review.png",),
         ],
       ),
     );

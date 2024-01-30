@@ -19,25 +19,28 @@ class CustomList extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0.5, // 버튼의 그림자를 제거
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            textWrite,
-            style: TextStyle(
-              fontSize: 18,
-              fontFamily: 'customFonts',
-              fontWeight: FontWeight.w400,
-              color: AppColor.darkGrey,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(10, 5, 0, 5),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              textWrite,
+              style: TextStyle(
+                fontSize: 16,
+                fontFamily: 'Pretendard',
+                fontWeight: FontWeight.w400,
+                color: AppColor.darkGrey,
+              ),
             ),
-          ),
-          Divider(
-            color: Colors.transparent, // 구분선 색상
-            height: 0, // 구분선 높이
-            thickness: 0, // 구분선 두께
-          ),
-        ],
+            Divider(
+              color: Colors.transparent, // 구분선 색상
+              height: 0, // 구분선 높이
+              thickness: 0, // 구분선 두께
+            ),
+          ],
+        ),
       ),
     );
   }

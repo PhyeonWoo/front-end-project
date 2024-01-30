@@ -25,7 +25,7 @@ class ProfileName extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       color: AppColor.darkGrey,
                     ),
                   ),
@@ -34,7 +34,7 @@ class ProfileName extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 12,
-                      fontWeight: FontWeight.w100,
+                      fontWeight: FontWeight.w400,
                       color: AppColor.darkGrey,
                     ),
                   ),

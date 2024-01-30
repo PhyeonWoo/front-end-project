@@ -38,9 +38,10 @@ dependencies:
   intl: ^0.18.1
   provider: ^6.1.1
   http: ^1.1.0
-  dio: ^5.0.0
+  dio: ^5.4.0
   tosspayments_widget_sdk_flutter: ^1.0.3
   fluttertoast: ^8.2.4
+  image_picker: ^1.0.7
 
   flutter:
     sdk: flutter

@@ -22,10 +22,10 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.white,
         appBar: CustomAppbar(
           titleWrite: '마이페이지',),
         body: Container(
+          color: Colors.white,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,

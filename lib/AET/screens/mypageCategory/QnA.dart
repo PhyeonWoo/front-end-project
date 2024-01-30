@@ -1,11 +1,6 @@
 import 'package:aet/AET/components/custom_appbar_title.dart';
 import 'package:flutter/material.dart';
 
-
-void main() {
-  runApp(QnA());
-}
-
 class QnA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,7 +8,7 @@ class QnA extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: CustomAppbar(
-          titleWrite: '공지/이벤트',BackButton: true,),
+          titleWrite: '자주하는질문',BackButton: true,),
         body: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

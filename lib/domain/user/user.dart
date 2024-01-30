@@ -1,17 +1,17 @@
 class User {
   final String? email;
-  final String? username;
-  final String? nickname;
+  final String? memberNickname;
+  final int? point;
   final String? accessToken;
   final String? refreshToken;
 
-  User({this.email, this.username, this.nickname, this.accessToken, this.refreshToken});
+  User({this.email, this.memberNickname, this.point, this.accessToken, this.refreshToken});
 
 
   User.fromJson(Map<String, dynamic> json)
       : email = json["email"],
-        username = json["username"],
-        nickname= json['nickname'],
-        accessToken= json['accessToken'],
-        refreshToken= json['refreshToken'];
+        memberNickname = json['memberNickname'],
+        point = json['point'],
+        accessToken = json['accessToken'],
+        refreshToken = json['refreshToken'];
 }

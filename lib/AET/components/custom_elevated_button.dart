@@ -1,3 +1,4 @@
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -12,7 +13,7 @@ class CustomElevatedButton extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10.0),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF399148),
+            backgroundColor: AppColor.green,
             minimumSize: Size(double.infinity,50),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),

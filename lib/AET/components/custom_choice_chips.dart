@@ -1,3 +1,4 @@
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 
 class CustomChoiceChip extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomChoiceChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color borderColor = isSelected ? Color(0xff399148) : Color(0xffD8D8D8);
+    Color borderColor = isSelected ? AppColor.green : AppColor.lightWhite;
 
     return GestureDetector(
       onTap: onSelected,
@@ -32,7 +33,7 @@ class CustomChoiceChip extends StatelessWidget {
             side: BorderSide(color: borderColor, width: 1),
             borderRadius: BorderRadius.circular(5),
           ),
-          color: Color(0xFFffffff),
+          color: Colors.white,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,35 +42,35 @@ class CustomChoiceChip extends StatelessWidget {
             Text(
               price,
               style: TextStyle(
-                color: Color(0xFF399148),
+                color: AppColor.green,
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                fontFamily: 'customFonts',
+                fontFamily: 'Pretendard',
               ),
             ),
             Container(
               height: 0.5,
               width: (MediaQuery.of(context).size.width) / 4 - 20,
-              color: Color(0xFFD9D9D9),
+              color: AppColor.lightWhite,
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
               child: Text(
                 money,
                 style: TextStyle(
-                  color: Color(0xFF399148),
+                  color: AppColor.green,
                   fontSize: 18,
-                  fontWeight: FontWeight.w100,
-                  fontFamily: 'customFonts',
+                  fontWeight: FontWeight.w300,
+                  fontFamily: 'Pretendard',
                 ),
               ),
             ),
             Text(
               description,
               style: TextStyle(
-                color: Color(0xFF4F4F4F),
+                color: AppColor.darkGrey,
                 fontSize: 12,
-                fontFamily: 'customFonts',
+                fontFamily: 'Pretendard',
               ),
             ),
           ],

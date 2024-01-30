@@ -2,10 +2,16 @@ import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class UserMainBox extends StatelessWidget {
+  UserController u = Get.put(UserController());
+
   @override
   Widget build(BuildContext context) {
+    String formattedNumber = u.principal.value?.point != null
+        ? NumberFormat('#,##0', 'en_US').format(u.principal.value!.point)
+        : '0';
     double screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
         child: Container(
@@ -42,7 +48,7 @@ class UserMainBox extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
                     child: Text(
-                      "50,000P",
+                      "${formattedNumber} P",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontSize: 12,
@@ -61,9 +67,13 @@ class UserMainBox extends StatelessWidget {
 }
 
 class InnerUserMainBox extends StatelessWidget {
+  UserController u = Get.put(UserController());
+
   @override
   Widget build(BuildContext context) {
-    UserController u = Get.put(UserController());
+    String formattedNumber = u.principal.value?.point != null
+        ? NumberFormat('#,##0', 'en_US').format(u.principal.value!.point)
+        : '0';
     double screenWidth = MediaQuery.of(context).size.width;
 
     return GestureDetector(
@@ -85,7 +95,7 @@ class InnerUserMainBox extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "50,000 포인트",
+                    "${formattedNumber} 포인트",
                     style: TextStyle(
                       fontSize: 32,
                       fontFamily: "Pretendard",
@@ -129,7 +139,7 @@ class InnerUserMainBox extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(0, 5, 5, 0),
                     child: Obx(
                           () => Text(
-                        "${u.principal.value.email} 님",
+                        "${u.principal.value.memberNickname} 님",
                         style: TextStyle(
                           fontFamily: "Pretendard",
                           fontSize: 12,
