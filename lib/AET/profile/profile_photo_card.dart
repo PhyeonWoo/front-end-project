@@ -1,10 +1,16 @@
 import 'package:aet/AET/profile/profile_point_box.dart';
+import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ProfileCard extends StatelessWidget {
+  UserController u = UserController();
   @override
   Widget build(BuildContext context) {
+    String formattedNumber = u.principal.value?.point != null
+        ? NumberFormat('#,##0', 'en_US').format(u.principal.value!.point)
+        : '0';
     return Container(
       width: 350,
       height: 132,
@@ -53,7 +59,7 @@ class ProfileCard extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Text(
-                    "50,000 포인트",
+                    "${formattedNumber} 포인트",
                     style: TextStyle(
                       fontSize: 24,
                       fontFamily: "Pretendard",
@@ -94,7 +100,7 @@ class ProfileCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "50,000P",
+                        "${formattedNumber}P",
                         style: TextStyle(
                           fontSize: 12,
                           fontFamily: "Pretendard",

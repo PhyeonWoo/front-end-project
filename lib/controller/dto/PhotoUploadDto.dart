@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 
-class PhotoUploadDTO {
+class PhotoUploadDto {
   String filePath;
-  String memberId;
+  String email;
 
-  PhotoUploadDTO({required this.filePath, required this.memberId});
+  PhotoUploadDto({required this.filePath, required this.email});
 
   FormData toFormData() {
     return FormData.fromMap({
       "files": MultipartFile.fromFileSync(filePath),
-      "memberId": memberId,
+      "email": email,
     });
   }
 }

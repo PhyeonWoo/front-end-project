@@ -78,7 +78,7 @@ class LoginPage extends StatelessWidget {
                     int result =
                     await u.login(_email.text.trim(), _password.text.trim());
                     if (result == 1) {
-                      await u.fetchUserPoints(u.principal.value!.email!);
+                      await u.fetchUserPoints(u.principal.value!.memberId!);
                       Get.to(() => homeMain());
                     } else {
                       Get.snackbar("로그인 시도", "로그인 실패");

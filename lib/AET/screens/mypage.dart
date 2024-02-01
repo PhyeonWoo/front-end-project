@@ -11,13 +11,13 @@ import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(MyPage());
 }
 
 class MyPage extends StatelessWidget {
-  final UserController u = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

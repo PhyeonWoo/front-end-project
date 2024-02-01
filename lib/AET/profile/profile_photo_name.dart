@@ -1,8 +1,10 @@
 import 'package:aet/AET/profile/profile_photo.dart';
+import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 
 class ProfileName extends StatelessWidget {
+  UserController u = UserController();
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -21,7 +23,7 @@ class ProfileName extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "김우원님",
+                    "${u.principal.value.memberNickname}님",
                     style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 24,
@@ -30,7 +32,7 @@ class ProfileName extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "KBUCS2023@gmail.com",
+                    "${u.principal.value.memberId}",
                     style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 12,
