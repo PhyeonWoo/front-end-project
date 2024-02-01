@@ -1,0 +1,293 @@
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:http/http.dart' as http;
+
+
+
+void main() => runApp(time_click());
+
+class time_click extends StatelessWidget {
+  time_click({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    int userId = 1;
+
+    return FutureBuilder<Map<String, dynamic>>(
+      future: fetchData(userId),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError) {
+            return Text('에러: ${snapshot.error}');
+          } else {
+            var userData = snapshot.data!['user'] ?? {};
+            var commentsData = snapshot.data!['comments'] ?? {};
+
+            return GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: MyHomePage(),
+            );
+          }
+        }
+        else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+
+  Future<Map<String, dynamic>> fetchData(int userId) async {
+    final userResponse =
+    await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users/$userId'));
+    final commentsResponse =
+    await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts/1/comments'));
+
+    if (userResponse.statusCode == 200 && commentsResponse.statusCode == 200) {
+      final userData = json.decode(userResponse.body);
+      final commentsData = json.decode(commentsResponse.body);
+
+      return {
+        'user': userData,
+        'comments': commentsData,
+      };
+    } else {
+      throw Exception('데이터 불러오기 실패');
+    }
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  DateTime? _selectedDate;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverPersistentHeader(
+              delegate: MySliverPersistentHeaderDelegate(),
+              pinned: false,
+              floating: true,
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate([
+                Container(
+                  padding: EdgeInsets.all(16.0),
+                  child: Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "노원 헬스장",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "노원구 상계동21-111",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Divider(thickness: 2, color: Colors.black),
+
+                        Text(
+                          "노원 헬스장입니다. 설명란 입니다. \n안녕하세요\n\n",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Divider(thickness: 2, color: Colors.black),
+
+                        Align(
+                          alignment: Alignment.center,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(Colors.white60),
+                              elevation: MaterialStateProperty.all(0),
+                            ),
+                            onPressed: () {
+                              showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2023),
+                                lastDate: DateTime(2025),
+                              ).then((selectedDate) {
+                                setState(() {
+                                  _selectedDate = selectedDate;
+                                });
+                              });
+                            },
+                            child: Text(
+                              _selectedDate != null
+                                  ? _selectedDate.toString().split(" ")[0]
+                                  : "날짜 선택",
+                              style: TextStyle(fontSize: 22, color: Colors.black,fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 15),
+
+                        Container(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+
+                                Container(
+                                  child: Align(
+                                    child: Text("09:00 ~ 10:00",
+                                    style: TextStyle(fontWeight: FontWeight.bold),),
+                                  ),
+                                  margin: EdgeInsets.only(left: 10),
+
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  width: 110,
+                                  height: 70,
+                                ),
+                                Container(
+                                  child: Align(
+                                    child: Text("09:00 ~ 10:00",
+                                      style: TextStyle(fontWeight: FontWeight.bold),),
+                                  ),
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  width: 110,
+                                  height: 70,
+                                ),
+                                Container(
+                                  child: Align(
+                                    child: Text("10:00 ~ 11:00",
+                                      style: TextStyle(fontWeight: FontWeight.bold),),
+                                  ),
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.grey,
+                                  ),
+                                  width: 110,
+                                  height: 70,
+                                ),
+                                Container(
+                                  child: Align(
+                                    child: Text("11:00 ~ 12:00",
+                                      style: TextStyle(fontWeight: FontWeight.bold),),
+                                  ),
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  width: 110,
+                                  height: 70,
+                                ),
+                                Container(
+                                  child: Align(
+                                    child: Text("12:00 ~ 13:00",
+                                      style: TextStyle(fontWeight: FontWeight.bold),),
+                                  ),
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  width: 110,
+                                  height: 70,
+                                ),
+                                Container(
+                                  child: Align(
+                                    child: Text("13:00 ~ 14:00",
+                                      style: TextStyle(fontWeight: FontWeight.bold),),
+                                  ),
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  width: 110,
+                                  height: 70,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Divider(thickness: 2,color: Colors.black,),
+                      ],
+                    ),
+                  ),
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: 2, // 이미지 개수
+      itemBuilder: (context, index) {
+        return ClipRRect(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(25),
+          ),
+          child: Image(
+            image: AssetImage('assets/images/${index + 1}.png'),
+            fit: BoxFit.fill,
+            width: MediaQuery.of(context).size.width, // 이미지를 좌우로 스크롤하도록 너비 조정
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  double get maxExtent => 225;
+
+  @override
+  double get minExtent => 10;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
+  }
+}
+
+
+
+
