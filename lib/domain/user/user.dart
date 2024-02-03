@@ -5,13 +5,21 @@ class User {
   final String? accessToken;
   final String? refreshToken;
 
-  User({this.memberId, this.memberNickname, this.point, this.accessToken, this.refreshToken});
+  User({
+    this.memberId,
+    this.memberNickname,
+    this.point,
+    this.accessToken,
+    this.refreshToken,
+  });
 
-
-  User.fromJson(Map<String, dynamic> json)
-      : memberId = json["memberId"],
-        memberNickname = json['memberNickname'],
-        point = json['point'],
-        accessToken = json['accessToken'],
-        refreshToken = json['refreshToken'];
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      memberId: json['memberId'] as String?,
+      memberNickname: json['memberNickname'] as String?,
+      point: json['point'] as int?,
+      accessToken: json['accessToken'] as String?,
+      refreshToken: json['refreshToken'] as String?,
+    );
+  }
 }

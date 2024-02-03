@@ -1,6 +1,6 @@
+import 'package:aet/AET/auth/login_page.dart';
 import 'package:aet/AET/components/custom_elevated_button.dart';
 import 'package:aet/AET/components/custom_text_form_outline_field.dart';
-import 'package:aet/AET/login/login_page.dart';
 import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';

@@ -1,3 +1,4 @@
+import 'package:aet/AET/auth/join_page.dart';
 import 'package:aet/AET/components/custom_elevated_button.dart';
 import 'package:aet/AET/components/custom_text_form_underline_field.dart';
 import 'package:aet/AET/screens/home.dart';
@@ -5,7 +6,6 @@ import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:aet/AET/login/join_page.dart';
 import 'package:aet/util/validator_util.dart';
 
 

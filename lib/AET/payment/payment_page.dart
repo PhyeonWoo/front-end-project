@@ -1,49 +1,75 @@
 import 'package:aet/AET/components/custom_choice_chips.dart';
+import 'package:aet/AET/screens/home.dart';
 import 'package:aet/controller/pay_chips_controller.dart';
+import 'package:aet/controller/toss_controller.dart';
+import 'package:aet/controller/user_controller.dart';
+import 'package:aet/util/Key.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:aet/AET/components/custom_appbar_title.dart';
 import 'package:tosspayments_widget_sdk_flutter/model/payment_info.dart';
 import 'package:tosspayments_widget_sdk_flutter/model/payment_widget_options.dart';
+import 'package:tosspayments_widget_sdk_flutter/model/selected_payment_method.dart';
+import 'package:tosspayments_widget_sdk_flutter/model/tosspayments_result.dart';
 import 'package:tosspayments_widget_sdk_flutter/payment_widget.dart';
 import 'package:tosspayments_widget_sdk_flutter/widgets/agreement.dart';
 import 'package:tosspayments_widget_sdk_flutter/widgets/payment_method.dart';
 
 class PaymentWidgetExamplePage extends StatefulWidget {
-  const PaymentWidgetExamplePage({super.key});
+  const PaymentWidgetExamplePage({super.key,});
 
   @override
   State<PaymentWidgetExamplePage> createState() => _PaymentWidgetExamplePageState();
 }
 
 class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
+  final PayChoiceChipController controller = Get.put(PayChoiceChipController());
   late PaymentWidget _paymentWidget;
   PaymentMethodWidgetControl? _paymentMethodWidgetControl;
   AgreementWidgetControl? _agreementWidgetControl;
-  final PayChoiceChipController controller = Get.put(PayChoiceChipController());
+  SelectedPaymentMethod? selectedPaymentMethod;
+  //UIState get info => widget.info;
+  //PaymentInfo get data => widget.data;
+  int? newAmount;
 
   @override
   void initState() {
     super.initState();
+    /// PaymentWidget 객체를 초기화합니다.
     _paymentWidget = PaymentWidget(
-      clientKey: "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm",
-      customerKey: "Z6o4ZOnUm-3ndSvpLiSn-",
-    );
-    _paymentWidget.renderPaymentMethods(
-      selector: 'methods',
-      amount: Amount(value: 5000, currency: Currency.KRW, country: "KR"),
-      options: RenderPaymentMethodsOptions(variantKey: "DEFAULT"),
-    ).then((control) {
+        clientKey: clientKey,
+        customerKey: customerKey,
+        //paymentWidgetOptions: PaymentWidgetOptions(brandPayOption: BrandPayOption(""/*info.redirectUrl*/ ?? ""))
+        );
+    _paymentWidget
+        .renderPaymentMethods(
+        selector: 'methods',
+        amount: Amount(value: newAmount = 5000, currency: Currency.KRW, country: "KR"),
+        //options: RenderPaymentMethodsOptions(variantKey: ""/*variantKey*/ ?? "")
+        )
+        .then((control) {
       _paymentMethodWidgetControl = control;
+    }, onError: (fail) {
+      //Get.offAndToNamed("/result", arguments: fail);
+      return;
     });
-    _paymentWidget.renderAgreement(selector: 'agreement').then((control) {
-      _agreementWidgetControl = control;
+    _paymentWidget
+        .renderAgreement(
+        selector: 'agreement', options: RenderAgreementOptions(variantKey: /*info.variantKeyAgreement*/"" ?? ""))
+        .then((control) {
+      _agreementWidgetControl = control; // Future.then을 통해 _agreementWidgetControl을 초기화합니다.
+    }, onError: (fail) {
+      //Get.offAndToNamed("/result", arguments: fail);
+      return;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final TossController t = Get.put(TossController());
+    final UserController u = Get.put(UserController());
+
     return Scaffold(
       appBar: CustomAppbar(titleWrite: "포인트 충전하기",BackButton: true,),
       backgroundColor: Colors.white,
@@ -92,11 +118,11 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                                 isSelected: controller.selectedValue.value == 1,
                                 onSelected: () async{
                                   setState(() {
-                                    controller.selectedValue(1);;
+                                    controller.selectedValue(1);
                                   });
-                                 if (controller.selectedValue.value == 1){
-                                  await _paymentMethodWidgetControl?.updateAmount(amount: 5000);
-                                  print('결제 금액이 $Amount원으로 변경되었습니다.');
+                                  if (controller.selectedValue.value == 1){
+                                    await _paymentMethodWidgetControl?.updateAmount(amount: newAmount = 5000);
+                                    print('결제 금액이 ${newAmount}원으로 변경되었습니다.');
                                   }
                                 },
                               )),
@@ -110,8 +136,8 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                                     controller.selectedValue(2);
                                   });
                                   if (controller.selectedValue.value == 2){
-                                    await _paymentMethodWidgetControl?.updateAmount(amount: 10000);
-                                    print('결제 금액이 $Amount원으로 변경되었습니다.');
+                                    await _paymentMethodWidgetControl?.updateAmount(amount: newAmount = 10000);
+                                    print('결제 금액이 $newAmount원으로 변경되었습니다.');
                                   }
                                 },
                               )),
@@ -125,8 +151,8 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                                     controller.selectedValue(3);
                                   });
                                   if (controller.selectedValue.value == 3){
-                                    await _paymentMethodWidgetControl?.updateAmount(amount: 15000);
-                                    print('결제 금액이 $Amount원으로 변경되었습니다.');
+                                    await _paymentMethodWidgetControl?.updateAmount(amount:newAmount = 15000);
+                                    print('결제 금액이 $newAmount원으로 변경되었습니다.');
                                   }
                                 },
                               )),
@@ -140,14 +166,28 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                                     controller.selectedValue(4);
                                   });
                                   if (controller.selectedValue.value == 4){
-                                    await _paymentMethodWidgetControl?.updateAmount(amount: 20000);
-                                    print('결제 금액이 $Amount원으로 변경되었습니다.');
+                                    await _paymentMethodWidgetControl?.updateAmount(amount:newAmount = 20000);
+                                    print('결제 금액이 $newAmount원으로 변경되었습니다.');
                                   }
                                 },
                               )),
                             ],
                           ),
                         ),
+                        ElevatedButton(onPressed: ()async{
+                          print("결제 시작");
+                          final selected = await _paymentMethodWidgetControl?.getSelectedPaymentMethod();
+                          t.payType(selected?.method);
+                          t.amount(newAmount);
+                          print(u.accessToken);
+                          print("선택된 결제 방법: ${t.payType.value}, 결제 금액: ${t.amount.value}");
+                          bool success = await t.tossPayment();
+                          if (success) {
+                            print("결제 성공");
+                          } else {
+                            print("결제 실패 또는 결제 방법이 선택되지 않음");
+                          }
+                        }, child: Text("결제하기")),
                         PaymentMethodWidget(
                           paymentWidget: _paymentWidget,
                           selector: 'methods',
@@ -181,26 +221,31 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-            ),
-            onPressed: () async {
-              print('결제 버튼이 눌렸습니다.');
-              try {
-                final paymentResult = await _paymentWidget.requestPayment(
-                    paymentInfo: const PaymentInfo(
-                        orderId: 't70AdNCe7cIc1Sk1ZqgEh',
-                        orderName: '테스트 결제'
-                    )
-                );
-                if (paymentResult.success != null) {
-                  // 결제 성공 처리
-                  print('결제가 성공적으로 완료되었습니다.');
-                } else if (paymentResult.fail != null) {
-                  // 결제 실패 처리
-                  print('결제에 실패했습니다: ${paymentResult.fail?.errorMessage}');
-                }
-              } catch (e) {
-                // 예외 처리
-                print('결제 처리 중 오류가 발생했습니다: $e');
+            ),onPressed: () async {
+            if (_agreementWidgetControl == null ||
+                _paymentMethodWidgetControl == null) {
+              print('requestPayment 결제위젯이 렌더링되지 않았습니다.');
+              return;
+            }
+
+            final agreement = await _agreementWidgetControl
+                ?.getAgreementStatus();
+            if (agreement?.agreedRequiredTerms != true) {
+              if (!mounted) return;
+              print('requestPayment 필수 약관에 모두 동의하지 않았습니다.');
+              return;
+            }
+
+            /// [requestPayment]를 통해 결제창으로 이동합니다.
+            final selected = await _paymentMethodWidgetControl?.getSelectedPaymentMethod();
+            selectedPaymentMethod = selected; //결제수단 확인하기
+            print(selectedPaymentMethod);
+            final Result paymentResult = await _paymentWidget.requestPayment(
+                paymentInfo: PaymentInfo(orderId: "", orderName: ""));
+            if (paymentResult.success != null) {
+              Get.back(result: paymentResult.success);
+            } else if (paymentResult.fail != null) {
+              Get.to(() => homeMain(), arguments: paymentResult.fail);
               }
             },
             child: Text(
@@ -214,8 +259,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
             ),
           ),
         ),
-      )
-          : SizedBox.shrink(),
+      ) : SizedBox.shrink(),
       ),
     );
   }
@@ -232,4 +276,25 @@ class MyApp extends StatelessWidget {
       home: PaymentWidgetExamplePage(),
     );
   }
+}
+
+class UIState {
+  String clientKey;
+  String customerKey;
+  Currency currency;
+  String country;
+  num amount;
+  String? variantKeyMethod;
+  String? variantKeyAgreement;
+  String? redirectUrl;
+
+  UIState(
+      {required this.clientKey,
+        required this.customerKey,
+        required this.currency,
+        required this.country,
+        required this.amount,
+        this.variantKeyMethod,
+        this.variantKeyAgreement,
+        this.redirectUrl});
 }

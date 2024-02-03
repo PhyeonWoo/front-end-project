@@ -1,11 +1,14 @@
 import 'package:aet/AET/components/custom_appbar_search.dart';
 import 'package:aet/AET/components/custom_banner.dart';
 import 'package:aet/AET/components/custom_container_width_long.dart';
+import 'package:aet/AET/components/custom_list.dart';
 import 'package:aet/AET/components/custom_ticket_container.dart';
+import 'package:aet/AET/payment/payment_page.dart';
+import 'package:aet/AET/profile/profileCategory/updatedUserProfile.dart';
 import 'package:aet/AET/theme/theme_container_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-void main() => runApp(homeMain());
 
 class homeMain extends StatelessWidget {
   @override
@@ -18,6 +21,7 @@ class homeMain extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               UserMainBox(),
+              CustomList(textWrite: "결제",togo: PaymentWidgetExamplePage(),),
               CustomContainerWidthLong(text: "종목추천",textSub: "오늘의 종목을 추천"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

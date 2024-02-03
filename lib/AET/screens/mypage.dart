@@ -1,6 +1,6 @@
+import 'package:aet/AET/auth/login_page.dart';
 import 'package:aet/AET/components/custom_appbar_title.dart';
 import 'package:aet/AET/components/custom_list.dart';
-import 'package:aet/AET/login/login_page.dart';
 import 'package:aet/AET/profile/profileCategory/updatedUserProfile.dart';
 import 'package:aet/AET/profile/profile_manager_bar.dart';
 import 'package:aet/AET/profile/profile_photo_card.dart';

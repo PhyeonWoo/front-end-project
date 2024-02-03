@@ -3,6 +3,7 @@ import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
 class ProfilePointBox extends StatelessWidget {
 
   @override

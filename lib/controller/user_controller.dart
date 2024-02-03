@@ -56,9 +56,6 @@ class UserController extends GetxController {
       User? principal = await _userRepository.fetchUserPoint(memberId);
       if (principal != null) {
         this.principal.value = principal;
-        this.nickName = principal.memberNickname;
-        this.point = principal.point;
-        print(principal);
         return 1;
       } else {
         return -1;

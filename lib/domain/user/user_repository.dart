@@ -17,13 +17,11 @@ class UserRepository {
 
     if (response.statusCode == 200) {
       JwtTokenDto jwtTokenDto = JwtTokenDto.fromJson(response.body);
-      print("Server Response: ${response.body}");
-      print(loginReqDto.memberId);
-
-      if (jwtTokenDto.grantType == "Bearer" &&
-          jwtTokenDto.accessToken != null) {
-        User principal = User.fromJson(response.body);
-        principal = User(memberId: loginReqDto.memberId);
+      if (jwtTokenDto.grantType == "Bearer" && jwtTokenDto.accessToken != null) {
+        User principal = User(
+            memberId: memberId, // from the login request
+            accessToken: jwtTokenDto.accessToken, // from the JWT token response
+            refreshToken: jwtTokenDto.refreshToken,);
         return principal;
       } else {
         return User();
@@ -32,7 +30,6 @@ class UserRepository {
       return User();
     }
   }
-
   Future<bool> join(String memberId, String password, String nickName) async {
     JoinReqDto joinReqDto = JoinReqDto(memberId, password, nickName);
     Response response = await _userProvider.join(joinReqDto.toJson());
