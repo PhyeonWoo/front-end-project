@@ -1,5 +1,6 @@
 import 'package:aet/AET/components/custom_choice_chips.dart';
 import 'package:aet/AET/screens/home.dart';
+import 'package:aet/controller/dto/TossPayDto.dart';
 import 'package:aet/controller/pay_chips_controller.dart';
 import 'package:aet/controller/toss_controller.dart';
 import 'package:aet/controller/user_controller.dart';
@@ -174,20 +175,6 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                             ],
                           ),
                         ),
-                        ElevatedButton(onPressed: ()async{
-                          print("결제 시작");
-                          final selected = await _paymentMethodWidgetControl?.getSelectedPaymentMethod();
-                          t.payType(selected?.method);
-                          t.amount(newAmount);
-                          print(u.accessToken);
-                          print("선택된 결제 방법: ${t.payType.value}, 결제 금액: ${t.amount.value}");
-                          bool success = await t.tossPayment();
-                          if (success) {
-                            print("결제 성공");
-                          } else {
-                            print("결제 실패 또는 결제 방법이 선택되지 않음");
-                          }
-                        }, child: Text("결제하기")),
                         PaymentMethodWidget(
                           paymentWidget: _paymentWidget,
                           selector: 'methods',
@@ -237,16 +224,25 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
             }
 
             /// [requestPayment]를 통해 결제창으로 이동합니다.
+            print("결제 시작");
             final selected = await _paymentMethodWidgetControl?.getSelectedPaymentMethod();
-            selectedPaymentMethod = selected; //결제수단 확인하기
-            print(selectedPaymentMethod);
-            final Result paymentResult = await _paymentWidget.requestPayment(
-                paymentInfo: PaymentInfo(orderId: "", orderName: ""));
-            if (paymentResult.success != null) {
-              Get.back(result: paymentResult.success);
-            } else if (paymentResult.fail != null) {
-              Get.to(() => homeMain(), arguments: paymentResult.fail);
+            t.payType(selected?.method);
+            t.amount(newAmount);
+            bool success = await t.tossPayment();
+            if (success) {
+              print("서버 결제 전송 성공");
+              final Result paymentResult = await _paymentWidget.requestPayment(
+                  paymentInfo: PaymentInfo(orderId: "${t.orderId}", orderName: "${t.orderName}"));
+              if (paymentResult.success != null) {
+                Get.snackbar("결제 성공","포인트 충전");
+                Get.back(result: paymentResult.success);
+              } else if (paymentResult.fail != null) {
+                Get.to(() => PaymentWidgetExamplePage(), arguments: paymentResult.fail);
               }
+            } else {
+              print("결제 실패 또는 결제 방법이 선택되지 않음");
+            }
+
             },
             child: Text(
               '결제하기',

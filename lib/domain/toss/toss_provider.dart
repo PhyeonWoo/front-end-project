@@ -24,8 +24,8 @@ class TossProvider extends GetConnect {
       "yourSuccessUrl": yourSuccessUrl,
       "yourFailUrl": yourFailUrl,
     }, headers: headers);
-    print('Status Code: ${response.statusCode}');
-    print('Response Body: ${response.bodyString}');
     return response;
   }
+
+
 }
