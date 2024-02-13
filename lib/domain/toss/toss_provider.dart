@@ -2,6 +2,7 @@ import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/host.dart';
 import 'package:get/get.dart';
 
+
 class TossProvider extends GetConnect {
   UserController get u => Get.put(UserController());
 
@@ -27,5 +28,20 @@ class TossProvider extends GetConnect {
     return response;
   }
 
-
+  Future<Response> tossPaymentSuccess({
+    required String paymentKey,
+    required String orderId,
+    required num amount,
+  }) async {
+    final String url = "$host/payments/toss/success";
+    final response = await get(
+      url,
+      query: {
+        'paymentKey': paymentKey,
+        'orderId': orderId,
+        'amount': amount,
+      },
+    );
+    return response;
+  }
 }

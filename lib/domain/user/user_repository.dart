@@ -30,6 +30,7 @@ class UserRepository {
       return User();
     }
   }
+
   Future<bool> join(String memberId, String password, String nickName) async {
     JoinReqDto joinReqDto = JoinReqDto(memberId, password, nickName);
     Response response = await _userProvider.join(joinReqDto.toJson());

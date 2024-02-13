@@ -1,4 +1,5 @@
 import 'package:aet/controller/dto/TossPayDto.dart';
+import 'package:aet/controller/dto/TossPaymentResultDto.dart';
 import 'package:aet/domain/toss/toss_repository.dart';
 import 'package:aet/util/host.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ class TossController extends GetxController {
   Rx<TossPayData?> tossPayData = Rx<TossPayData?>(null);
   String? orderId;
   String? orderName;
+
 
   void setTossPayData(TossPayData data) {
     tossPayData.value = data;
@@ -48,6 +50,14 @@ class TossController extends GetxController {
       }
     }
     return false;
+  }
+
+  Future<TossPaymentResultDto?> tossPaymentSuccess(String paymentKey, String orderId, num amount) async {
+    try {
+      return await _tossRepository.tossPaymentSuccess(paymentKey, orderId, amount);
+    } catch (e) {
+      return null; // 실패한 경우 null 반환
+    }
   }
 }
 

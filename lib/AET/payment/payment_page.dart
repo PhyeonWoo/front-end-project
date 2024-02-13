@@ -1,6 +1,6 @@
 import 'package:aet/AET/components/custom_choice_chips.dart';
-import 'package:aet/AET/screens/home.dart';
-import 'package:aet/controller/dto/TossPayDto.dart';
+import 'package:aet/AET/payment/payment_result.dart';
+import 'package:aet/controller/dto/TossPaymentResultDto.dart';
 import 'package:aet/controller/pay_chips_controller.dart';
 import 'package:aet/controller/toss_controller.dart';
 import 'package:aet/controller/user_controller.dart';
@@ -233,11 +233,21 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
               print("서버 결제 전송 성공");
               final Result paymentResult = await _paymentWidget.requestPayment(
                   paymentInfo: PaymentInfo(orderId: "${t.orderId}", orderName: "${t.orderName}"));
-              if (paymentResult.success != null) {
+              Success? success = paymentResult.success;
+              if (success != null) {
+                await t.tossPayment();
+                TossPaymentResultDto? result = await t.tossPaymentSuccess();
+                if (result != null) {
+                  // 성공적으로 결과를 받았을 경우
+                  print('Toss payment succeeded: $result');
+                } else {
+                  // 결과가 null이면 실패한 경우
+                  print('Toss payment failed');
+                }
                 Get.snackbar("결제 성공","포인트 충전");
-                Get.back(result: paymentResult.success);
+                Get.to(() => ResultPage(), arguments: paymentResult.success);
               } else if (paymentResult.fail != null) {
-                Get.to(() => PaymentWidgetExamplePage(), arguments: paymentResult.fail);
+                Get.to(() => ResultPage(), arguments: paymentResult.fail);
               }
             } else {
               print("결제 실패 또는 결제 방법이 선택되지 않음");
@@ -272,25 +282,4 @@ class MyApp extends StatelessWidget {
       home: PaymentWidgetExamplePage(),
     );
   }
-}
-
-class UIState {
-  String clientKey;
-  String customerKey;
-  Currency currency;
-  String country;
-  num amount;
-  String? variantKeyMethod;
-  String? variantKeyAgreement;
-  String? redirectUrl;
-
-  UIState(
-      {required this.clientKey,
-        required this.customerKey,
-        required this.currency,
-        required this.country,
-        required this.amount,
-        this.variantKeyMethod,
-        this.variantKeyAgreement,
-        this.redirectUrl});
 }
