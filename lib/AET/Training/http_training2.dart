@@ -1,5 +1,6 @@
 import 'package:aet/AET/Sports_Category/sports_appbar.dart';
 import 'package:aet/AET/Training/dio.dart';
+import 'package:aet/AET/Training/http_training2_page.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -49,7 +50,7 @@ class _GymListPageState extends State<GymListPage> {
         );
       }).toList();
 
-      setState(() {}); // 화면 갱신을 위해 setState 호출
+      setState(() {});   // 화면 갱신을 위해 setState 호출
     } catch (e) {
       print('Error: $e');
     }
@@ -68,7 +69,7 @@ class _GymListPageState extends State<GymListPage> {
             final gym = gyms[index];
             return InkWell(
               onTap: () {
-                Get.to(() => gym_save());
+                Get.to(() => TimeClickPage());
               },
               child: Container(
                 margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -81,13 +82,31 @@ class _GymListPageState extends State<GymListPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text("이미지 들어갈 부분\n"),
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(right: 300,bottom: 20),
+                      width: 50,
+                      height: 20,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Color.fromRGBO(57,145,72,1),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "${gym.sports}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: Text(
+                        "이미지 들어갈 부분\n",
+                      ),
+                    ),
+                    // Text("이미지 들어갈 부분\n"),
                     Divider(thickness: 2,color: Colors.black,),
-                    Text("\n체육관 이름: ${gym.name}",style: TextStyle(fontSize: 13,fontWeight: FontWeight.bold),),
-                    Text("체육 종목: ${gym.sports}"),
-                    Text("주소 : ${gym.city}"),
-                    Text("우편주소 : ${gym.zipCode}"),
+                    Text("\n체육관 이름: ${gym.name}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    Text("주소 : ${gym.city}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    Text("우편주소 : ${gym.zipCode}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                   ],
                 ),
               ),
