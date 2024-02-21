@@ -5,11 +5,25 @@ class action_Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return IconButton(
-      icon: Icon(Icons.star),
-      onPressed: () {
-        Get.to(ThirdPage());
-      },
+    return Row(
+      children: [
+        IconButton(
+            onPressed: () {
+              Get.to(() => ThirdPage());
+            },
+            icon: Icon(Icons.star),
+        ),
+        IconButton(
+            onPressed: () {
+              Get.to(() => ThirdPage());
+            },
+            icon: Icon(Icons.access_alarm)
+        ),
+      ],
+      // icon: Icon(Icons.star),
+      // onPressed: () {
+      //   Get.to(ThirdPage());
+      // },
     );
   }
 }
