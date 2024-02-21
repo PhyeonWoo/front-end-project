@@ -1,5 +1,4 @@
 import 'package:aet/AET/Sports_Category/sports_appbar.dart';
-import 'package:aet/AET/Training/dio.dart';
 import 'package:aet/AET/Training/http_training2_page.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
