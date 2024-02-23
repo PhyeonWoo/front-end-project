@@ -145,24 +145,24 @@
 //     );
 //   }
 // }
-
-import 'package:aet/AET/Sports_Category/sports_appbar.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import '../Training/http_training2.dart';
-import 'sports_buildcontainer.dart';
-
-void main() => runApp(Sports_Container());
-
-class Sports_Container extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(),
-      home: JsonParse(),
-    );
-  }
-}
+//
+// import 'package:aet/AET/Sports_Category/sports_appbar.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
+// import '../Training/http_training2.dart';
+// import 'sports_buildcontainer.dart';
+//
+// void main() => runApp(Sports_Container());
+//
+// class Sports_Container extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       theme: ThemeData(),
+//       home: JsonParse(),
+//     );
+//   }
+// }
 
 //
 // class MyHomePage2 extends StatefulWidget {
