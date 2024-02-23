@@ -28,7 +28,7 @@ class TossPayDto {
 
 class TossPayData {
   final String payType;
-  final int amount;
+  final num amount;
   final String orderName;
   final String orderId;
   final String memberEmail;

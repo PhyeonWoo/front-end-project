@@ -23,7 +23,7 @@ class ProfileName extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${u.principal.value.memberNickname}님",
+                    "${u.principal.value.nickName}님",
                     style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 24,

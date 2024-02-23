@@ -25,7 +25,7 @@ class UpdatedUserProfile extends StatelessWidget {
             children: [
               ProfilePhoto(),
               Text(
-                "${u.principal.value.memberNickname} 님",
+                "${u.principal.value.nickName} 님",
                 style: TextStyle(
                   color: AppColor.darkGrey,
                   fontSize: 18,

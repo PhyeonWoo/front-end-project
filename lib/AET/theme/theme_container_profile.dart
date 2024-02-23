@@ -139,7 +139,7 @@ class InnerUserMainBox extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(0, 5, 5, 0),
                     child: Obx(
                           () => Text(
-                        "${u.principal.value.memberNickname} 님",
+                        "${u.principal.value.nickName} 님",
                         style: TextStyle(
                           fontFamily: "Pretendard",
                           fontSize: 12,
