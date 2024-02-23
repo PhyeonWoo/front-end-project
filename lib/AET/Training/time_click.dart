@@ -242,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                               InkWell(
                                 onTap: () {
-                                  Get.to(() => BuyTicket());
+                                  //Get.to(() => BuyTicket());
                                 },
                                 child: Container(
                                   child: Align(
