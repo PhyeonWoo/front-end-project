@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:get/get.dart';
 
 class action_Button extends StatelessWidget {
@@ -11,19 +12,18 @@ class action_Button extends StatelessWidget {
             onPressed: () {
               Get.to(() => ThirdPage());
             },
-            icon: Icon(Icons.star),
+            icon: Image.asset(
+              "assets/images/Vector.png",
+            ),iconSize: 35,
         ),
         IconButton(
             onPressed: () {
               Get.to(() => ThirdPage());
             },
-            icon: Icon(Icons.access_alarm)
+            icon: Icon(Icons.bookmark,size: 30,color: Colors.yellowAccent,
+            ),
         ),
       ],
-      // icon: Icon(Icons.star),
-      // onPressed: () {
-      //   Get.to(ThirdPage());
-      // },
     );
   }
 }
