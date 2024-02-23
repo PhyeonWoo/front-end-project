@@ -1,9 +1,7 @@
 import 'package:aet/AET/components/custom_choice_chips.dart';
 import 'package:aet/AET/payment/payment_result.dart';
-import 'package:aet/controller/dto/TossPaymentResultDto.dart';
 import 'package:aet/controller/pay_chips_controller.dart';
 import 'package:aet/controller/toss_controller.dart';
-import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/Key.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +30,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
   SelectedPaymentMethod? selectedPaymentMethod;
   //UIState get info => widget.info;
   //PaymentInfo get data => widget.data;
-  int? newAmount;
+  num? newAmount;
 
   @override
   void initState() {
@@ -69,7 +67,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
   @override
   Widget build(BuildContext context) {
     final TossController t = Get.put(TossController());
-    final UserController u = Get.put(UserController());
+
 
     return Scaffold(
       appBar: CustomAppbar(titleWrite: "포인트 충전하기",BackButton: true,),
@@ -235,13 +233,10 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                   paymentInfo: PaymentInfo(orderId: "${t.orderId}", orderName: "${t.orderName}"));
               Success? success = paymentResult.success;
               if (success != null) {
-                await t.tossPayment();
-                TossPaymentResultDto? result = await t.tossPaymentSuccess();
+                var result = await t.fetchPaymentSuccess(success.paymentKey, success.orderId, success.amount);
                 if (result != null) {
-                  // 성공적으로 결과를 받았을 경우
                   print('Toss payment succeeded: $result');
                 } else {
-                  // 결과가 null이면 실패한 경우
                   print('Toss payment failed');
                 }
                 Get.snackbar("결제 성공","포인트 충전");

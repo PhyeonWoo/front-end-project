@@ -8,7 +8,7 @@ class UserProvider extends GetConnect {
   Future<Response> join(Map requestData) => post("$host/auth/join", requestData);
 
   Future<Dio.Response> fetchUserPoints(memberId) async{
-    return await _dio.get('$host/members/point_find/$memberId');
+    return await _dio.get('$host/members/login_view/$memberId');
   }
   Future<Dio.Response> uploadImage(Dio.FormData formData) async {
     return await _dio.post('$host/members/file_save', data: formData);
