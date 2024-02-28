@@ -1,7 +1,7 @@
 import 'package:aet/AET/auth/join_page.dart';
 import 'package:aet/AET/components/custom_elevated_button.dart';
 import 'package:aet/AET/components/custom_text_form_underline_field.dart';
-import 'package:aet/AET/screens/home.dart';
+import 'package:aet/AET/screens/navigation/homeNavigation.dart';
 import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
@@ -78,8 +78,8 @@ class LoginPage extends StatelessWidget {
                     int result =
                     await u.login(_email.text.trim(), _password.text.trim());
                     if (result == 1) {
-                      await u.fetchUserPoints(u.principal.value!.memberId!);
-                      Get.to(() => homeMain());
+                      await u.fetchUserPoints(u.principal.value.memberId!);
+                      Get.to(() => Navigation());
                     } else {
                       Get.snackbar("로그인 시도", "로그인 실패");
                     }

@@ -2,9 +2,10 @@ import 'package:aet/AET/profile/profile_photo.dart';
 import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfileName extends StatelessWidget {
-  UserController u = UserController();
+  UserController u = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
