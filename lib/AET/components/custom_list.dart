@@ -1,23 +1,23 @@
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 
 class CustomList extends StatelessWidget {
   final String textWrite;
-  final Widget togo;
+  final VoidCallback onClick; // 페이지 이동 대신 클릭 이벤트를 처리
 
-  const CustomList({required this.textWrite, required this.togo});
+  const CustomList({
+    required this.textWrite,
+    required this.onClick, // 생성자를 통해 onClick 이벤트 주입
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        Get.to(() => togo); // GetX를 사용하여 HomePage로 이동
-      },
+      onPressed: onClick, // 클릭 이벤트 사용
       style: TextButton.styleFrom(
         backgroundColor: Colors.white,
-        elevation: 0.5, // 버튼의 그림자를 제거
+        elevation: 0.5,
       ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(10, 5, 0, 5),
@@ -29,15 +29,14 @@ class CustomList extends StatelessWidget {
               textWrite,
               style: TextStyle(
                 fontSize: 16,
-                fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w400,
-                color: AppColor.darkGrey,
+                color: AppColor.darkGrey, // AppColor.darkGrey를 직접 색상으로 대체
               ),
             ),
             Divider(
-              color: Colors.transparent, // 구분선 색상
-              height: 0, // 구분선 높이
-              thickness: 0, // 구분선 두께
+              color: Colors.transparent,
+              height: 0,
+              thickness: 0,
             ),
           ],
         ),
@@ -45,3 +44,4 @@ class CustomList extends StatelessWidget {
     );
   }
 }
+

@@ -2,11 +2,13 @@ import 'package:aet/AET/components/custom_choice_chips.dart';
 import 'package:aet/AET/payment/payment_result.dart';
 import 'package:aet/controller/pay_chips_controller.dart';
 import 'package:aet/controller/toss_controller.dart';
+import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/Key.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:aet/AET/components/custom_appbar_title.dart';
+import 'package:intl/intl.dart';
 import 'package:tosspayments_widget_sdk_flutter/model/payment_info.dart';
 import 'package:tosspayments_widget_sdk_flutter/model/payment_widget_options.dart';
 import 'package:tosspayments_widget_sdk_flutter/model/selected_payment_method.dart';
@@ -28,6 +30,9 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
   PaymentMethodWidgetControl? _paymentMethodWidgetControl;
   AgreementWidgetControl? _agreementWidgetControl;
   SelectedPaymentMethod? selectedPaymentMethod;
+
+
+
   //UIState get info => widget.info;
   //PaymentInfo get data => widget.data;
   num? newAmount;
@@ -67,6 +72,11 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
   @override
   Widget build(BuildContext context) {
     final TossController t = Get.put(TossController());
+    final UserController u = Get.put(UserController());
+
+    String formattedNumber = u.principal.value?.point != null
+        ? NumberFormat('#,##0', 'en_US').format(u.principal.value!.point)
+        : '0';
 
 
     return Scaffold(
@@ -96,7 +106,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
                           child: Text(
-                            "50,000P",
+                            "${formattedNumber}",
                             style: TextStyle(
                               color: AppColor.green,
                               fontSize: 32,

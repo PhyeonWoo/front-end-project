@@ -7,25 +7,19 @@ import 'package:aet/AET/profile/profile_photo_card.dart';
 import 'package:aet/AET/profile/profile_photo_name.dart';
 import 'package:aet/AET/screens/mypageCategory/QnA.dart';
 import 'package:aet/AET/screens/mypageCategory/noticeEvent.dart';
-import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-
-void main() {
-  runApp(MyPage());
-}
 
 class MyPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       home: Scaffold(
         appBar: CustomAppbar(
           titleWrite: '마이페이지',),
-        body: Container(
-          color: Colors.white,
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -44,10 +38,24 @@ class MyPage extends StatelessWidget {
                 height: 1, // 구분선 높이
                 thickness: 7, // 구분선 두께
               ),
-              CustomList(textWrite: "회원정보수정",togo: UpdatedUserProfile(),),
-              CustomList(textWrite: "자주하는질문",togo: QnA(),),
-              CustomList(textWrite: "공지/이벤트",togo: NoticeEvent(),),
-              CustomList(textWrite: "로그아웃",togo: LoginPage(),), // 임시용 토큰을 안뺐음.
+              CustomList(
+                textWrite: "회원정보수정",
+                onClick: () => Get.to(() => UpdatedUserProfile()),
+              ),
+              CustomList(
+                textWrite: "자주하는질문",
+                onClick: () => Get.to(() => QnA()),
+              ),
+              CustomList(
+                textWrite: "공지/이벤트",
+                onClick: () => Get.to(() => NoticeEvent()),
+              ),
+              CustomList(
+                textWrite: "로그아웃",
+                onClick: () {
+                Get.to(() => LoginPage());
+                },
+              ),
             ],
           ),
         ),
