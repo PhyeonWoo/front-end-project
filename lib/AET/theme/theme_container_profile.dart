@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:typed_data';
+
 import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
@@ -69,8 +72,10 @@ class UserMainBox extends StatelessWidget {
 class InnerUserMainBox extends StatelessWidget {
   UserController u = Get.put(UserController());
 
+
   @override
   Widget build(BuildContext context) {
+    Uint8List imageBytes = u.principal.value.memberPhoto.first['imageBytes'];
     String formattedNumber = u.principal.value?.point != null
         ? NumberFormat('#,##0', 'en_US').format(u.principal.value!.point)
         : '0';
@@ -132,7 +137,15 @@ class InnerUserMainBox extends StatelessWidget {
                     child: Container(
                       width: 50,
                       height: 55,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: AppColor.green),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: AppColor.green,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10), // ClipRRect로 이미지 모서리를 둥글게
+                        child: Image.memory(
+                          imageBytes,
+                          fit: BoxFit.cover, // 이미지가 Container 안에서 꽉 차게 설정
+                        ),
+                      ),
                     ),
                   ),
                   Padding(

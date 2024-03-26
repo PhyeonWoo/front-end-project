@@ -2,10 +2,12 @@ import 'package:aet/AET/profile/profile_point_box.dart';
 import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class ProfileCard extends StatelessWidget {
-  UserController u = UserController();
+  UserController u = Get.put(UserController());
+
   @override
   Widget build(BuildContext context) {
     String formattedNumber = u.principal.value?.point != null
