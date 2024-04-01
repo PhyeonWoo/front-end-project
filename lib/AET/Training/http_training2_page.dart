@@ -1,90 +1,213 @@
-import 'dart:convert';
-import 'package:flutter/foundation.dart';
+// import 'package:aet/AET/Training/TimeClick.dart';
+// import 'package:aet/AET/Training/http_training2.dart';
+//
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+//
+// class GymDetailsPage extends StatelessWidget {
+//   final Gym gym;
+//   GymDetailsPage({required this.gym});
+//
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return GetMaterialApp(
+//       home: Scaffold(
+//         body: CustomScrollView(
+//           slivers: [
+//             SliverPersistentHeader(delegate: MySliverPersistentHeaderDelegate(),
+//             pinned: false,
+//             floating: false,
+//             ),
+//             SliverList(delegate: SliverChildListDelegate([
+//               Container(
+//                 padding: EdgeInsets.all(16),
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: <Widget>[
+//                     Text("${gym.name}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25)),
+//
+//                     Container(
+//                       margin: EdgeInsets.only(right: 300),
+//                       width: 50,
+//                       height: 20,
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(5),
+//                         color: Color.fromRGBO(57,145,72,1),
+//                       ),
+//                       child: Center(
+//                         child: Text(
+//                           "${gym.sports}",
+//                           style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.white),
+//                         ),
+//                       ),
+//                     ),
+//
+//
+//                     Text("${gym.city} ${gym.street}"),
+//                     Divider(thickness: 2,color: Colors.black,),
+//                     Text("${gym.sports}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20),),
+//                     // Text("${gym.city}",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20),),
+//
+//                     Divider(thickness: 2,color: Colors.black,),
+//
+//                     Text("일일권",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+//
+//                     InkWell(
+//                       onTap: () {
+//                         Get.to(() => time_click());
+//                       },
+//                       child: Container(
+//                         alignment: Alignment.centerRight,
+//                         margin: EdgeInsets.fromLTRB(10,10,0,10),
+//                         width: 380,
+//                         height: 100,
+//                         decoration: BoxDecoration(
+//                           border: Border.all(color: Colors.black,width: 1),
+//                           borderRadius: BorderRadius.circular(10),
+//                           color: Colors.white,
+//                         ),
+//                         child: Row(
+//                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                           children: [
+//                             Container(
+//                               margin: EdgeInsets.only(left: 20),
+//                               child: Column(
+//                                 children: [
+//                                   Padding(
+//                                       padding: EdgeInsets.only(top: 10),
+//                                     child: Text(
+//                                       "헬스 이용권",
+//                                     style: TextStyle(
+//                                       fontWeight: FontWeight.bold,
+//                                       fontSize: 16),
+//                                     ),
+//                                   ),
+//                                 ],
+//                               ),
+//                             ),
+//                             Container(
+//                               decoration: BoxDecoration(
+//                                 borderRadius: BorderRadius.only(
+//                                   topRight: Radius.circular(10),
+//                                   bottomRight: Radius.circular(10)),
+//                                 color: Colors.red,
+//                               ),
+//                               width: 30,
+//                               height: 100,
+//                               child: Center(
+//                                 child: RotatedBox(
+//                                   quarterTurns: 1,
+//                                   child: Text(
+//                                     "짐 보 따 리",
+//                                     style: TextStyle(
+//                                       color: Colors.white,
+//                                       fontWeight: FontWeight.bold,
+//                                       fontSize: 17,
+//                                     ),
+//                                   ),
+//                                 ),
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                     ),
+//
+//                     InkWell(
+//                       onTap: () {
+//                         Get.to(() => time_click());
+//                       },
+//                       child: Container(
+//                         alignment: Alignment.centerRight,
+//                         margin: EdgeInsets.fromLTRB(10,10,0,0),
+//                         width: 380,
+//                         height: 100,
+//                         decoration: BoxDecoration(
+//                           border: Border.all(color: Colors.black,width: 1),
+//                           borderRadius: BorderRadius.circular(10),
+//                           color: Colors.white,
+//                         ),
+//                         child: Row(
+//                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                           children: [
+//                             Container(
+//                               margin: EdgeInsets.only(left: 20),
+//                               child: Column(
+//                                 children: [
+//                                   Padding(
+//                                     padding: EdgeInsets.only(top: 10),
+//                                     child: Text(
+//                                       "이용권",
+//                                       style: TextStyle(
+//                                           fontWeight: FontWeight.bold,
+//                                           fontSize: 16),
+//                                     ),
+//                                   ),
+//                                 ],
+//                               ),
+//                             ),
+//                             Container(
+//                               decoration: BoxDecoration(
+//                                 borderRadius: BorderRadius.only(
+//                                     topRight: Radius.circular(10),
+//                                     bottomRight: Radius.circular(10)),
+//                                 color: Colors.red,
+//                               ),
+//                               width: 30,
+//                               height: 100,
+//                               child: Center(
+//                                 child: RotatedBox(
+//                                   quarterTurns: 1,
+//                                   child: Text(
+//                                     "짐 보 따 리",
+//                                     style: TextStyle(
+//                                       color: Colors.white,
+//                                       fontWeight: FontWeight.bold,
+//                                       fontSize: 17,
+//                                     ),
+//                                   ),
+//                                 ),
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ),
+//                     ),
+//
+//
+//                   ],
+//                 ),
+//               ),
+//               Divider(thickness: 2,color: Colors.black,),
+//               Text(
+//                 "이용후기",
+//                 style: TextStyle(
+//                     fontSize: 20,
+//                     fontWeight: FontWeight.bold,
+//                 ),
+//               )
+//             ]),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+//
+//
+
+import 'package:aet/AET/Training/http_training2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 
-void main() => runApp(Training2Page());
 
-class Training2Page extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    int userId = 1;
+class GymDetailsPage extends StatelessWidget {
+  final Gym gym;
 
-    return FutureBuilder<Map<String, dynamic>>(
-      future: fetchData(userId),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasError) {
-            return Text('에러: ${snapshot.error}');
-          } else {
-            var userData = snapshot.data!['user'] ?? {};
-            var commentsData = snapshot.data!['comments'] ?? {};
-
-            return GetMaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: MyHomePage(
-                website: userData['website'] ?? "",
-                phone: userData['phone'] ?? "",
-                email: userData['email'] ?? "",
-                username: userData['username'] ?? "",
-                id: userData['id'] ?? 0,
-                name: userData['name'] ?? "",
-                body: userData['body'] ?? "",
-                commentsData: commentsData,
-              ),
-            );
-          }
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
-    );
-  }
-
-  Future<Map<String, dynamic>> fetchData(int userId) async {
-    final userResponse =
-    await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users/1'));
-    final commentsResponse =
-    await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts/1/comments'));
-
-    if (userResponse.statusCode == 200 && commentsResponse.statusCode == 200) {
-      final userData = json.decode(userResponse.body);
-      final commentsData = json.decode(commentsResponse.body);
-
-      return {
-        'user': userData,
-        'comments': commentsData,
-      };
-    } else {
-      throw Exception('데이터 불러오기 실패');
-    }
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String website;
-  final String phone;
-  final String email;
-  final String username;
-  final int id;
-  final String body;
-  final String name;
-  final dynamic commentsData;
-
-  MyHomePage({
-    Key? key,
-    required this.id,
-    required this.name,
-    required this.body,
-    required this.username,
-    required this.website,
-    required this.phone,
-    required this.email,
-    required this.commentsData,
-  }) : super(key: key);
+  GymDetailsPage({required this.gym});
 
   @override
   Widget build(BuildContext context) {
@@ -94,84 +217,51 @@ class MyHomePage extends StatelessWidget {
           SliverPersistentHeader(
             delegate: MySliverPersistentHeaderDelegate(),
             pinned: false,
-            floating: true,
+            floating: false,
           ),
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      "노원 테니스장",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          "${gym.name}",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                        ),
+                        SizedBox(width: 15), // 간격 조절
+                        Container(
+                          width: 50,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Color.fromRGBO(57, 145, 72, 1),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "${gym.sports}",
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      "번호 : $phone",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                    ),
+                    SizedBox(height: 10), // 간격 조절
+                    Text("${gym.city} ${gym.street}"),
                     Divider(thickness: 2, color: Colors.black),
                     Text(
-                      "이름 : $username",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      "이름 : $username",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      "이름 : $username",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      "이름 : $website",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      "이름 : $website",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      "이름 : $email",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      "${gym.sports}\n",
+                      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
                     ),
                     Divider(thickness: 2, color: Colors.black),
-                    Text(
-                      "일일권",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    Text("일일권", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                     InkWell(
                       onTap: () {
                         Get.to(() => TimeClickPage());
@@ -179,8 +269,8 @@ class MyHomePage extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.centerRight,
                         margin: EdgeInsets.fromLTRB(10, 10, 0, 10),
-                        width: 380.0,
-                        height: 100.0,
+                        width: 380,
+                        height: 100,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 1),
                           borderRadius: BorderRadius.circular(10),
@@ -197,9 +287,7 @@ class MyHomePage extends StatelessWidget {
                                     padding: EdgeInsets.only(top: 10),
                                     child: Text(
                                       "헬스 이용권",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16),
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                     ),
                                   ),
                                 ],
@@ -208,21 +296,23 @@ class MyHomePage extends StatelessWidget {
                             Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(10),
-                                    bottomRight: Radius.circular(10)),
+                                  topRight: Radius.circular(10),
+                                  bottomRight: Radius.circular(10),
+                                ),
                                 color: Colors.red,
                               ),
-                              width: 30.0,
-                              height: 100.0,
+                              width: 30,
+                              height: 100,
                               child: Center(
                                 child: RotatedBox(
                                   quarterTurns: 1,
                                   child: Text(
                                     "짐 보 따 리",
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 17),
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -231,83 +321,70 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Divider(thickness: 1, color: Colors.black),
                     InkWell(
                       onTap: () {
                         Get.to(() => TimeClickPage());
                       },
                       child: Container(
                         alignment: Alignment.centerRight,
-                        margin: EdgeInsets.fromLTRB(10, 10, 0, 10),
-                        width: 380.0,
-                        height: 100.0,
+                        margin: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                        width: 380,
+                        height: 100,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 1),
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white,
                         ),
-                        child: Container(
-                          margin: EdgeInsets.only(left: 20),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(10),
-                                  bottomRight: Radius.circular(10)),
-                              color: Colors.red),
-                          width: 30.0,
-                          height: 100.0,
-                          child: Center(
-                            child: RotatedBox(
-                              quarterTurns: 1,
-                              child: Text(
-                                "짐 보 따 리",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 17),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(left: 20),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 10),
+                                    child: Text(
+                                      "이용권",
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10),
+                                  bottomRight: Radius.circular(10),
+                                ),
+                                color: Colors.red,
+                              ),
+                              width: 30,
+                              height: 100,
+                              child: Center(
+                                child: RotatedBox(
+                                  quarterTurns: 1,
+                                  child: Text(
+                                    "짐 보 따 리",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                     Divider(thickness: 2, color: Colors.black),
                     Text(
                       "이용후기",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontFamily: "PretendardVariable.ttf",
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "이름 : $name",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      "내용 : $id",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15,
-                      ),
-                    ),
-                    Text(
-                      "이름 : $name",
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      "내용 : $id",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15,
-                      ),
-                    ),
-                    Divider(thickness: 2, color: Colors.black),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
               ),
@@ -327,9 +404,7 @@ class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
       itemCount: 3, // 이미지 개수
       itemBuilder: (context, index) {
         return ClipRRect(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(25),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(25)),
           child: Image(
             image: AssetImage('assets/images/${index + 1}.png'),
             fit: BoxFit.fill,
@@ -341,7 +416,7 @@ class MySliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 225;
+  double get maxExtent => 240;
 
   @override
   double get minExtent => 10;
@@ -357,10 +432,10 @@ class TimeClickPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Time Click Page'),
+        title: Text("Test"),
       ),
-      body: Center(
-        child: Text('Time Click Page Content'),
+      body: SafeArea(
+        child: Text("test"),
       ),
     );
   }
