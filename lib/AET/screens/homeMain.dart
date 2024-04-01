@@ -8,8 +8,6 @@ import 'package:aet/AET/theme/theme_container_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 class homeMain extends StatelessWidget {
 
   @override
@@ -22,10 +20,6 @@ class homeMain extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               UserMainBox(),
-              CustomList(
-                textWrite: "마이페이지",
-                onClick: () => Get.to(() => MyPage()),
-              ),
               CustomContainerWidthLong(text: "종목추천",textSub: "오늘의 종목을 추천"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -38,10 +38,14 @@ dependencies:
   intl: ^0.18.1
   provider: ^6.1.1
   http: ^1.1.0
+  http_parser: ^4.0.2
   dio: ^5.4.0
   tosspayments_widget_sdk_flutter: ^1.0.3
   fluttertoast: ^8.2.4
   image_picker: ^1.0.7
+  mime: ^1.0.4
+  kakao_flutter_sdk: ^1.9.1
+  google_sign_in: ^6.1.6
 
   flutter:
     sdk: flutter

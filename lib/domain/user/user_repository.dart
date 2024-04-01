@@ -21,13 +21,14 @@ class UserRepository {
         User principal = User(
             memberId: memberId, // from the login request
             accessToken: jwtTokenDto.accessToken, // from the JWT token response
-            refreshToken: jwtTokenDto.refreshToken,);
+            refreshToken: jwtTokenDto.refreshToken,
+            memberPhoto: [],);
         return principal;
       } else {
-        return User();
+        return User(memberPhoto: []);
       }
     } else {
-      return User();
+      return User(memberPhoto: []);
     }
   }
 

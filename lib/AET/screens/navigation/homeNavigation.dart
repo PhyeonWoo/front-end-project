@@ -19,7 +19,7 @@ class Navigation extends StatelessWidget {
         ],
       )),
       bottomNavigationBar: Obx(() => Container(
-        height: 80,
+        height: 60,
         child: BottomNavigationBar(
           currentIndex: bottomNavController.tabIndex.value,
           onTap: bottomNavController.changeTabIndex,

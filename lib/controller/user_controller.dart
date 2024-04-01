@@ -1,26 +1,18 @@
-import 'package:aet/controller/dto/PhotoUploadDto.dart';
 import 'package:aet/domain/user/user.dart';
-import 'package:aet/domain/user/user_provider.dart';
 import 'package:aet/domain/user/user_repository.dart';
-import 'package:dio/dio.dart' as Dio;
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
+
 
 
 class UserController extends GetxController {
   final UserRepository _userRepository = UserRepository();
-  final UserProvider _userProvider = UserProvider();
   final RxBool isLogin = false.obs; // Observable variable
-  final Rx<User> principal = User().obs;
-
-  final ImagePicker _picker = ImagePicker();
+  final Rx<User> principal = User(memberPhoto: []).obs;
   var uploadStatus = ''.obs;
 
   // 추가: accessToken과 refreshToken 멤버 변수 정의
   String? accessToken;
   String? refreshToken;
-  String? nickName;
-  int? point;
 
   void logout() async {
     this.isLogin.value = false;
@@ -66,24 +58,5 @@ class UserController extends GetxController {
       print("Error fetching user points: $e");
       return -1;
      }
-  }
-
-  Future<void> pickAndUploadImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      PhotoUploadDto dto = PhotoUploadDto(filePath: image.path, email: "사용자 이메일");
-      Dio.FormData formData = dto.toFormData();
-
-      try {
-        Dio.Response response = await _userProvider.uploadImage(formData);
-        if (response.statusCode == 200) {
-          uploadStatus.value = "업로드 성공";
-        } else {
-          uploadStatus.value = "업로드 실패: ${response.statusCode}";
-        }
-      } catch (e) {
-        uploadStatus.value = "업로드 중 에러 발생: $e";
-      }
-    }
   }
 }

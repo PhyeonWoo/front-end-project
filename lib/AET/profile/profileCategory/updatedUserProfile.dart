@@ -1,5 +1,6 @@
 import 'package:aet/AET/components/custom_appbar_title.dart';
 import 'package:aet/AET/profile/profile_photo.dart';
+import 'package:aet/controller/photo_upload_controller.dart';
 import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,8 @@ void main() {
 
 
 class UpdatedUserProfile extends StatelessWidget {
-  UserController u = Get.put(UserController());
+  final UserController u = Get.put(UserController());
+  final PhotoUploadController up = Get.put(PhotoUploadController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,9 @@ class UpdatedUserProfile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ProfilePhoto(),
+              ElevatedButton(onPressed: () async{
+                await up.pickAndUploadImage("${u.principal.value.memberId}");
+              }, child: Text("이미지")),
               Text(
                 "${u.principal.value.nickName} 님",
                 style: TextStyle(
