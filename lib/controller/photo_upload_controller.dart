@@ -12,15 +12,6 @@ class PhotoUploadController extends GetxController {
   UserController u = Get.put(UserController());
 
   Future<User?> pickAndUploadImage(String memberId) async {
-    _dio.interceptors.add(Dio.LogInterceptor(
-      request: true,
-      requestBody: true,
-      requestHeader: true,
-      error: true,
-      logPrint: (Object object) {
-        print(object);
-      },
-    ));
 
     final XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
@@ -29,8 +20,7 @@ class PhotoUploadController extends GetxController {
         memberPhotoRequestDto: {"memberId": memberId },
       );
       Dio.FormData formData = await photoUploadDto.toFormData();
-      print(photoUploadDto.files);
-      print(photoUploadDto.memberPhotoRequestDto);
+
       try {
         Dio.Response response = await _dio.post(
           '$host/members/file_save',

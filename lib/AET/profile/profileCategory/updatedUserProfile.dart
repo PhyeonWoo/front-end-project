@@ -6,11 +6,6 @@ import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
-  runApp(UpdatedUserProfile());
-}
-
-
 class UpdatedUserProfile extends StatelessWidget {
   final UserController u = Get.put(UserController());
   final PhotoUploadController up = Get.put(PhotoUploadController());

@@ -9,10 +9,10 @@ class CustomContainerWidthLong extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenSize = MediaQuery.of(context).size.width;
 
     return Container(
-      width: screenWidth - 20,
+      width: screenSize - 20,
       height: 150,
       margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
       decoration: BoxDecoration(
@@ -93,7 +93,7 @@ class CustomContainerWidthLong extends StatelessWidget {
             child: FittedBox(
               child: Transform.scale(
                 scale: 1.3,
-                child: Image.asset('assets/images/training.jpg', width: 220, height: 150, fit: BoxFit.contain),
+                child: Image.asset('assets/images/training.jpg', width: screenSize*0.6, height: screenSize*0.4, fit: BoxFit.contain),
               ),
             ),
           ),

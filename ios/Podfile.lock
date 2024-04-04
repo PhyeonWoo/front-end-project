@@ -1,4 +1,10 @@
 PODS:
+  - AppAuth (1.7.3):
+    - AppAuth/Core (= 1.7.3)
+    - AppAuth/ExternalUserAgent (= 1.7.3)
+  - AppAuth/Core (1.7.3)
+  - AppAuth/ExternalUserAgent (1.7.3):
+    - AppAuth/Core
   - device_info (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -12,7 +18,20 @@ PODS:
   - fluttertoast (0.0.2):
     - Flutter
     - Toast
+  - google_sign_in_ios (0.0.1):
+    - Flutter
+    - GoogleSignIn (~> 7.0)
+  - GoogleSignIn (7.1.0):
+    - AppAuth (< 2.0, >= 1.7.3)
+    - GTMAppAuth (< 5.0, >= 4.1.1)
+    - GTMSessionFetcher/Core (~> 3.3)
+  - GTMAppAuth (4.1.1):
+    - AppAuth/Core (~> 1.7)
+    - GTMSessionFetcher/Core (< 4.0, >= 3.3)
+  - GTMSessionFetcher/Core (3.3.2)
   - image_picker_ios (0.0.1):
+    - Flutter
+  - kakao_flutter_sdk_common (1.9.1-2):
     - Flutter
   - OrderedSet (5.0.0)
   - path_provider_foundation (0.0.1):
@@ -26,20 +45,29 @@ PODS:
     - Flutter
   - url_launcher_ios (0.0.1):
     - Flutter
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - device_info (from `.symlinks/plugins/device_info/ios`)
   - Flutter (from `Flutter`)
   - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - kakao_flutter_sdk_common (from `.symlinks/plugins/kakao_flutter_sdk_common/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - tosspayments_webview_flutter (from `.symlinks/plugins/tosspayments_webview_flutter/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
 SPEC REPOS:
   trunk:
+    - AppAuth
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
     - OrderedSet
     - Toast
 
@@ -52,8 +80,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_inappwebview/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
+  google_sign_in_ios:
+    :path: ".symlinks/plugins/google_sign_in_ios/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
+  kakao_flutter_sdk_common:
+    :path: ".symlinks/plugins/kakao_flutter_sdk_common/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   shared_preferences_foundation:
@@ -62,20 +94,29 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/tosspayments_webview_flutter/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
+  AppAuth: a13994980c1ec792f7e2e665acd4d4aa6be43240
   device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_inappwebview: 3d32228f1304635e7c028b0d4252937730bbc6cf
   fluttertoast: 31b00dabfa7fb7bacd9e7dbee580d7a2ff4bf265
+  google_sign_in_ios: 8115e3fbe097e6509beb819ed602d47369d9011f
+  GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
+  GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
+  GTMSessionFetcher: 0e876eea9782ec6462e91ab872711c357322c94f
   image_picker_ios: 99dfe1854b4fa34d0364e74a78448a0151025425
+  kakao_flutter_sdk_common: ac22d95194585407db3fbc5f838d67ced11ea0f0
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
   shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   tosspayments_webview_flutter: ceae304825a077de594d01ee39dd0ce2307adb4e
   url_launcher_ios: bbd758c6e7f9fd7b5b1d4cde34d2b95fcce5e812
+  webview_flutter_wkwebview: 4f3e50f7273d31e5500066ed267e3ae4309c5ae4
 
-PODFILE CHECKSUM: 02caaa843f6501172c0d470d80e72f61175c8b93
+PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
 
-COCOAPODS: 1.15.0
+COCOAPODS: 1.14.3

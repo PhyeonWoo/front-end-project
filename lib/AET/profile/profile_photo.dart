@@ -1,5 +1,4 @@
-import 'dart:typed_data';
-
+import 'package:aet/AET/profile/profile_set.dart';
 import 'package:aet/controller/user_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,6 @@ class ProfilePhoto extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    Uint8List imageBytes = u.principal.value.memberPhoto.first['imageBytes'];
     return Container(
       width: 80,
       height: 85,
@@ -29,10 +27,7 @@ class ProfilePhoto extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10), // ClipRRect로 이미지 모서리를 둥글게
-        child: Image.memory(
-          imageBytes,
-          fit: BoxFit.cover, // 이미지가 Container 안에서 꽉 차게 설정
-        ),
+        child: ProfileSet(),
       ),
     );
   }

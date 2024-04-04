@@ -9,6 +9,7 @@ class Navigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double bottomSize = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Obx(() => IndexedStack(
         index: bottomNavController.tabIndex.value,
@@ -19,7 +20,7 @@ class Navigation extends StatelessWidget {
         ],
       )),
       bottomNavigationBar: Obx(() => Container(
-        height: 60,
+        height: bottomSize* 0.11,
         child: BottomNavigationBar(
           currentIndex: bottomNavController.tabIndex.value,
           onTap: bottomNavController.changeTabIndex,
