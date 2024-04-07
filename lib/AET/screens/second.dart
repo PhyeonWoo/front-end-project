@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../Sports_Category/sports_container.dart'; //flutter의 package를 가져오는 코드 반드시 필요
 
+void main() => runApp(second());
 
 class second extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class second extends StatefulWidget {
 class MyAppState1 extends State<second> {
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Sports_Container(),
+      body: Image.asset('assets/images/userprofile.png',fit: BoxFit.cover,),
       // appBar: AppBar(
       //   backgroundColor: Colors.white,
       //   elevation: 1,

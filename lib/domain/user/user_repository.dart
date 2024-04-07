@@ -4,37 +4,37 @@ import 'package:aet/controller/dto/LoginReqDto.dart';
 import 'package:aet/domain/user/user.dart';
 import 'package:aet/domain/user/user_provider.dart';
 import 'package:dio/dio.dart' as Dio;
-import 'package:get/get.dart';
+
 
 
 class UserRepository {
   final UserProvider _userProvider = UserProvider();
-  Dio.Dio dio = Dio.Dio();
 
-  Future<User> login(String memberId, String password) async {
+  Future<User> login(String memberId, String password) async{
     LoginReqDto loginReqDto = LoginReqDto(memberId, password);
-    Response response = await _userProvider.login(loginReqDto.toJson());
+    Dio.Response response = await _userProvider.login(loginReqDto.toJson());
 
-    if (response.statusCode == 200) {
-      JwtTokenDto jwtTokenDto = JwtTokenDto.fromJson(response.body);
-      if (jwtTokenDto.grantType == "Bearer" && jwtTokenDto.accessToken != null) {
+    if(response.statusCode == 200){
+      JwtTokenDto jwtTokenDto = JwtTokenDto.fromJson(response.data);
+      if(jwtTokenDto.grantType == "Bearer" && jwtTokenDto.accessToken != null){
         User principal = User(
-            memberId: memberId, // from the login request
-            accessToken: jwtTokenDto.accessToken, // from the JWT token response
+            memberId: memberId,
+            password: password,
+            accessToken: jwtTokenDto.accessToken,
             refreshToken: jwtTokenDto.refreshToken,
-            memberPhoto: [],);
+            memberPhoto: []);
         return principal;
-      } else {
+      } else{
         return User(memberPhoto: []);
       }
-    } else {
+    } else{
       return User(memberPhoto: []);
     }
   }
 
   Future<bool> join(String memberId, String password, String nickName) async {
     JoinReqDto joinReqDto = JoinReqDto(memberId, password, nickName);
-    Response response = await _userProvider.join(joinReqDto.toJson());
+    Dio.Response response = await _userProvider.join(joinReqDto.toJson());
     return response.statusCode == 200;
   }
 

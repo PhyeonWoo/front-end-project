@@ -17,7 +17,7 @@ class TossProvider extends GetConnect {
   }) async {
     final String url = "$host/payments/toss";
     final Map<String, String> headers = {
-      "Authorization": "Bearer ${u.accessToken}",
+      "Authorization": "Bearer ${u.principal.value.accessToken}",
       "Content-Type": "application/json",
     };
     final response = await post(url, {
@@ -33,7 +33,7 @@ class TossProvider extends GetConnect {
   Future<PaymentSuccessResponse?> tossPaymentSuccess(String paymentKey, String orderId, num amount) async {
     try {
       final Map<String, String> headers = {
-        "Authorization": "Bearer ${u.accessToken}",
+        "Authorization": "Bearer ${u.principal.value.accessToken}",
         "Content-Type": "application/json",
       };
 
