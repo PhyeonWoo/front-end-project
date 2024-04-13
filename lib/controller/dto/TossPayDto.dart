@@ -56,18 +56,18 @@ class TossPayData {
   });
 
   factory TossPayData.fromJson(Map<String, dynamic> json) => TossPayData(
-    payType: json['payType'],
-    amount: json['amount'],
-    orderName: json['orderName'],
-    orderId: json['orderId'],
-    memberEmail: json['memberEmail'],
-    memberName: json['memberName'],
-    successUrl: json['successUrl'],
-    failUrl: json['failUrl'],
-    failReason: json['failReason'],
-    cancelYN: json['cancelYN'],
-    cancelReason: json['cancelReason'],
-    createdAt: json['createdAt'],
+    payType: json['payType']as String,
+    amount: json['amount']as num,
+    orderName: json['orderName']as String,
+    orderId: json['orderId']as String,
+    memberEmail: json['memberEmail']as String,
+    memberName: json['memberName']as String,
+    successUrl: json['successUrl']as String,
+    failUrl: json['failUrl']as String,
+    failReason: json['failReason']as String?,
+    cancelYN: json['cancelYN']as bool,
+    cancelReason: json['cancelReason']as String?,
+    createdAt: json['createdAt']as String,
   );
 
   Map<String, dynamic> toJson() => {

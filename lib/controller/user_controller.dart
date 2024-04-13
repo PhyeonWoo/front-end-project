@@ -20,7 +20,6 @@ class UserController extends GetxController {
     if (principal.accessToken != null && principal.memberId != null) {
       this.isLogin.value = true;
       this.principal.value = principal;
-      print(this.principal.value);
       return 1;
     } else {
       return -1;
@@ -50,3 +49,4 @@ class UserController extends GetxController {
      }
   }
 }
+

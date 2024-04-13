@@ -42,8 +42,8 @@ class UserRepository {
     Dio.Response response = await _userProvider.fetchUserPoints(memberId);
     if (response.statusCode == 200) {
       final data = response.data['data'];
-      User user = User.fromJson(data);
-      return user;
+      User principal = User.fromJson(data);
+      return principal;
     }
     return null;
   }
