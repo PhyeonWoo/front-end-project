@@ -4,11 +4,11 @@ import 'package:aet/controller/dto/LoginReqDto.dart';
 import 'package:aet/domain/user/user.dart';
 import 'package:aet/domain/user/user_provider.dart';
 import 'package:dio/dio.dart' as Dio;
-
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class UserRepository {
   final UserProvider _userProvider = UserProvider();
+  final UserSecure = new FlutterSecureStorage();
 
   Future<User> login(String memberId, String password) async{
     LoginReqDto loginReqDto = LoginReqDto(memberId, password);
@@ -42,8 +42,8 @@ class UserRepository {
     Dio.Response response = await _userProvider.fetchUserPoints(memberId);
     if (response.statusCode == 200) {
       final data = response.data['data'];
-      User principal = User.fromJson(data);
-      return principal;
+      User fetchUser = User.fromJson(data);
+      return fetchUser;
     }
     return null;
   }

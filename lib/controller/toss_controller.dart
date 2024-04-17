@@ -21,7 +21,7 @@ class TossController extends GetxController {
 
   Future<bool> tossPayment() async {
     if (payType.value != null && amount.value != null) {
-      String paymentMethod = "DEFAULT"; // Added default case
+      String? paymentMethod;
       switch (payType.value) {
         case "카드":
           paymentMethod = "CARD";

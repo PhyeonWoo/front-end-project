@@ -3,13 +3,13 @@ class JwtTokenDto {
   final String? accessToken;
   final String? refreshToken;
 
-  JwtTokenDto(this.grantType, this.accessToken, this.refreshToken);
+  JwtTokenDto({this.grantType, this.accessToken, this.refreshToken});
 
   factory JwtTokenDto.fromJson(Map<String, dynamic> json) {
     return JwtTokenDto(
-      json['grantType'] as String?,
-      json['accessToken'] as String?,
-      json['refreshToken'] as String?,
+      grantType: json['grantType'],
+      accessToken: json['accessToken'],
+      refreshToken: json['refreshToken'],
     );
   }
 

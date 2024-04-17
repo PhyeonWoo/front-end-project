@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class AppbarWidget extends StatelessWidget {
@@ -10,16 +11,14 @@ class AppbarWidget extends StatelessWidget {
       child: Row( // Padding 위젯을 제거하고 바로 Row 위젯을 사용합니다.
         children: [
           IconButton(
-            icon: Icon(Icons.airplane_ticket_outlined),
-            color: Colors.white,
+            icon: SvgPicture.asset('assets/images/ticket.svg',color: Colors.white,) ,
             iconSize: 30,
             onPressed: () {
               // Get.to(ThirdPage());
             },
           ),
           IconButton(
-            icon: Icon(Icons.bookmark),
-            color: Colors.yellow,
+            icon: SvgPicture.asset('assets/images/bookmark.svg',color: Colors.yellow,),
             iconSize: 30,
             onPressed: () {
               // Get.to(ThirdPage());

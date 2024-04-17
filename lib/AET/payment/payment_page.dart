@@ -1,5 +1,7 @@
 import 'package:aet/AET/components/custom_choice_chips.dart';
 import 'package:aet/AET/payment/payment_result.dart';
+import 'package:aet/AET/screens/navigation/homeNavigation.dart';
+import 'package:aet/controller/bottomnav_controller.dart';
 import 'package:aet/controller/pay_chips_controller.dart';
 import 'package:aet/controller/toss_controller.dart';
 import 'package:aet/controller/user_controller.dart';
@@ -26,6 +28,7 @@ class PaymentWidgetExamplePage extends StatefulWidget {
 
 class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
   final PayChoiceChipController controller = Get.put(PayChoiceChipController());
+  final BottomNavController bottomNavController = Get.put(BottomNavController());
   late PaymentWidget _paymentWidget;
   PaymentMethodWidgetControl? _paymentMethodWidgetControl;
   AgreementWidgetControl? _agreementWidgetControl;
@@ -250,7 +253,9 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                   print('Toss payment failed');
                 }
                 Get.snackbar("결제 성공","포인트 충전");
-                Get.to(() => ResultPage(), arguments: paymentResult.success);
+                await u.fetchUserPoints(u.Token.value.memberId!);
+                bottomNavController.tabIndex.value = 0;
+                Get.to(() => Navigation(), arguments: paymentResult.success);
               } else if (paymentResult.fail != null) {
                 Get.to(() => ResultPage(), arguments: paymentResult.fail);
               }

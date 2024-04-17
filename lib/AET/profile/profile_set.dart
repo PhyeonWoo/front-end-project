@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:aet/controller/user_controller.dart';
 
@@ -12,7 +13,7 @@ class ProfileSet extends StatelessWidget {
       Uint8List imageBytes = u.principal.value.memberPhoto.first['imageBytes'];
       return Image.memory(imageBytes, fit: BoxFit.cover);
     } else {
-      return Image.asset('assets/images/userprofile.svg', fit: BoxFit.cover);
+      return SvgPicture.asset('assets/images/userprofile.svg', fit: BoxFit.cover);
     }
   }
 }

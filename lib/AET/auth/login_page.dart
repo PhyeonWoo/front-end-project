@@ -3,6 +3,7 @@ import 'package:aet/AET/components/custom_elevated_button.dart';
 import 'package:aet/AET/components/custom_text_form_underline_field.dart';
 import 'package:aet/AET/screens/navigation/homeNavigation.dart';
 import 'package:aet/controller/user_controller.dart';
+import 'package:aet/domain/user/user.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -75,14 +76,17 @@ class LoginPage extends StatelessWidget {
                 text: "로그인",
                 funPageRoute: () async{
                   if (_formKey.currentState!.validate()) {
-                    int result =
-                    await u.login(_email.text.trim(), _password.text.trim());
-                    if (result == 1) {
-                      await u.fetchUserPoints(u.principal.value.memberId!);
+                    User? result = await u.login(_email.text.trim(), _password.text.trim());
+                    if (result != null) {
+                      await u.fetchUserPoints(u.Token.value.memberId!);
+                      print(u.Token.value.accessToken);
                       Get.to(() => Navigation());
                     } else {
                       Get.snackbar("로그인 시도", "로그인 실패");
                     }
+                  }
+                  else {
+                    Get.snackbar("로그인 시도", "로그인 실패");
                   }
                 },
             ),

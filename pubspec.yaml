@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_svg: ^2.0.10+1
   easy_search_bar : ^2.5.0
   shared_preferences: ^2.2.2
   cupertino_icons: ^1.0.2
@@ -46,6 +47,7 @@ dependencies:
   mime: ^1.0.4
   kakao_flutter_sdk: ^1.9.1
   google_sign_in: ^6.1.6
+  flutter_secure_storage: ^9.0.0
 
   flutter:
     sdk: flutter

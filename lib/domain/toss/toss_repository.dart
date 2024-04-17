@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:aet/controller/dto/TossPayDto.dart';
 import 'package:aet/domain/toss/toss_provider.dart';
 import 'package:aet/domain/toss/toss_response.dart';
-import 'package:aet/domain/toss/toss_success.dart';
+
 
 class TossRepository {
   final TossProvider _tossProvider = TossProvider();
@@ -34,9 +34,9 @@ class TossRepository {
         cancelYN: cancelYN ?? false,
         createdAt: createdAt ?? "",
       );
-      final response = await _tossProvider.sendTossPayment(tossPayData.toJson());
+      final Response response = await _tossProvider.sendTossPayment(tossPayData.toJson());
       if (response.statusCode == 200 && response.data != null) {
-        final tossPayDto = TossPayDto.fromJson(response.data);
+        final TossPayDto tossPayDto = TossPayDto.fromJson(response.data);
         if (tossPayDto.code == "PA01") {
           return tossPayDto.data;
         }
@@ -50,7 +50,7 @@ class TossRepository {
 
   Future<PaymentSuccessResponse?> tossPaymentSuccess(String paymentKey, String orderId, num amount) async {
     try {
-      final response = await _tossProvider.tossPaymentSuccess({
+      final Response response = await _tossProvider.tossPaymentSuccess({
         'paymentKey': paymentKey,
         'orderId': orderId,
         'amount': amount
@@ -67,7 +67,7 @@ class TossRepository {
 
   Future<dynamic> tossPaymentFail(String code, String message, String orderId) async {
     try {
-      final response = await _tossProvider.tossPaymentFail({
+      final Response response = await _tossProvider.tossPaymentFail({
         'code': code,
         'message': message,
         'orderId': orderId,
