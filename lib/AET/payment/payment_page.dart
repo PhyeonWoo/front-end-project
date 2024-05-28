@@ -1,5 +1,7 @@
 import 'package:aet/AET/components/custom_choice_chips.dart';
 import 'package:aet/AET/payment/payment_result.dart';
+import 'package:aet/AET/screens/navigation/homeNavigation.dart';
+import 'package:aet/controller/bottomnav_controller.dart';
 import 'package:aet/controller/pay_chips_controller.dart';
 import 'package:aet/controller/toss_controller.dart';
 import 'package:aet/controller/user_controller.dart';
@@ -26,6 +28,7 @@ class PaymentWidgetExamplePage extends StatefulWidget {
 
 class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
   final PayChoiceChipController controller = Get.put(PayChoiceChipController());
+  final BottomNavController bottomNavController = Get.put(BottomNavController());
   late PaymentWidget _paymentWidget;
   PaymentMethodWidgetControl? _paymentMethodWidgetControl;
   AgreementWidgetControl? _agreementWidgetControl;
@@ -55,16 +58,18 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
         .then((control) {
       _paymentMethodWidgetControl = control;
     }, onError: (fail) {
-      //Get.offAndToNamed("/result", arguments: fail);
+      Get.offAndToNamed("/result", arguments: fail);
       return;
     });
     _paymentWidget
         .renderAgreement(
-        selector: 'agreement', options: RenderAgreementOptions(variantKey: /*info.variantKeyAgreement*/"" ?? ""))
+        selector: 'agreement',
+        //options: RenderAgreementOptions(variantKey: /*info.variantKeyAgreement*/"" ?? "")
+        )
         .then((control) {
       _agreementWidgetControl = control; // Future.then을 통해 _agreementWidgetControl을 초기화합니다.
     }, onError: (fail) {
-      //Get.offAndToNamed("/result", arguments: fail);
+      Get.offAndToNamed("/result", arguments: fail);
       return;
     });
   }
@@ -80,8 +85,7 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
 
 
     return Scaffold(
-      appBar: CustomAppbar(titleWrite: "포인트 충전하기",BackButton: true,),
-      backgroundColor: Colors.white,
+      appBar: CustomAppbar(titleWrite: "포인트 충전하기",BackButton: true, AppbarColor: AppColor.white,),
       body: SafeArea(
         child: Column(
           children: [
@@ -243,14 +247,16 @@ class _PaymentWidgetExamplePageState extends State<PaymentWidgetExamplePage> {
                   paymentInfo: PaymentInfo(orderId: "${t.orderId}", orderName: "${t.orderName}"));
               Success? success = paymentResult.success;
               if (success != null) {
-                var result = await t.fetchPaymentSuccess(success.paymentKey, success.orderId, success.amount);
+                var result = await t.fetchPaymentResponse;
                 if (result != null) {
                   print('Toss payment succeeded: $result');
                 } else {
                   print('Toss payment failed');
                 }
                 Get.snackbar("결제 성공","포인트 충전");
-                Get.to(() => ResultPage(), arguments: paymentResult.success);
+                await u.fetchUserPoints(u.Token.value.memberId!);
+                bottomNavController.tabIndex.value = 0;
+                Get.to(() => Navigation(), arguments: paymentResult.success);
               } else if (paymentResult.fail != null) {
                 Get.to(() => ResultPage(), arguments: paymentResult.fail);
               }

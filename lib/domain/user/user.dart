@@ -38,7 +38,7 @@ class User {
 
     return User(
       memberId: json['memberId'] as String?,
-      password: json['memberId'] as String?,
+      password: json['password'] as String?,
       nickName: json['nickName'] as String?,
       point: json['point'] as int?,
       accessToken: json['accessToken'] as String?,

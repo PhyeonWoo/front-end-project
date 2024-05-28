@@ -5,8 +5,6 @@ import 'package:aet/domain/user/user.dart';
 import 'package:aet/domain/user/user_provider.dart';
 import 'package:dio/dio.dart' as Dio;
 
-
-
 class UserRepository {
   final UserProvider _userProvider = UserProvider();
 
@@ -42,8 +40,8 @@ class UserRepository {
     Dio.Response response = await _userProvider.fetchUserPoints(memberId);
     if (response.statusCode == 200) {
       final data = response.data['data'];
-      User user = User.fromJson(data);
-      return user;
+      User fetchUser = User.fromJson(data);
+      return fetchUser;
     }
     return null;
   }

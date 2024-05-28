@@ -1,4 +1,5 @@
 import 'package:aet/AET/components/custom_appbar_title.dart';
+import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tosspayments_widget_sdk_flutter/model/tosspayments_result.dart';
@@ -75,7 +76,7 @@ class ResultPage extends StatelessWidget {
       message = '결제에 실패하였습니다';
     }
     return Scaffold(
-        appBar: CustomAppbar(titleWrite:"결제결과"),
+        appBar: CustomAppbar(titleWrite:"결제 결과", AppbarColor: AppColor.white,),
         body: SafeArea(
           child: Container(
             padding: const EdgeInsets.fromLTRB(30, 30, 30, 50),

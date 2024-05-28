@@ -1,10 +1,10 @@
 import 'package:aet/AET/components/custom_search_form_provider.dart';
-import 'package:aet/AET/widgets/dailyTicket.dart';
+import 'package:aet/AET/components/custom_appbar_widget.dart';
 import 'package:aet/util/color.dart';
 import 'package:aet/util/validator_util.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBarSearch extends StatelessWidget implements PreferredSizeWidget {
   final _formKey = GlobalKey<FormState>();
   final _providerSearch = TextEditingController();
 
@@ -14,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: <Widget>[
         AppbarWidget(),
       ],
-      toolbarHeight: 180, // AppBar 높이 설정
+      toolbarHeight: 160, // AppBar 높이 설정
       backgroundColor: AppColor.green,
       elevation: 3, // 그림자 깊이
       shadowColor: AppColor.Shadow, // 그림자 색상
@@ -40,7 +40,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(height: 15,),
               _searchForm(),
             ],
           ),

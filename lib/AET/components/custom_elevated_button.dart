@@ -4,24 +4,34 @@ import 'package:flutter/material.dart';
 class CustomElevatedButton extends StatelessWidget {
   final String text;
   final funPageRoute;
+  final double widthSize;
+  final double heightSize;
 
-  const CustomElevatedButton({required this.text, required this.funPageRoute});
+
+  const CustomElevatedButton({
+    required this.text,
+    required this.funPageRoute,
+    required this.widthSize,
+    required this.heightSize});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
-      child: ElevatedButton(
+    return ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColor.green,
-            minimumSize: Size(double.infinity,50),
+            minimumSize: Size(widthSize,heightSize),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
           ),
           onPressed: funPageRoute,
-          child: Text("$text"),
-      ),
+          child: Text("$text",
+            style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontFamily: "Pretendard",
+          ),
+        ),
     );
   }
 }

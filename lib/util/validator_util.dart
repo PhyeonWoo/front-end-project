@@ -14,6 +14,7 @@ Function validatorNickName(){
     }
   };
 }
+
 Function validatorPassword(){
   return (String? value){
     if(value!.isEmpty) {
@@ -52,6 +53,15 @@ Function validatorEmail(){
   };
 }
 
+Function validatorAuthCode(){
+  return (String? value){
+    if(value!.isEmpty) {
+      return "공백이 들어갈 수 없습니다.";
+    }else {
+      return null;
+    }
+  };
+}
 
 Function validatorProvider(){
   return (String? value){

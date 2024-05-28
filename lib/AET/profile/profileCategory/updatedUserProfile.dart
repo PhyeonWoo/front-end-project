@@ -16,7 +16,7 @@ class UpdatedUserProfile extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: CustomAppbar(
-          titleWrite: '회원정보수정',BackButton: true,),
+          titleWrite: '회원정보수정',BackButton: true, AppbarColor: AppColor.white,),
         body: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [

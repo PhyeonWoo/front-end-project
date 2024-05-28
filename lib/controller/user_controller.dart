@@ -6,24 +6,23 @@ class UserController extends GetxController {
   final UserRepository _userRepository = UserRepository();
   final RxBool isLogin = false.obs;
   final Rx<User> principal = User(memberPhoto: []).obs;
+  final Rx<User> Token = User(memberPhoto: []).obs;
   var uploadStatus = ''.obs;
 
-  void logout() async {
+  void logout() {
     this.isLogin.value = false;
-    this.principal.value.accessToken = null;
-    this.principal.value.refreshToken = null;
-    this.principal.value.tokenExpiryDate = null;
+    this.Token.value.accessToken = null;
+    this.Token.value.refreshToken = null;
+    this.Token.value.tokenExpiryDate = null;
   }
 
-  Future<int> login(String memberId, String password) async {
+  Future<User?> login(String memberId, String password) async {
     User principal = await _userRepository.login(memberId, password);
+
     if (principal.accessToken != null && principal.memberId != null) {
-      this.isLogin.value = true;
-      this.principal.value = principal;
-      print(this.principal.value);
-      return 1;
-    } else {
-      return -1;
+      isLogin.value = true;
+      this.Token.value = principal;
+      return principal;
     }
   }
 
@@ -37,9 +36,9 @@ class UserController extends GetxController {
 
   Future<int> fetchUserPoints(String memberId) async {
     try {
-      User? principal = await _userRepository.fetchUserPoint(memberId);
-      if (principal != null) {
-        this.principal.value = principal;
+      User? fetchUse = await _userRepository.fetchUserPoint(memberId);
+      if (fetchUse != null) {
+        this.principal.value = fetchUse;
         return 1;
       } else {
         return -1;
@@ -50,3 +49,4 @@ class UserController extends GetxController {
      }
   }
 }
+

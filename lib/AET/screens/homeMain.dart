@@ -1,23 +1,21 @@
 import 'package:aet/AET/components/custom_appbar_search.dart';
 import 'package:aet/AET/components/custom_banner.dart';
 import 'package:aet/AET/components/custom_container_width_long.dart';
-import 'package:aet/AET/components/custom_list.dart';
 import 'package:aet/AET/components/custom_ticket_container.dart';
-import 'package:aet/AET/screens/mypage.dart';
 import 'package:aet/AET/theme/theme_container_profile.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-void main() => runApp(homeMain());
+void main() => runApp(HomeMain());
 
-class homeMain extends StatelessWidget {
+class HomeMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: CustomAppBar(),
-        body: SingleChildScrollView( // SingleChildScrollView 추가
+        backgroundColor: Colors.white,
+        appBar: CustomAppBarSearch(),
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

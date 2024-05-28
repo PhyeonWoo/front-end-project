@@ -9,5 +9,6 @@ abstract class AppColor {
   static const lightGrey = const Color(0xFF9B9B9B);
   static const Shadow = const Color(0x25000000);
   static const lightWhite = const Color(0xFFD9D9D9);
+  static const white = const Color(0xFFFEFEFE);
 
 }

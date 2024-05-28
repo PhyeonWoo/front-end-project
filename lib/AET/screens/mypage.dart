@@ -17,8 +17,10 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: CustomAppbar(
-          titleWrite: '마이페이지',),
+          titleWrite: '마이페이지',
+          AppbarColor: Colors.white,),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

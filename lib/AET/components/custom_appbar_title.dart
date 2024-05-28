@@ -1,27 +1,26 @@
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; // GetX 라이브러리 import
+import 'package:get/get.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String titleWrite;
-  final bool BackButton; // 뒤로 가기 버튼 표시 여부를 위한 매개변수
+  final bool BackButton;
+  final Color AppbarColor;
 
   const CustomAppbar({
     required this.titleWrite,
-    this.BackButton = false, // 기본값은 false로 설정
+    this.BackButton = false,
+    this.AppbarColor = Colors.white
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
-      elevation: 10,
-      shadowColor: AppColor.Shadow.withOpacity(0.1),
+      backgroundColor: AppbarColor,
       centerTitle: true,
-      // GetX를 사용하여 뒤로 가기 버튼을 조건부로 표시
       leading: BackButton ? IconButton(
         icon: Icon(Icons.arrow_back, color: AppColor.darkGrey),
-        onPressed: () => Get.back(), // GetX의 back 메서드를 사용하여 뒤로 가기
+        onPressed: () => Get.back(),
       ) : null,
       title: Padding(
         padding: EdgeInsets.only(top: 5),

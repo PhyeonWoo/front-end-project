@@ -20,7 +20,7 @@ class CustomContainerWidthLong extends StatelessWidget {
         color: Colors.white,
         border: Border.all(
           color: Colors.grey, // 테두리 색상 설정
-          width: 0.5, // 테두리 두께 설정
+          width: 0.2, // 테두리 두께 설정
         ),
         boxShadow: [
           BoxShadow(

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:aet/AET/components/custom_appbar_title.dart';
 import 'package:aet/AET/components/custom_noticeEvent_choice.dart';
 import 'package:aet/controller/notice_event_controller.dart';
 import 'package:aet/util/color.dart';
 
 class NoticeEvent extends StatelessWidget {
   final NoticeEventController controller = Get.put(NoticeEventController());
-
-  NoticeEvent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +14,6 @@ class NoticeEvent extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          elevation: 10,
-          shadowColor: AppColor.Shadow.withOpacity(0.1),
           centerTitle: true,
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: AppColor.darkGrey),

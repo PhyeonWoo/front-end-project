@@ -4,19 +4,18 @@ import 'package:flutter/material.dart';
 
 class CustomList extends StatelessWidget {
   final String textWrite;
-  final VoidCallback onClick; // 페이지 이동 대신 클릭 이벤트를 처리
+  final VoidCallback onClick;
 
   const CustomList({
     required this.textWrite,
-    required this.onClick, // 생성자를 통해 onClick 이벤트 주입
+    required this.onClick,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: onClick, // 클릭 이벤트 사용
+      onPressed: onClick,
       style: TextButton.styleFrom(
-        backgroundColor: Colors.white,
         elevation: 0.5,
       ),
       child: Padding(
@@ -30,7 +29,7 @@ class CustomList extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
-                color: AppColor.darkGrey, // AppColor.darkGrey를 직접 색상으로 대체
+                color: AppColor.darkGrey,
               ),
             ),
             Divider(
