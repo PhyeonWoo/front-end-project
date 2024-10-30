@@ -3,26 +3,31 @@ import 'dart:typed_data';
 import 'package:aet/AET/screens/sportsDetail/sportsDetail.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomGymCard extends StatelessWidget {
   final String name;
   final String sports;
+  final int ticketPrice;
   final String city;
   final String street;
   final String zipCode;
   final String gymNumber;
   final String managerNumber;
   final String imageBytes;
+  final String introduction;
 
   const CustomGymCard({
     required this.name,
     required this.sports,
+    required this.ticketPrice,
     required this.city,
     required this.street,
     required this.zipCode,
     required this.gymNumber,
     required this.managerNumber,
     required this.imageBytes,
+    required this.introduction,
   });
 
   @override
@@ -35,19 +40,18 @@ class CustomGymCard extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SportDetail(
-              name: name,
-              city: city,
-              street: street,
-              sports: sports,
-              zipCode: zipCode,
-              gymNumber: gymNumber,
-              managerNumber: managerNumber,
-              imageBytes: imageBytes,
-            ),
+        Get.to(
+          () => SportDetail(
+            name: name,
+            city: city,
+            ticketPrice: ticketPrice,
+            street: street,
+            sports: sports,
+            zipCode: zipCode,
+            gymNumber: gymNumber,
+            managerNumber: managerNumber,
+            imageBytes: imageBytes,
+            introduction: introduction,
           ),
         );
       },
@@ -70,8 +74,8 @@ class CustomGymCard extends StatelessWidget {
             child: Column(
               children: [
                 Image.memory(
-                  decodedBytes ?? base64Decode('assets/default_gym_image.png'), // Use a placeholder image base64 if decodedBytes is null
-                  height: heightSize * 0.25,
+                  decodedBytes ?? base64Decode('assets/non.png'),
+                  height: heightSize * 0.2,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -98,36 +102,42 @@ class CustomGymCard extends StatelessWidget {
   }
 
   Widget _buildTag(String sports) => Container(
-    decoration: BoxDecoration(
-      color: AppColor.green,
-      borderRadius: BorderRadius.circular(5),
-    ),
-    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
-    child: Text(sports, style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500)),
-  );
+        decoration: BoxDecoration(
+          color: AppColor.green,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+        child: Text(sports,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w500)),
+      );
 
   Widget _buildTitle(String name) => Text(
-    name,
-    style: TextStyle(
-      color: AppColor.darkGrey,
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-    ),
-  );
+        name,
+        style: TextStyle(
+          color: AppColor.darkGrey,
+          fontSize: 16,
+          fontFamily: "Pretendard",
+          fontWeight: FontWeight.bold,
+        ),
+      );
 
   TextStyle _textStyle() => TextStyle(
-    color: AppColor.darkGrey,
-    fontSize: 12,
-    fontFamily: "Pretendard",
-    fontWeight: FontWeight.w500,
-  );
+        color: AppColor.darkGrey,
+        fontSize: 12,
+        fontFamily: "Pretendard",
+        fontWeight: FontWeight.w500,
+      );
 
   Widget _buildPriceInfo() => Row(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: [
-      Text("일일권", style: _textStyle()),
-      SizedBox(width: 3),
-      Text("4,000원", style: _textStyle().copyWith(fontWeight: FontWeight.w100)),
-    ],
-  );
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text("일일권", style: _textStyle()),
+          SizedBox(width: 3),
+          Text("${ticketPrice}원",
+              style: _textStyle().copyWith(fontWeight: FontWeight.w100)),
+        ],
+      );
 }

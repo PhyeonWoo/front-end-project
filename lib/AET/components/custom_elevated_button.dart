@@ -6,19 +6,21 @@ class CustomElevatedButton extends StatelessWidget {
   final funPageRoute;
   final double widthSize;
   final double heightSize;
-
+  final Color ButtonColors;
 
   const CustomElevatedButton({
     required this.text,
     required this.funPageRoute,
     required this.widthSize,
-    required this.heightSize});
+    required this.heightSize,
+    this.ButtonColors = AppColor.green,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColor.green,
+            backgroundColor: ButtonColors,
             minimumSize: Size(widthSize,heightSize),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),

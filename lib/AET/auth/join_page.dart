@@ -10,7 +10,7 @@ import 'package:aet/util/validator_util.dart';
 
 class JoinPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final UserController userController = Get.find<UserController>();
+  final UserController u = Get.find<UserController>();
   final AuthCodeController a = Get.put(AuthCodeController());
 
   final _emailController = TextEditingController();
@@ -46,7 +46,7 @@ class JoinPage extends StatelessWidget {
                 text: "회원가입",
                 funPageRoute: () async {
                     if (_formKey.currentState!.validate()) {
-                      bool isRegistered = await userController.join(
+                      bool isRegistered = await u.join(
                         _emailController.text.trim(),
                         _passwordController.text.trim(),
                         _nicknameController.text.trim(),
@@ -54,6 +54,7 @@ class JoinPage extends StatelessWidget {
                       if (isRegistered) {
                         if (a.authCodeSend == true && a.authCodeCheck == true) {
                           Get.snackbar("회원가입 성공", "로그인 페이지로 이동");
+                          u.savePoints(u.principal.value.memberId!, 0);
                           Get.to(() => LoginPage());
                         }
                       } else {

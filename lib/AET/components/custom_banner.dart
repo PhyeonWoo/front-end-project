@@ -8,62 +8,58 @@ class CustomBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(top: 2),
-        child: Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Stack(
-                children: [
-                  PageView(
-                    controller: bannerController.pageController,
-                    onPageChanged: (int page) {
-                      bannerController.changePage(page);
-                    },
-                    children: [
-                      buildBanner('Banner 1', 0),
-                      buildBanner('Banner 2', 1),
-                    ],
-                  ),
-                  Obx(() => Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5.0), // 높이
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(2, (i) => Container( // 개수
-                          margin: EdgeInsets.all(2.0), // 간격
-                          width: 8.0,
-                          height: 8.0,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: bannerController.currentPage.value == i
-                                ? Color(0xFFffffff)
-                                : Color(0xFFffffff).withOpacity(0.5),
-                          ),
-                        )),
+      body: Column(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Stack(
+              children: [
+                PageView(
+                  controller: bannerController.pageController,
+                  onPageChanged: (int page) {
+                    bannerController.changePage(page);
+                  },
+                  children: [
+                    buildBanner('assets/images/banner_1.png', 0),
+                    buildBanner('assets/images/banner_2.png', 1),
+                    buildBanner('assets/images/banner_3.png', 2)
+                  ],
+                ),
+                Obx(() => Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(3, (i) => Container( // 배너
+                      margin: EdgeInsets.fromLTRB(2,2,2,4),
+                      width: 5.0,
+                      height: 5.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: bannerController.currentPage.value == i
+                            ? Color(0xFFffffff)
+                            : Color(0xFFffffff).withOpacity(0.5),
                       ),
-                    ),
-                  )),
-                ],
-              ),
+                    )),
+                  ),
+                )),
+              ],
             ),
-            // ... 나머지 UI 부분 ...
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget buildBanner(String text, int index) {
+  Widget buildBanner(String assetPath, int index) {
     return Container(
-      height: 140,
+      height: 160,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(3.0),
-        color: Colors.yellow,
+        image: DecorationImage(
+          image: AssetImage(assetPath),
+          fit: BoxFit.cover,
+        ),
       ),
-      child: Center(child: Text(text)),
     );
   }
 }

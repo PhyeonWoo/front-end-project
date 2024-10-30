@@ -48,5 +48,12 @@ class UserController extends GetxController {
       return -1;
      }
   }
+  Future<bool> savePoints(String memberId, num point) async {
+    try {
+      return await _userRepository.savePoints(memberId, point);
+    } catch (e) {
+      return false;
+    }
+  }
 }
 

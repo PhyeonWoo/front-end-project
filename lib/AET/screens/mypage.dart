@@ -16,11 +16,11 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: CustomAppbar(
-          titleWrite: '마이페이지',
-          AppbarColor: Colors.white,),
+          titleWrite: '마이페이지',),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +30,10 @@ class MyPage extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(10,20,10,20),
                 child: ProfileName(),
               ),
-              ProfileCard(),
+              Padding(
+                padding: EdgeInsets.fromLTRB(20,20,20,20),
+                child: ProfileCard(),
+              ),
               Padding(
                 padding: EdgeInsets.fromLTRB(10,20,10,20),
                 child: ProfileManagerBar(),

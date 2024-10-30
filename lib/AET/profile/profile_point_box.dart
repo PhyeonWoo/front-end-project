@@ -36,7 +36,7 @@ class ProfilePointBox extends StatelessWidget {
           "충전하기",
           style: TextStyle(
             fontFamily: "Pretendard",
-            fontSize: 18, // fontSize를 조금 줄여볼 수 있음
+            fontSize: 18,
             fontWeight: FontWeight.w700,
             color: AppColor.darkGreen,
             letterSpacing: -1,

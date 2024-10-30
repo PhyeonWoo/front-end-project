@@ -1,5 +1,4 @@
 import 'package:aet/controller/dto/PhotoUploadDto.dart';
-import 'package:aet/controller/user_controller.dart';
 import 'package:aet/domain/user/user.dart';
 import 'package:aet/util/host.dart';
 import 'package:dio/dio.dart' as Dio;
@@ -9,7 +8,7 @@ import 'package:image_picker/image_picker.dart'; // Getx의 Response와 충돌�
 class PhotoUploadController extends GetxController {
   final Dio.Dio _dio = Dio.Dio();
   var uploadStatus = ''.obs;
-  UserController u = Get.put(UserController());
+
 
   Future<User?> pickAndUploadImage(String memberId) async {
 

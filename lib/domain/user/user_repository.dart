@@ -1,6 +1,7 @@
 import 'package:aet/controller/dto/JoinReqDto.dart';
 import 'package:aet/controller/dto/JwtTokenDto.dart';
 import 'package:aet/controller/dto/LoginReqDto.dart';
+import 'package:aet/controller/dto/SavePointDto.dart';
 import 'package:aet/domain/user/user.dart';
 import 'package:aet/domain/user/user_provider.dart';
 import 'package:dio/dio.dart' as Dio;
@@ -44,5 +45,11 @@ class UserRepository {
       return fetchUser;
     }
     return null;
+  }
+
+  Future<bool> savePoints(String memberId, num point) async {
+    SavePointDto savePointDto = SavePointDto(memberId, point);
+    Dio.Response response = await _userProvider.savePoints(savePointDto.toJson());
+    return response.statusCode == 200;
   }
 }

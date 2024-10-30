@@ -1,11 +1,14 @@
+import 'package:aet/controller/bottom_nav_controller.dart';
 import 'package:aet/util/color.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomContainerWidthLong extends StatelessWidget {
   final String text;
   final String textSub;
+  final BottomNavController B = Get.put(BottomNavController());
 
-  const CustomContainerWidthLong({required this.text, required this.textSub});
+  CustomContainerWidthLong({required this.text, required this.textSub});
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +22,15 @@ class CustomContainerWidthLong extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
         border: Border.all(
-          color: Colors.grey, // 테두리 색상 설정
-          width: 0.2, // 테두리 두께 설정
+          color: Colors.grey,
+          width: 0.2,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2), // 그림자 색상
-            spreadRadius: 1, // 그림자 확장 범위
-            blurRadius: 10, // 그림자 흐림 정도
-            offset: Offset(0, 0), // x, y 축에 대한 그림자 위치
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 10,
+            offset: Offset(0, 0),
           ),
         ],
       ),
@@ -72,8 +75,8 @@ class CustomContainerWidthLong extends StatelessWidget {
                    ),
                     child: TextButton(
                       style: TextButton.styleFrom(
-                        padding: EdgeInsets.fromLTRB(0, 3, 0, 3), // 여기서 패딩 설정
-                        backgroundColor: Colors.transparent, // 배경색을 투명하게 설정
+                        padding: EdgeInsets.fromLTRB(0, 3, 0, 3),
+                        backgroundColor: Colors.transparent,
                         textStyle: TextStyle(
                           fontSize: 16,
                           fontFamily: "Pretendard",
@@ -81,7 +84,7 @@ class CustomContainerWidthLong extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        // 버튼 클릭 시 실행할 코드
+                        B.tabIndex.value = 1;
                       },
                       child: Text("확인하기",style: TextStyle(color: Colors.white),),
                     )

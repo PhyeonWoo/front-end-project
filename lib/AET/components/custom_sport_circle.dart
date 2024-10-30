@@ -5,7 +5,7 @@ class SportsCircle extends StatelessWidget {
   final String textWrite;
   final Widget togo;
   final String imagePath;
-  final double scale; // 이미지의 크기 조정을 위한 스케일 인자
+  final double scale;
 
   const SportsCircle({
     required this.textWrite,

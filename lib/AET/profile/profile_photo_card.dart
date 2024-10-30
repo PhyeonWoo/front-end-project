@@ -14,7 +14,7 @@ class ProfileCard extends StatelessWidget {
         ? NumberFormat('#,##0', 'en_US').format(u.principal.value!.point)
         : '0';
     return Container(
-      width: 350,
+      width: double.infinity,
       height: 132,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),

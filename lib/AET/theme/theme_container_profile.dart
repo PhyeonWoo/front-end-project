@@ -6,13 +6,16 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class UserMainBox extends StatelessWidget {
+  final String point;
   UserController u = Get.put(UserController());
+
+  UserMainBox({required this.point});
+
+
 
   @override
   Widget build(BuildContext context) {
-    String formattedNumber = u.principal.value?.point != null
-        ? NumberFormat('#,##0', 'en_US').format(u.principal.value!.point)
-        : '0';
+
     double screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
         child: Container(
@@ -29,7 +32,7 @@ class UserMainBox extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  InnerUserMainBox(),
+                  InnerUserMainBox(point: point),
                 ],
               ),
               Row(
@@ -49,7 +52,7 @@ class UserMainBox extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
                     child: Text(
-                      "${formattedNumber} P",
+                      "${point} P",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontSize: 12,
@@ -69,7 +72,10 @@ class UserMainBox extends StatelessWidget {
 
 
 class InnerUserMainBox extends StatelessWidget {
+  final String point;
   UserController u = Get.put(UserController());
+
+  InnerUserMainBox({required this.point});
 
 
   @override
@@ -99,7 +105,7 @@ class InnerUserMainBox extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "${formattedNumber} 포인트",
+                    "${point} 포인트",
                     style: TextStyle(
                       fontSize: 32,
                       fontFamily: "Pretendard",

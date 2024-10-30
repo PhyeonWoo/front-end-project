@@ -13,7 +13,6 @@ class GymController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchGymList('exampleMemberId');
   }
 
   Future<void> fetchGymList(String memberId) async {

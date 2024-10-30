@@ -15,7 +15,7 @@ class User {
     this.memberId,
     this.password,
     this.nickName,
-    this.point,
+    this.point = 0,
     this.accessToken,
     this.refreshToken,
     this.tokenExpiryDate,

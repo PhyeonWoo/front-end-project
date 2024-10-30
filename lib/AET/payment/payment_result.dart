@@ -4,18 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tosspayments_widget_sdk_flutter/model/tosspayments_result.dart';
 
-
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
+
   Row makeRow(String title, String message) {
     return Row(children: [
-      Expanded(flex: 3, child: Text(title, style: const TextStyle(color: Colors.grey))),
+      Expanded(
+          flex: 3,
+          child: Text(title, style: const TextStyle(color: Colors.grey))),
       Expanded(
         flex: 8,
         child: Text(message),
       )
     ]);
   }
+
   Container getContainer(dynamic result) {
     if (result is Success) {
       Success success = result;
@@ -30,10 +33,13 @@ class ResultPage extends StatelessWidget {
             const SizedBox(height: 20),
             Column(
                 children: success.additionalParams?.entries
-                    .map<Widget>((e) => Column(
-                  children: [makeRow(e.key, e.value), const SizedBox(height: 10)],
-                ))
-                    .toList() ??
+                        .map<Widget>((e) => Column(
+                              children: [
+                                makeRow(e.key, e.value),
+                                const SizedBox(height: 10)
+                              ],
+                            ))
+                        .toList() ??
                     []),
             Center(
               child: Text(
@@ -76,7 +82,10 @@ class ResultPage extends StatelessWidget {
       message = '결제에 실패하였습니다';
     }
     return Scaffold(
-        appBar: CustomAppbar(titleWrite:"결제 결과", AppbarColor: AppColor.white,),
+        appBar: CustomAppbar(
+          titleWrite: "결제 결과",
+          AppbarColor: AppColor.white,
+        ),
         body: SafeArea(
           child: Container(
             padding: const EdgeInsets.fromLTRB(30, 30, 30, 50),
@@ -110,6 +119,7 @@ class ResultPage extends StatelessWidget {
               ],
             ),
           ),
-        ));
+        ),
+    );
   }
 }
